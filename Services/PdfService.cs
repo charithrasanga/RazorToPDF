@@ -72,18 +72,20 @@ public class PdfService : IPdfService
             };
 
             var browserFetcher = new BrowserFetcher(browserFetcherOptions);
-            await browserFetcher.DownloadAsync(BrowserTag.Stable);
+         var installedBrowser=   await browserFetcher.DownloadAsync(BrowserTag.Stable);
         
         // Modify the DefaultViewport options to match the dimensions of an A4 sheet
         var browserOptions = new LaunchOptions
         {
+            
             Headless = true,
             Args = new[] { "--no-sandbox" },
             //DefaultViewport = new ViewPortOptions
             //{
             //    Width = 595, // A4 width in points (1 point = 1/72 inch)
             //    Height = 842 // A4 height in points (1 point = 1/72 inch)
-            //}
+            //},
+            ExecutablePath = installedBrowser.GetExecutablePath(),
         };
 
         using var browser = await Puppeteer.LaunchAsync(browserOptions);
