@@ -361,3 +361,5 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/wwwroot/browsers/Chrome/Win64-123.0.6312.122/chrome-win64
+/wwwroot/browsers/ChromeHeadlessShell/Win64-123.0.6312.122/chrome-headless-shell-win64
