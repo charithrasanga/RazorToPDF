@@ -66,7 +66,14 @@ public class PdfService : IPdfService
     {
         // download the browser executable
         // initial download may take up to 5 minutes
-        await new BrowserFetcher().DownloadAsync(BrowserTag.Stable);
+          var browserFetcherOptions = new BrowserFetcherOptions
+            {
+                Path = Path.Combine(_webHostEnvironment.WebRootPath, "browsers") // Specify the directory inside wwwroot where you want to download the browser
+            };
+
+            var browserFetcher = new BrowserFetcher(browserFetcherOptions);
+            await browserFetcher.DownloadAsync(BrowserTag.Stable);
+        
         // Modify the DefaultViewport options to match the dimensions of an A4 sheet
         var browserOptions = new LaunchOptions
         {
