@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using System.Net;
 
 [ApiController]
 [Route("[controller]")]
@@ -13,10 +14,14 @@ public class PdfController : ControllerBase
 
     [HttpPost("GeneratePDF")]
     [ProducesResponseType(typeof(FileContentResult), 200)]
-    public async Task<FileContentResult> GeneratePdf([FromBody] GeneratePdfRequest request)
+    public async Task<IActionResult> GeneratePdf([FromBody] GeneratePdfRequest request)
     {
-
+       
         var pdfData = await _pdfService.GeneratePdfAsync(request);
-        return File(pdfData, "application/pdf");
+        var downloadFilename = "file_" + Path.ChangeExtension(Path.GetRandomFileName(), ".pdf");
+        return new FileContentResult(pdfData, "application/pdf")
+        {
+            FileDownloadName = downloadFilename
+        };
     }
 }

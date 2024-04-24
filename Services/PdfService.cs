@@ -9,9 +9,11 @@ using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
+using Newtonsoft.Json;
 using PuppeteerSharp;
 using PuppeteerSharp.Media;
 using System.IO;
+using System.Text;
 
 public class PdfService : IPdfService
 {
@@ -62,39 +64,20 @@ public class PdfService : IPdfService
         return output.ToString();
     }
 
-    private async Task<byte[]> ConvertHtmlToPdf(string htmlData)
+
+    public async Task<byte[]> ConvertHtmlToPdf(string htmlData)
     {
-        // download the browser executable
-        // initial download may take up to 5 minutes
-       var installedBrowser =await new BrowserFetcher().DownloadAsync(BrowserTag.Stable);
-        // Modify the DefaultViewport options to match the dimensions of an A4 sheet
-        var browserOptions = new LaunchOptions
-        {
-            Headless = true,
-            Args = new[] { "--no-sandbox" },
-            ExecutablePath= installedBrowser.GetExecutablePath(),
-            //DefaultViewport = new ViewPortOptions
-            //{
-            //    Width = 595, // A4 width in points (1 point = 1/72 inch)
-            //    Height = 842 // A4 height in points (1 point = 1/72 inch)
-            //}
-        };
+        // var functionAuthCode = "s_hsE0EBi1iCawYOL8tiRF6UKlpfnBUP3-ELY_XKc7jtAzFuolvbsQ==";
+        var functionAuthCode = "iDjbHju3BAYuRbpgklMYPQ1JNgrTRlm5IEXF-YDtQgyMAzFukhgZEA==";
+        using var httpClient = new HttpClient();
 
-        using var browser = await Puppeteer.LaunchAsync(browserOptions);
-        using var page = await browser.NewPageAsync();
-
-        await page.SetContentAsync(htmlData);
-
-        var pdfOptions = new PdfOptions
-        {
-            Format = PaperFormat.A4,
-            PrintBackground = true,
-            DisplayHeaderFooter = false,
-
-        };
-
-        var pdfData = await page.PdfDataAsync(pdfOptions);
-
+        var payload = new { htmlData = htmlData };
+        var jsonPayload = JsonConvert.SerializeObject(payload);
+        var content = new StringContent(jsonPayload, Encoding.UTF8, "application/json");
+       // var response = await httpClient.PostAsync("http://localhost:7101/api/GeneratePDF", content);
+        var response = await httpClient.PostAsync($"https://puppeteerpdfgenerator.azurewebsites.net/api/GeneratePDF?code={functionAuthCode}", content);
+        response.EnsureSuccessStatusCode();
+        var pdfData = await response.Content.ReadAsByteArrayAsync();
         return pdfData;
     }
 }

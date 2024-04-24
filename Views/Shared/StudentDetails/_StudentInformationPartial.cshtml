@@ -1,0 +1,72 @@
+﻿@page
+@model RazorToPDF.Views.Shared.StudentDetails._StudentInformationPartialModel
+@{
+}
+
+
+<div class="form-group py-3">
+    <div class="row py-2">
+        <div class="col">
+            <label for="studentFirstName" class="form-label">Student First Name</label>
+            <input type="text"
+                   class="form-control"
+                   id="studentFirstName"
+                   placeholder="First Name" />
+        </div>
+        <div class="col">
+            <label for="studentLastName" class="form-label">Last Name</label>
+            <input type="text"
+                   class="form-control"
+                   id="studentLastName"
+                   placeholder="Last Name" />
+        </div>
+        <div class="col">
+            <label for="callStudentBy" class="form-label">Call student by (name or nickname)</label>
+            <input type="text"
+                   class="form-control"
+                   id="callStudentBy"
+                   placeholder="Name or Nickname" />
+        </div>
+    </div>
+    <div class="row py-2">
+        <div class="col">
+            <label for="dateOfBirth" class="form-label">Date of Birth</label>
+            <input type="text" class="form-control" id="dateOfBirth" />
+        </div>
+        <div class="col">
+            <label for="age" class="form-label">Age (Years)</label>
+            <input type="number"
+                   class="form-control"
+                   id="age"
+                   placeholder="Age" />
+        </div>
+        <div class="col">
+            <label for="grade" class="form-label">Grade</label>
+            <input type="text"
+                   class="form-control"
+                   id="grade"
+                   placeholder="Grade" />
+        </div>
+    </div>
+    <div class="row py-2">
+        <label class="form-label">Gender</label>
+        <div class="col">
+
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="inlineCheckbox1" checked value="Male">
+                <label class="form-check-label" for="inlineCheckbox1">Male</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="Female">
+                <label class="form-check-label" for="inlineCheckbox2">Female</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="Non-binary">
+                <label class="form-check-label" for="inlineCheckbox3">Non-binary</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="inlineCheckbox4" value="Prefer not to share">
+                <label class="form-check-label" for="inlineCheckbox4">Prefer not to share</label>
+            </div>
+        </div>
+    </div>
