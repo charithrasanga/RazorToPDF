@@ -13,6 +13,17 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Color+Emoji&display=swap" rel="stylesheet">
       <style>
+     
+         @@page{
+           size: 250mm 340mm; /*  this configurations will picked up by pupateersharp and use for printing */
+        }
+
+        html {
+            font-size: 0.8rem;
+            
+        }
+
+       
         body{
             overflow-x: hidden;
         }
@@ -285,7 +296,7 @@
     </style>
 </head>
 <body>
-    <div class="container">
+    <div class="container-fluid px-5">
 
         @RenderBody()
     </div>
