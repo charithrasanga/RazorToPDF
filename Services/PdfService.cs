@@ -67,6 +67,11 @@ public class PdfService : IPdfService
 
     public async Task<byte[]> ConvertHtmlToPdf(string htmlData)
     {
+
+        ////write htmlData to file C:\Users\Admin\Desktop\html\index.html
+        //string path = @"C:\Users\Admin\Desktop\html\index.html";
+        //File.WriteAllText(path, htmlData, Encoding.UTF8);
+
         // var functionAuthCode = "s_hsE0EBi1iCawYOL8tiRF6UKlpfnBUP3-ELY_XKc7jtAzFuolvbsQ==";
         var functionAuthCode = "iDjbHju3BAYuRbpgklMYPQ1JNgrTRlm5IEXF-YDtQgyMAzFukhgZEA==";
         using var httpClient = new HttpClient();
