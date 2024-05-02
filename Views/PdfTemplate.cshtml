@@ -12,7 +12,125 @@
         
   
 @await Html.PartialAsync("~/Views/Shared/_PageBreakPartial.cshtml")
-@await Html.PartialAsync("~/Views/Shared/_PageHeaderBar.cshtml", new RazorToPDF.Views.Shared._PageHeaderBarModel { Title = "Some other stuff", Number = "2" })
+@await Html.PartialAsync("~/Views/Shared/_PageHeaderBar.cshtml", new RazorToPDF.Views.Shared._PageHeaderBarModel { Title = "Test Selection", Number = "2" })
+
+@* Test Selection section  *@
+@await Html.PartialAsync("~/Views/Shared/TestSelection/_TestSelectionPartial.cshtml", new RazorToPDF.Views.Shared.TestSelection._TestSelectionModel())
+
+@await Html.PartialAsync("~/Views/Shared/_PageBreakPartial.cshtml")
+@await Html.PartialAsync("~/Views/Shared/_PageHeaderBar.cshtml", new RazorToPDF.Views.Shared._PageHeaderBarModel { Title = "Test Administration : Slosson Visual Motor Performance Test (SVMPT)", Number = "3.1" })
+
+@* SVMPT section  *@
+@await Html.PartialAsync("~/Views/Shared/SVMPT/_SVMPTPartial.cshtml", new RazorToPDF.Views.Shared.SVMPT._SVMPTPartialModel())
+
+@await Html.PartialAsync("~/Views/Shared/_PageBreakPartial.cshtml")
+@await Html.PartialAsync("~/Views/Shared/_PageHeaderBar.cshtml", new RazorToPDF.Views.Shared._PageHeaderBarModel { Title = "Test Administration : Wold Sentence Copying Test (WOLD)", Number = "3.2" })
+
+@* WOLD section  *@
+@await Html.PartialAsync("~/Views/Shared/WOLD/_WOLDPartial.cshtml", new RazorToPDF.Views.Shared.WOLD._WOLDPartialModel())
+
+@await Html.PartialAsync("~/Views/Shared/_PageBreakPartial.cshtml")
+@await Html.PartialAsync("~/Views/Shared/_PageHeaderBar.cshtml", new RazorToPDF.Views.Shared._PageHeaderBarModel { Title = "Test Administration :  Huntington Sight Word Assessment (HSWA)", Number = "3.3" })
+
+@* HSWA section  *@
+@await Html.PartialAsync("~/Views/Shared/HSWA/_HSWAPartial.cshtml", new RazorToPDF.Views.Shared.HSWA._HSWAPartialModel())
+
+@await Html.PartialAsync("~/Views/Shared/_PageBreakPartial.cshtml")
+@await Html.PartialAsync("~/Views/Shared/_PageHeaderBar.cshtml", new RazorToPDF.Views.Shared._PageHeaderBarModel { Title = "Test Administration : Boehm Test of Basic Concepts (Boehm)", Number = "3.4" })
+
+@* Boehm section  *@
+@await Html.PartialAsync("~/Views/Shared/Boehm/_BoehmPartial.cshtml", new RazorToPDF.Views.Shared.Boehm._BoehmPartialModel())
+
+@await Html.PartialAsync("~/Views/Shared/_PageBreakPartial.cshtml")
+@await Html.PartialAsync("~/Views/Shared/_PageHeaderBar.cshtml", new RazorToPDF.Views.Shared._PageHeaderBarModel { Title = "Test Administration : Reading Readiness", Number = "3.5" })
+
+@* Reading Readiness section  *@
+@await Html.PartialAsync("~/Views/Shared/ReadingReadiness/_ReadingReadinessPartial.cshtml", new RazorToPDF.Views.Shared.ReadingReadiness._ReadingReadinessModel())
+
+@await Html.PartialAsync("~/Views/Shared/_PageBreakPartial.cshtml")
+@await Html.PartialAsync("~/Views/Shared/_PageHeaderBar.cshtml", new RazorToPDF.Views.Shared._PageHeaderBarModel { Title = "Test Administration : Huntington Phonics Assessment (HPA)", Number = "3.6" })
+
+@* HPA section  *@
+@await Html.PartialAsync("~/Views/Shared/HPA/_HPAPartial.cshtml", new RazorToPDF.Views.Shared.HPA._HPAPartialModel())
+
+@await Html.PartialAsync("~/Views/Shared/_PageBreakPartial.cshtml")
+@await Html.PartialAsync("~/Views/Shared/_PageHeaderBar.cshtml", new RazorToPDF.Views.Shared._PageHeaderBarModel { Title = "Test Administration : Rosner's Test of Auditory perception (Rosner)", Number = "3.7" })
+
+@* Rosner section  *@
+@await Html.PartialAsync("~/Views/Shared/Rosner/_RosnerPartial.cshtml", new RazorToPDF.Views.Shared.Rosner._RosnerPartialModel())
+
+@await Html.PartialAsync("~/Views/Shared/_PageBreakPartial.cshtml")
+@await Html.PartialAsync("~/Views/Shared/_PageHeaderBar.cshtml", new RazorToPDF.Views.Shared._PageHeaderBarModel { Title = "Test Administration : Informal Reading Inventory - Oral and Silent (IRI)", Number = "3.8" })
+
+@* IRI section  *@
+@await Html.PartialAsync("~/Views/Shared/IRI/_IRIPartial.cshtml", new RazorToPDF.Views.Shared.IRI.IRIPartialModel())
+
+@await Html.PartialAsync("~/Views/Shared/_PageBreakPartial.cshtml")
+@await Html.PartialAsync("~/Views/Shared/_PageHeaderBar.cshtml", new RazorToPDF.Views.Shared._PageHeaderBarModel { Title = "Test Administration : STAR Assessment", Number = "3.9" })
+
+@* STAR section  *@
+@await Html.PartialAsync("~/Views/Shared/STAR/_STARPartial.cshtml", new RazorToPDF.Views.Shared.STAR._STARPartialModel())
+
+@await Html.PartialAsync("~/Views/Shared/_PageBreakPartial.cshtml")
+@await Html.PartialAsync("~/Views/Shared/_PageHeaderBar.cshtml", new RazorToPDF.Views.Shared._PageHeaderBarModel { Title = "Test Administration : Huntington Math Placement Exam (HMPE)", Number = "3.10" })
+
+@* HMPE section  *@
+@await Html.PartialAsync("~/Views/Shared/HMPE/_HMPEPartial.cshtml", new RazorToPDF.Views.Shared.HMPE._HMPEPartialModel())
+
+@await Html.PartialAsync("~/Views/Shared/_PageBreakPartial.cshtml")
+@await Html.PartialAsync("~/Views/Shared/_PageHeaderBar.cshtml", new RazorToPDF.Views.Shared._PageHeaderBarModel { Title = "Test Administration : Writing Sample", Number = "3.11" })
+
+@* Writing sample section  *@
+@await Html.PartialAsync("~/Views/Shared/WritingSample/_WritingSamplePartial.cshtml", new RazorToPDF.Views.Shared.WritingSample._WritingSampleModel())
+
+
+@await Html.PartialAsync("~/Views/Shared/_PageBreakPartial.cshtml")
+@await Html.PartialAsync("~/Views/Shared/_PageHeaderBar.cshtml", new RazorToPDF.Views.Shared._PageHeaderBarModel { Title = "Test Administration : Huntington Study Skills Survey (HSSS)", Number = "3.12" })
+
+@* HSSS section  *@
+@await Html.PartialAsync("~/Views/Shared/HSSS/_HSSSPartial.cshtml", new RazorToPDF.Views.Shared.HSSS._HSSSPartialModel())
+
+@await Html.PartialAsync("~/Views/Shared/_PageBreakPartial.cshtml")
+@await Html.PartialAsync("~/Views/Shared/_PageHeaderBar.cshtml", new RazorToPDF.Views.Shared._PageHeaderBarModel { Title = "General Questions Summary", Number = "3.13" })
+
+@* GQ SVMPT section  *@
+@await Html.PartialAsync("~/Views/Shared/GeneralQuestion/SVMPT/_SVMPTPartial.cshtml", new RazorToPDF.Views.Shared.GeneralQuestion.SVMPT._SVMPTPartialModel())
+
+@await Html.PartialAsync("~/Views/Shared/_PageBreakPartial.cshtml")
+@await Html.PartialAsync("~/Views/Shared/_PageHeaderBar.cshtml", new RazorToPDF.Views.Shared._PageHeaderBarModel { Title = "General Questions Summary", Number = "3.13" })
+
+@* GQ HSWA section  *@
+@await Html.PartialAsync("~/Views/Shared/GeneralQuestion/HSWA/_HSWAPartial.cshtml", new RazorToPDF.Views.Shared.GeneralQuestion.HSWA._HSWAPartialModel())
+
+@await Html.PartialAsync("~/Views/Shared/_PageBreakPartial.cshtml")
+@await Html.PartialAsync("~/Views/Shared/_PageHeaderBar.cshtml", new RazorToPDF.Views.Shared._PageHeaderBarModel { Title = "General Questions Summary", Number = "3.13" })
+
+@* GQ IRI section  *@
+@await Html.PartialAsync("~/Views/Shared/GeneralQuestion/IRI/_IRIPartial.cshtml", new RazorToPDF.Views.Shared.GeneralQuestion.IRI._IRIPartialModel())
+
+@await Html.PartialAsync("~/Views/Shared/_PageBreakPartial.cshtml")
+@await Html.PartialAsync("~/Views/Shared/_PageHeaderBar.cshtml", new RazorToPDF.Views.Shared._PageHeaderBarModel { Title = "General Questions Summary", Number = "3.13" })
+
+@* GQ HMPE section  *@
+@await Html.PartialAsync("~/Views/Shared/GeneralQuestion/HMPE/_HMPEPartial.cshtml", new RazorToPDF.Views.Shared.GeneralQuestion.HMPE._HMPEPartialModel())
+
+@await Html.PartialAsync("~/Views/Shared/_PageBreakPartial.cshtml")
+@await Html.PartialAsync("~/Views/Shared/_PageHeaderBar.cshtml", new RazorToPDF.Views.Shared._PageHeaderBarModel { Title = "General Questions Summary", Number = "3.13" })
+
+@* GQ Writing Sample section  *@
+@await Html.PartialAsync("~/Views/Shared/GeneralQuestion/WritingSample/_WritingSamplePartial.cshtml", new RazorToPDF.Views.Shared.GeneralQuestion.WritingSample._WritingSampleModel())
+
+@await Html.PartialAsync("~/Views/Shared/_PageBreakPartial.cshtml")
+@await Html.PartialAsync("~/Views/Shared/_PageHeaderBar.cshtml", new RazorToPDF.Views.Shared._PageHeaderBarModel { Title = "General Questions Summary", Number = "3.13" })
+
+@* GQ Concluding Conversation section  *@
+@await Html.PartialAsync("~/Views/Shared/GeneralQuestion/ConcludingConversation/_ConcludingConversationPartial.cshtml", new RazorToPDF.Views.Shared.GeneralQuestion.ConcludingConversation._ConcludingConversationPartialModel())
+
+@await Html.PartialAsync("~/Views/Shared/_PageBreakPartial.cshtml")
+@await Html.PartialAsync("~/Views/Shared/_PageHeaderBar.cshtml", new RazorToPDF.Views.Shared._PageHeaderBarModel { Title = "CONCLUDING CONVERSATION WITH STUDENT", Number = "3.14" })
+
+@* GQ Concluding Conversation section  *@
+@await Html.PartialAsync("~/Views/Shared/ConcludingConversation/_ConcludingConversationPartial.cshtml", new RazorToPDF.Views.Shared.ConcludingConversation._ConcludingConversationModel())
 
 
     @if (Model.ShowInstructions)

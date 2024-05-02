@@ -12,69 +12,276 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Color+Emoji&display=swap" rel="stylesheet">
-     <style>
-      .full-width-div {
-        width: 100vw;
-        position: relative;
-        left: 50%;
-        right: 50%;
-        margin-left: -50vw;
-        margin-right: -50vw;
-      }
-      .form-label {
-        font-size: 14px;
-        font-weight: 600;
-      }
-      .form-control {
-        font-size: 14px;
-        color: black;
-        border-color: black;
-        border-radius: 2px;
-      }
-
-
-input[type='checkbox']:after {
-    box-shadow: none !important;
-}
-  
-.form-check-input[type='checkbox'] {
-    appearance: none; /* This hides the default checkbox */
-    border: 1px solid black;
-    border-radius: 2px !important;
-}
-
-.form-check-input[type='checkbox']:checked {
-    background-color: transparent !important; /* This hides the default checkmark */
-}
-
-.form-check-input[type='checkbox']:checked:after {
-    content: "";
-    display: block;
-    width: 6px;
-    height: 12px;
-    border: solid black;
-    border-width: 0 2px 2px 0;
-    transform: rotate(45deg);
-    position: relative;
-    left: 4px; /* Adjust this value to move the checkmark to the right */
-}
-
-      @@media print {
-        .pagebreak {
-          clear: both;
-          page-break-after: always;
+      <style>
+        body{
+            overflow-x: hidden;
         }
-      }
+        p,
+        span,
+        label,
+        li,th, td, div {
+        font-family:Arial, Helvetica, sans-serif;
+        }
+        a{
+            color: blue;
+        }
+        .full-width-div {
+            width: 100vw;
+            position: relative;
+            left: 50%;
+            right: 50%;
+            margin-left: -50vw;
+            margin-right: -50vw;
+        }
+        .container_padding{
+            padding-left: 0;
+            padding-right: 0;
+        }
+        .checkBox-label{
+            font-size: 14px;
+            font-weight: 200;
+            color: #475061;
+        }
+        .form-label {
+            font-size: 16px;
+            font-weight: 600;
+            color: #475061;
+        }
+        .checkbox-label{
+            font-size: 14px;
+            font-weight: 600;
+            color: #475061;
+        }
+        .heading_size{
+            font-size: 18px;
+            font-weight: 300;
+            color: #475061;
+        }
+        .sub-heading{
+            font-size: 18px;
+            font-weight: 200;
+            color: #475061;
+        }
+        .sentense-line{
+            font-size: 14px;
+            font-weight: 200;
+            color: #475061;
+        }
+        .italic_font{
+            font-size: 16px;
+            font-weight: 100;
+            font-style: italic;
+            color: #475061af;
+        }
+        .normal_font{
+            font-size: 16px;
+            font-weight: 100;
+            color: #475061 !important;
+        }
+        .list_size{
+            font-size: 16px;
+            font-weight: 200;
+            color: #475061;
+        }
+        .list-points{
+            font-size: 14px;
+            font-weight: 200;
+        }
+        .form-control {
+            font-size: 14px;
+            color: black;
+            border-color: black;
+            border-radius: 2px;
+            width: 100%;
+        }
 
-      .noto-color-emoji-regular {
-        font-family: "Noto Color Emoji", sans-serif;
-        font-weight: 400;
-        font-style: normal;
-      }
+        input[type='checkbox']:after {
+            box-shadow: none !important;
+        }
+  
+        .form-check-input[type='checkbox'] {
+            appearance: none; /* This hides the default checkbox */
+            border: 1px solid black;
+            border-radius: 2px !important;
+        }
 
-      html {
-        -webkit-print-color-adjust: exact;
-      }
+        .form-check-input[type='checkbox']:checked {
+            background-color: transparent !important; /* This hides the default checkmark */
+        }
+
+        .form-check-input[type='checkbox']:checked:after {
+            content: "";
+            display: block;
+            width: 6px;
+            height: 12px;
+            border: solid black;
+            border-width: 0 2px 2px 0;
+            transform: rotate(45deg);
+            position: relative;
+            left: 4px; /* Adjust this value to move the checkmark to the right */
+        }
+
+        @@media print {
+            .pagebreak {
+                clear: both;
+                page-break-after: always;
+            }
+            .myContainer {
+                display: grid;
+                page-break-inside: avoid;
+            }
+        }
+
+        .noto-color-emoji-regular {
+            font-family: "Noto Color Emoji", sans-serif;
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        html {
+            -webkit-print-color-adjust: exact;
+        }
+
+
+        /* Newly added ---------------------------------------------- */
+
+        .LCTestAdministration{
+            thead {
+                tr {
+                    th {                       
+                        text-align: center ;
+                        vertical-align: middle ;
+                        height: 60px
+                    }
+                }
+            }
+            tbody {
+                tr {
+                    td {
+                        text-align: center ;
+                        vertical-align: middle ;
+                        height: 60px
+                    }
+                    td:first-child {
+                        text-align: start ;
+                    }
+                }
+            }   
+            tfoot{
+                tr{
+                    td{
+                        text-align: center !important;
+                        vertical-align: middle !important;
+                        height: 60px;
+                    }
+                }
+            }
+        }
+
+        .table-2{
+            thead {
+                tr {
+                    th {                       
+                        text-align: center ;
+                        vertical-align: middle ;
+                        height: 60px
+                    }
+                }
+            }
+            tbody {
+                tr {
+                    td {
+                        text-align: start ;
+                        vertical-align: middle ;
+                        height: 60px
+                    }
+                }
+            }  
+        }
+
+        .table-3{
+            thead {
+                tr {
+                    th {                       
+                        text-align: center ;
+                        vertical-align: middle ;
+                        height: 60px
+                    }
+                }
+            }
+            tbody {
+                tr {
+                    td {
+                        text-align: center ;
+                        vertical-align: middle ;
+                        height: 60px
+                    }
+                }
+            }  
+        }
+        .testWidth{
+            width: 26%;
+        }
+        .checkWidth{
+            width: 19%;
+        }
+        .dataWidth{
+            width: 18%;
+        }
+
+        .green_line {
+            width: 20px;
+            height: 1px;
+            margin: 15px 10px ;
+            border: 2px solid rgba(83, 231, 157, 0.829);
+            border-radius: 4px;
+        }   
+
+        .blue_box{
+            background-color: rgba(200, 237, 243, 0.219);
+            border-left-width: 5px !important;
+            border-radius: 5px;
+            border-left-color: rgba(200, 237, 243, 0.856) !important ;
+        }
+        .ash_box{
+            background-color: rgba(200, 237, 243, 0);
+            border-left-width: 5px !important;
+            border-radius: 5px;
+        }
+
+        .margin_left{
+            margin-left: 50px;
+        }
+
+        .paddingEdit{
+            padding-left: 10px;
+        }
+
+        .print-row {
+            display: flex;
+            flex-direction: row;
+            gap: 2.5mm;
+            margin-bottom: 3.8mm;
+            &.mb-0 {
+                margin-bottom: 0;
+            }
+            &.mb-1 {
+                margin-bottom: 1.5mm !important;
+            }
+            &.no-gutter {
+                gap: 0;
+            }
+            &.gap-2 {
+                gap: 5mm;
+            }
+            &.flex-col {
+                flex-direction: column;
+            }
+        }
+
+        
+
+
     </style>
 </head>
 <body>

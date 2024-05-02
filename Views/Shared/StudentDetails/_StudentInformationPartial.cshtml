@@ -4,69 +4,185 @@
 }
 
 
-<div class="form-group py-3">
-    <div class="row py-2">
-        <div class="col">
-            <label for="studentFirstName" class="form-label">Student First Name</label>
-            <input type="text"
-                   class="form-control"
-                   id="studentFirstName"
-                   placeholder="First Name" />
-        </div>
-        <div class="col">
-            <label for="studentLastName" class="form-label">Last Name</label>
-            <input type="text"
-                   class="form-control"
-                   id="studentLastName"
-                   placeholder="Last Name" />
-        </div>
-        <div class="col">
-            <label for="callStudentBy" class="form-label">Call student by (name or nickname)</label>
-            <input type="text"
-                   class="form-control"
-                   id="callStudentBy"
-                   placeholder="Name or Nickname" />
-        </div>
+<div class="print-row py-2">
+    <div class="col">
+        <label for="studentFirstName" class="form-label"><span class="text-danger">* </span>Student First Name</label>
+        <input type="text"
+               class="form-control"
+               id="studentFirstName"
+               placeholder="Jane" />
     </div>
-    <div class="row py-2">
-        <div class="col">
-            <label for="dateOfBirth" class="form-label">Date of Birth</label>
-            <input type="text" class="form-control" id="dateOfBirth" />
-        </div>
-        <div class="col">
-            <label for="age" class="form-label">Age (Years)</label>
-            <input type="number"
-                   class="form-control"
-                   id="age"
-                   placeholder="Age" />
-        </div>
-        <div class="col">
-            <label for="grade" class="form-label">Grade</label>
-            <input type="text"
-                   class="form-control"
-                   id="grade"
-                   placeholder="Grade" />
-        </div>
+    <div class="col">
+        <label for="studentLastName" class="form-label"><span class="text-danger">* </span>Last Name</label>
+        <input type="text"
+               class="form-control"
+               id="studentLastName"
+               placeholder="Deo" />
     </div>
-    <div class="row py-2">
-        <label class="form-label">Gender</label>
-        <div class="col">
+    <div class="col">
+        <label for="callStudentBy" class="form-label">Call student by (name or nickname)</label>
+        <input type="text"
+               class="form-control"
+               id="callStudentBy"
+               placeholder="Zoe" />
+    </div>
+</div>
 
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="inlineCheckbox1" checked value="Male">
-                <label class="form-check-label" for="inlineCheckbox1">Male</label>
+<div class="print-row py-2">
+    <div class="col">
+        <label for="dateOfBirth" class="form-label"><span class="text-danger">* </span>Date of Birth</label>
+        <input type="text"
+               class="form-control"
+               id="dateOfBirth"
+               placeholder="10/11/2023 " />
+    </div>
+    <div class="col">
+        <label for="age" class="form-label">Age (Years)</label>
+        <input type="text"
+               class="form-control"
+               id="age"
+               placeholder="9" />
+    </div>
+    <div class="col">
+        <label for="grade" class="form-label"><span class="text-danger">* </span>Grade</label>
+        <input type="text"
+               class="form-control"
+               id="grade"
+               placeholder="4 - Fourth Grade" />
+    </div>
+</div>
+
+<div class="py-2">
+    <label class="form-label">Gender</label>
+    <div class="print-row  checkBox-label">
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" checked value="Male">
+            <label class="form-check-label" for="inlineCheckbox1">Male</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="Female">
+            <label class="form-check-label" for="inlineCheckbox2">Female</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="Non-binary">
+            <label class="form-check-label" for="inlineCheckbox3">Non-binary</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" id="inlineCheckbox4" value="Prefer not to share">
+            <label class="form-check-label" for="inlineCheckbox4">Prefer not to share</label>
+        </div>
+    </div>
+</div>
+
+<div>
+    <ul class="list-points">
+        <li>Greet the parent and the student.</li>
+        <li>
+            Check if the parent has filled out the CCH, if they haven’t, please provide them with the link so you can start the student testing process
+            while the parent completes the CCH.
+        </li>
+    </ul>
+</div>
+
+<div class="print-row py-2">
+    <div class="col">
+        <label for="studentIntakeBy" class="form-label"><span class="text-danger">* </span>Intake by</label>
+        <input type="text"
+               class="form-control"
+               id="studentIntakeBy"
+               placeholder="5 Elliot, George" />
+    </div>
+    <div class="col">
+        <label for="studentService" class="form-label"><span class="text-danger">* </span>Service</label>
+        <input type="text"
+               class="form-control"
+               id="studentService"
+               placeholder="L1" />
+    </div>
+    <div class="col">
+        <label for="studentCenterAEFee" class="form-label">Center AE Fee</label>
+        <input type="text"
+               class="form-control"
+               id="studentCenterAEFee"
+               placeholder="$15" />
+    </div>
+</div>
+
+<div class="print-row py-2">
+    <div class="col">
+        <label for="studentAEDiscount" class="form-label">AE Discount</label>
+        <input type="text"
+               class="form-control"
+               id="studentAEDiscount"
+               placeholder="Bulk" />
+    </div>
+    <div class="col">
+        <div class="print-row">
+            <div class="form-check form-check-inline col-1 me-0 pt-5">
+                <input class="form-check-input" type="checkbox" id="inlineCheckbox1" checked value="$">
+                <label class="form-check-label" for="inlineCheckbox1">$</label>
             </div>
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="Female">
-                <label class="form-check-label" for="inlineCheckbox2">Female</label>
+            <div class="form-check form-check-inline col-1 me-0 pt-5">
+                <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="%">
+                <label class="form-check-label" for="inlineCheckbox2">%</label>
             </div>
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="Non-binary">
-                <label class="form-check-label" for="inlineCheckbox3">Non-binary</label>
-            </div>
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="inlineCheckbox4" value="Prefer not to share">
-                <label class="form-check-label" for="inlineCheckbox4">Prefer not to share</label>
+            <div class="col">
+                <label for="studentDiscount" class="form-label">Discount ($)/(%)</label>
+                <input type="text"
+                       class="form-control"
+                       id="studentDiscount"
+                       placeholder="$15" />
             </div>
         </div>
     </div>
+    <div class="col">
+        <label for="studentDiscountedAEFee" class="form-label">Discounted AE Fee</label>
+        <input type="text"
+               class="form-control"
+               id="studentDiscountedAEFee"
+               placeholder="$2" />
+    </div>
+</div>
+
+<div class="print-row py-2">
+    <div class="col-4">
+        <label for="studentPromoCode" class="form-label">Promo Code</label>
+        <input type="text"
+               class="form-control"
+               id="studentPromoCode"
+               placeholder="123" />
+    </div>
+</div>
+
+<div class="print-row py-2">
+    <div class="col">
+        <label for="studentIntakeNotes" class="form-label"><span class="text-danger">* </span>Intake Notes</label>
+        <input type="text"
+               class="form-control"
+               id="studentIntakeNotes"
+               placeholder=" Intake Notes" />
+    </div>
+</div>
+
+<div>
+    <ul class="list-points">
+        <li>After you collect the AE fee, please enter it into LCOS.</li>
+        <li>
+            Please ensure that you have scheduled the initial conference with all appropriate attendees and recorded it in LCOS (hyperlink). The goal is
+            to have the child’s whole support system in the conference, whoever that may be
+            <ul>
+                <li>
+                    The next step is for us to set up a meeting as soon as possible for you and Jane’s full support system. At this meeting, we will review
+                    the results of the evaluation s/he’s taking right now and then discuss the plan to get Jane back on track. We’ll also discuss a
+                    schedule and tuition options. This meeting takes approximately 60-90 minutes, so we’ll need a time that works for everyone.
+                </li>
+            </ul>
+        </li>
+        <li>
+            If the conference is being held by Virtual Conferencing, add the following:
+            <ul>
+                <li>You’ll meet with our Enrollment Director via Zoom. You’ll want to make sure you are in a quiet, distraction-free setting so you can see the results and ask questions.</li>
+            </ul>
+        </li>
+    </ul>
+</div>
