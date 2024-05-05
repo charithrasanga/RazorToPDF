@@ -13,17 +13,16 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Color+Emoji&display=swap" rel="stylesheet">
       <style>
-     
-         @@page{
-           size: 250mm 340mm; /*  this configurations will picked up by pupateersharp and use for printing */
+        
+        @@page{
+            size: 250mm 440mm; /*  this configurations will picked up by pupateersharp and use for printing */
         }
 
         html {
             font-size: 0.8rem;
-            
+                
         }
-
-       
+        
         body{
             overflow-x: hidden;
         }
@@ -48,19 +47,14 @@
             padding-left: 0;
             padding-right: 0;
         }
-        .checkBox-label{
-            font-size: 14px;
-            font-weight: 200;
-            color: #475061;
-        }
         .form-label {
-            font-size: 16px;
+            font-size: 14px;
             font-weight: 600;
             color: #475061;
         }
         .checkbox-label{
-            font-size: 14px;
-            font-weight: 600;
+            font-size: 16px;
+            font-weight: 200;
             color: #475061;
         }
         .heading_size{
@@ -83,6 +77,9 @@
             font-weight: 100;
             font-style: italic;
             color: #475061af;
+        }
+        .table-font-size {
+            font-size: 12.8px;
         }
         .normal_font{
             font-size: 16px;
@@ -138,9 +135,9 @@
                 page-break-after: always;
             }
             .myContainer {
-                display: grid;
-                page-break-inside: avoid;
-            }
+            display: grid;
+            page-break-inside: avoid;
+        }
         }
 
         .noto-color-emoji-regular {
@@ -162,7 +159,7 @@
                     th {                       
                         text-align: center ;
                         vertical-align: middle ;
-                        height: 60px
+                        height: 53px
                     }
                 }
             }
@@ -171,7 +168,7 @@
                     td {
                         text-align: center ;
                         vertical-align: middle ;
-                        height: 60px
+                        height: 53px
                     }
                     td:first-child {
                         text-align: start ;
@@ -183,31 +180,44 @@
                     td{
                         text-align: center !important;
                         vertical-align: middle !important;
-                        height: 60px;
+                        height: 53px;
                     }
                 }
             }
         }
 
         .table-2{
-            thead {
-                tr {
-                    th {                       
-                        text-align: center ;
-                        vertical-align: middle ;
-                        height: 60px
-                    }
-                }
-            }
-            tbody {
-                tr {
-                    td {
-                        text-align: start ;
-                        vertical-align: middle ;
-                        height: 60px
-                    }
-                }
-            }  
+            thead
+
+        {
+            tr
+
+        {
+            th
+
+        {
+            text-align: center;
+            vertical-align: middle;
+            height: 33px
+        }
+
+        }
+        }
+
+        body {
+            tr
+
+        {
+            td
+
+        {
+            text-align: start;
+            vertical-align: middle;
+            height: 33px
+        }
+
+        }
+        }
         }
 
         .table-3{
@@ -216,7 +226,7 @@
                     th {                       
                         text-align: center ;
                         vertical-align: middle ;
-                        height: 60px
+                        height: 53px
                     }
                 }
             }
@@ -225,7 +235,7 @@
                     td {
                         text-align: center ;
                         vertical-align: middle ;
-                        height: 60px
+                        height: 53px
                     }
                 }
             }  

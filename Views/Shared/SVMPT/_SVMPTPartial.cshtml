@@ -2,8 +2,7 @@
 @model RazorToPDF.Views.Shared.SVMPT._SVMPTPartialModel
 @{
 }
-
-<div class="print-row py-2">
+<div class="print-row py-2 mt-4 ">
     <div class="col">
         <label for="StudentName" class="form-label">Student</label>
         <input type="text"
@@ -27,7 +26,7 @@
     </div>
 </div>
 
-<div class="px-3 py-2 blue_box mt-2 border border-2 bg-opacity-10">
+<div class="px-3 py-2 blue_box mt-4 border border-2 bg-opacity-10">
     <div class="print-row ">
         <div class="col">
             <p class="form-label">Typical Duration (minutes)</p>
@@ -51,7 +50,7 @@
     <p>This test identifies those who may be at risk for various forms of visual perceptual difficulties where eye-hand coordination is involved</p>
 </div>
 
-<div class="px-3 py-2 blue_box mt-2 border border-2 bg-opacity-10">
+<div class="px-3 py-2 blue_box mt-4 border border-2 bg-opacity-10">
     <div>
         <div class="d-flex flex-row">
             <p class="fs-5 fw-bold form-label">Directions / Test Specific Observations</p>
@@ -166,15 +165,17 @@
     </div>
 </div>
 
+<div class="pagebreak"> </div>
+
 <div class="py-2 mt-4 ash_box border border-2">
     <div class="ms-3 col-11">
         <div class="d-flex flex-row">
             <div><p class="fs-5 fw-bold form-label">General Questions</p></div>
             <div class="green_line"></div>
         </div>
-        <div class="py-2">
+        <div>
             <label class="form-label">Do you know what we do here?</label>
-            <div class="col">
+            <div class="col checkbox-label">
                 <div class="form-check form-check-inline">
                     <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="Yes">
                     <label class="form-check-label" for="Yes">Yes</label>
@@ -189,19 +190,19 @@
                 </div>
             </div>
         </div>
-        <div class="py-2">
+        <div class="py-2 myContainer">
             <span class="form-label">Student Comment</span>
             <div class="border border-black rounded-1 mt-2">
                 <p class="mx-3 my-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus animi adipisci ea quo quis nulla tempora deserunt repellat et eum obcaecati tenetur hic cupiditate quod, vitae minima officiis! Aut obcaecati perferendis hic nihil eius enim possimus eligendi, veritatis veniam quia nesciunt a, ipsum voluptatum itaque eveniet explicabo nostrum dolorum! Possimus assumenda neque reiciendis ipsam commodi voluptatum natus quia ducimus amet! Aliquam modi eligendi in beatae temporibus quis perferendis laboriosam odio? Sapiente, nemo ab nesciunt expedita laudantium excepturi fuga aliquid quo repudiandae omnis necessitatibus quae eaque distinctio laboriosam magnam? Ratione, id facilis maiores illum deleniti hic aspernatur laboriosam architecto molestiae fugiat libero dignissimos eum ullam natus necessitatibus maxime non ipsam voluptatum quisquam quam dolorum placeat. Facilis reiciendis atque cupiditate natus inventore.</p>
             </div>
         </div>
-        <div class="py-2">
+        <div class="py-2 myContainer">
             <span class="form-label">How do you feel about getting help here?</span>
             <div class="border border-black rounded-1 mt-2">
                 <p class="mx-3 my-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus animi adipisci ea quo quis nulla tempora deserunt repellat et eum obcaecati tenetur hic cupiditate quod, vitae minima officiis! Aut obcaecati perferendis hic nihil eius enim possimus eligendi, veritatis veniam quia nesciunt a, ipsum voluptatum itaque eveniet explicabo nostrum dolorum! Possimus assumenda neque reiciendis ipsam commodi voluptatum natus quia ducimus amet! Aliquam modi eligendi in beatae temporibus quis perferendis laboriosam odio? Sapiente, nemo ab nesciunt expedita laudantium excepturi fuga aliquid quo repudiandae omnis necessitatibus quae eaque distinctio laboriosam magnam? Ratione, id facilis maiores illum deleniti hic aspernatur laboriosam architecto molestiae fugiat libero dignissimos eum ullam natus necessitatibus maxime non ipsam voluptatum quisquam quam dolorum placeat. Facilis reiciendis atque cupiditate natus inventore.</p>
             </div>
         </div>
-        <div class="py-2">
+        <div class="py-2 myContainer">
             <span class="form-label">What do you like to do in your spare time? (Sport, Club,etc.)</span>
             <div class="border border-black rounded-1 mt-2">
                 <p class="mx-3 my-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus animi adipisci ea quo quis nulla tempora deserunt repellat et eum obcaecati tenetur hic cupiditate quod, vitae minima officiis! Aut obcaecati perferendis hic nihil eius enim possimus eligendi, veritatis veniam quia nesciunt a, ipsum voluptatum itaque eveniet explicabo nostrum dolorum! Possimus assumenda neque reiciendis ipsam commodi voluptatum natus quia ducimus amet! Aliquam modi eligendi in beatae temporibus quis perferendis laboriosam odio? Sapiente, nemo ab nesciunt expedita laudantium excepturi fuga aliquid quo repudiandae omnis necessitatibus quae eaque distinctio laboriosam magnam? Ratione, id facilis maiores illum deleniti hic aspernatur laboriosam architecto molestiae fugiat libero dignissimos eum ullam natus necessitatibus maxime non ipsam voluptatum quisquam quam dolorum placeat. Facilis reiciendis atque cupiditate natus inventore.</p>
@@ -209,7 +210,7 @@
         </div>
         <div class="py-2">
             <label class="form-label">Do you like or dislike going to school?</label>
-            <div class="col">
+            <div class="col checkbox-label">
                 <div class="form-check form-check-inline">
                     <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="Like it">
                     <label class="form-check-label" for="likeIt">Like it</label>
@@ -224,13 +225,13 @@
                 </div>
             </div>
         </div>
-        <div class="py-2">
+        <div class="py-2 myContainer">
             <span class="form-label">Why</span>
             <div class="border border-black rounded-1 mt-2">
                 <p class="mx-3 my-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus animi adipisci ea quo quis nulla tempora deserunt repellat et eum obcaecati tenetur hic cupiditate quod, vitae minima officiis! Aut obcaecati perferendis hic nihil eius enim possimus eligendi, veritatis veniam quia nesciunt a, ipsum voluptatum itaque eveniet explicabo nostrum dolorum! Possimus assumenda neque reiciendis ipsam commodi voluptatum natus quia ducimus amet! Aliquam modi eligendi in beatae temporibus quis perferendis laboriosam odio? Sapiente, nemo ab nesciunt expedita laudantium excepturi fuga aliquid quo repudiandae omnis necessitatibus quae eaque distinctio laboriosam magnam? Ratione, id facilis maiores illum deleniti hic aspernatur laboriosam architecto molestiae fugiat libero dignissimos eum ullam natus necessitatibus maxime non ipsam voluptatum quisquam quam dolorum placeat. Facilis reiciendis atque cupiditate natus inventore.</p>
             </div>
         </div>
-        <div class="py-2">
+        <div class="py-2 myContainer">
             <span class="form-label">What do you like or dislike about school?</span>
             <div class="border border-black rounded-1 mt-2">
                 <p class="mx-3 my-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
@@ -238,6 +239,8 @@
         </div>
     </div>
 </div>
+
+<div class="pagebreak"> </div>
 
 <div class="print-row py-2  mt-4 ash_box border border-2">
     <div class="ms-3 col-11">
@@ -250,7 +253,7 @@
     </div>
 </div>
 
-<div class="py-2 blue_box mt-2 border border-2 bg-opacity-10">
+<div class="py-2 blue_box mt-4 border border-2 bg-opacity-10">
     <div class="ms-3">
         <div class="d-flex flex-row">
             <div><p class="fs-5 fw-bold">Next Test</p></div>

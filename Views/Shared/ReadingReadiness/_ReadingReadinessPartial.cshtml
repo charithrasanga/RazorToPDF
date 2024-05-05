@@ -2,7 +2,7 @@
 @model RazorToPDF.Views.Shared.ReadingReadiness._ReadingReadinessModel
 @{
 }
-<div class="print-row py-2">
+<div class="print-row py-2 mt-4">
     <div class="col">
         <label for="StudentName" class="form-label">Student</label>
         <input type="text"
@@ -26,7 +26,7 @@
     </div>
 </div>
 
-<div class="px-3 py-2 blue_box mt-2 border border-2 bg-opacity-10">
+<div class="px-3 py-2 blue_box mt-4 border border-2 bg-opacity-10">
     <div class="print-row ">
         <div class="col">
             <p class="form-label">Typical Duration (minutes)</p>
@@ -50,7 +50,7 @@
     <p>This test determines reading readiness based on the student's general knowledge and your observations.</p>
 </div>
 
-<div class="px-3 py-2 blue_box mt-2 border border-2 bg-opacity-10">
+<div class="px-3 py-2 blue_box mt-4 border border-2 bg-opacity-10">
     <div>
         <div class="d-flex flex-row">
             <p class="fs-5 fw-bold form-label">Directions / Test Specific Observations</p>
@@ -74,10 +74,10 @@
                                 </li>
                             </ul>
                         </li>
-                        <li class="col-10">
+                        <li class="col-7">
                             Use the directions on the Reading Readiness test sheet.
                             <div>
-                                <table class="table table-bordered border-black table-2 border-4">
+                                <table class="table table-bordered border-black table-2 table-font-size">
                                     <thead style="background-color: rgba(200, 237, 243, 0.671);">
                                     <th>Item</th>
                                     <th>Direction</th>
@@ -199,6 +199,8 @@
     </div>
 </div>
 
+<div class="pagebreak"> </div>
+
 <div class="px-3 py-2 mt-4 ash_box border border-2">
     <div class="d-flex flex-row">
         <div><p class="fs-5 fw-bold form-label">General Questions</p></div>
@@ -213,7 +215,7 @@
     </div>
 </div>
 
-<div class="py-2 blue_box mt-2 border border-2 bg-opacity-10">
+<div class="py-2 blue_box mt-4 border border-2 bg-opacity-10">
     <div class="ms-3">
         <div class="d-flex flex-row">
             <div><p class="fs-5 fw-bold">Next Test</p></div>
@@ -233,4 +235,3 @@
         </div>
     </div>
 </div>
-

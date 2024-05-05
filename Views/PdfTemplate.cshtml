@@ -97,7 +97,6 @@
 @await Html.PartialAsync("~/Views/Shared/GeneralQuestion/SVMPT/_SVMPTPartial.cshtml", new RazorToPDF.Views.Shared.GeneralQuestion.SVMPT._SVMPTPartialModel())
 
 @await Html.PartialAsync("~/Views/Shared/_PageBreakPartial.cshtml")
-@await Html.PartialAsync("~/Views/Shared/_PageHeaderBar.cshtml", new RazorToPDF.Views.Shared._PageHeaderBarModel { Title = "General Questions Summary", Number = "3.13" })
 
 @* GQ HSWA section  *@
 @await Html.PartialAsync("~/Views/Shared/GeneralQuestion/HSWA/_HSWAPartial.cshtml", new RazorToPDF.Views.Shared.GeneralQuestion.HSWA._HSWAPartialModel())
@@ -109,13 +108,17 @@
 @await Html.PartialAsync("~/Views/Shared/GeneralQuestion/IRI/_IRIPartial.cshtml", new RazorToPDF.Views.Shared.GeneralQuestion.IRI._IRIPartialModel())
 
 @await Html.PartialAsync("~/Views/Shared/_PageBreakPartial.cshtml")
+
+@* GQ STAR section  *@
+@await Html.PartialAsync("~/Views/Shared/GeneralQuestion/STAR/_STARPartial.cshtml", new RazorToPDF.Views.Shared.GeneralQuestion.STAR._STARPartialModel())
+
+@await Html.PartialAsync("~/Views/Shared/_PageBreakPartial.cshtml")
 @await Html.PartialAsync("~/Views/Shared/_PageHeaderBar.cshtml", new RazorToPDF.Views.Shared._PageHeaderBarModel { Title = "General Questions Summary", Number = "3.13" })
 
 @* GQ HMPE section  *@
 @await Html.PartialAsync("~/Views/Shared/GeneralQuestion/HMPE/_HMPEPartial.cshtml", new RazorToPDF.Views.Shared.GeneralQuestion.HMPE._HMPEPartialModel())
 
 @await Html.PartialAsync("~/Views/Shared/_PageBreakPartial.cshtml")
-@await Html.PartialAsync("~/Views/Shared/_PageHeaderBar.cshtml", new RazorToPDF.Views.Shared._PageHeaderBarModel { Title = "General Questions Summary", Number = "3.13" })
 
 @* GQ Writing Sample section  *@
 @await Html.PartialAsync("~/Views/Shared/GeneralQuestion/WritingSample/_WritingSamplePartial.cshtml", new RazorToPDF.Views.Shared.GeneralQuestion.WritingSample._WritingSampleModel())
@@ -129,7 +132,7 @@
 @await Html.PartialAsync("~/Views/Shared/_PageBreakPartial.cshtml")
 @await Html.PartialAsync("~/Views/Shared/_PageHeaderBar.cshtml", new RazorToPDF.Views.Shared._PageHeaderBarModel { Title = "CONCLUDING CONVERSATION WITH STUDENT", Number = "3.14" })
 
-@* GQ Concluding Conversation section  *@
+@* Concluding Conversation section  *@
 @await Html.PartialAsync("~/Views/Shared/ConcludingConversation/_ConcludingConversationPartial.cshtml", new RazorToPDF.Views.Shared.ConcludingConversation._ConcludingConversationModel())
 
 
