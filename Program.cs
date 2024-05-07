@@ -1,4 +1,6 @@
 
+using RazorToPDF.Services;
+
 namespace RazorToPDF
 {
     public class Program
@@ -17,7 +19,7 @@ namespace RazorToPDF
 
             // Add services to the container.
             builder.Services.AddScoped<PdfService>();
-
+            builder.Services.AddTransient<IMockStudentDetailService, MockStudentDetailService>();
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.

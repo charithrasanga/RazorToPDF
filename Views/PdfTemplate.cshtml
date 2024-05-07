@@ -1,16 +1,23 @@
-﻿@model GeneratePdfRequest
-
+﻿@using RazorToPDF.Services
+@using RazorToPDF.ViewModels
+@inject IMockStudentDetailService userService
+@model GeneratePdfRequest
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
+    var studentDetails = new StudentMockDataViewModel();
+    if (Model.FillData)
+    {
+        studentDetails = userService.GetMockData();
+    }
 }
 
 @await Html.PartialAsync("~/Views/Shared/_ReportHeaderPartial.cshtml", "STUDENT LC TEST ADMINISTRATION")
 @await Html.PartialAsync("~/Views/Shared/_PageHeaderBar.cshtml", new RazorToPDF.Views.Shared._PageHeaderBarModel { Title = "Initial Intake Information", Number = "1" })
 
- @* Student details section  *@
- @await Html.PartialAsync("~/Views/Shared/StudentDetails/_StudentInformationPartial.cshtml", new RazorToPDF.Views.Shared.StudentDetails._StudentInformationPartialModel())
-        
-  
+@* Student details section  *@
+@await Html.PartialAsync("~/Views/Shared/StudentDetails/_StudentInformationPartial.cshtml", new RazorToPDF.Views.Shared.StudentDetails._StudentInformationPartialModel { intakeData = studentDetails.IntialIntakeData })
+
+
 @await Html.PartialAsync("~/Views/Shared/_PageBreakPartial.cshtml")
 @await Html.PartialAsync("~/Views/Shared/_PageHeaderBar.cshtml", new RazorToPDF.Views.Shared._PageHeaderBarModel { Title = "Test Selection", Number = "2" })
 
@@ -136,19 +143,19 @@
 @await Html.PartialAsync("~/Views/Shared/ConcludingConversation/_ConcludingConversationPartial.cshtml", new RazorToPDF.Views.Shared.ConcludingConversation._ConcludingConversationModel())
 
 
-    @if (Model.ShowInstructions)
-    {
-        <div class="container">
-            <h2>Instructions Section</h2>
-            <p>This is the instructions section of the PDF.</p>
-        </div>
-    }
+@if (Model.ShowInstructions)
+{
+    <div class="container">
+        <h2>Instructions Section</h2>
+        <p>This is the instructions section of the PDF.</p>
+    </div>
+}
 
-    @if (Model.ShowTerms)
-    {
-        <div class="container">
-            <h2>Terms Section</h2>
-            <p>This is the terms section of the PDF.</p>
-        </div>
-    }
+@if (Model.ShowTerms)
+{
+    <div class="container">
+        <h2>Terms Section</h2>
+        <p>This is the terms section of the PDF.</p>
+    </div>
+}
 
