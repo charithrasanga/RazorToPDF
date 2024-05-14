@@ -1,4 +1,5 @@
-﻿
+﻿@using RazorToPDF.ViewModels
+
 @model RazorToPDF.Views.Shared.HMPE._HMPEPartialModel
 @{
 }
@@ -9,21 +10,21 @@
         <input type="text"
                class="form-control"
                id="StudentName"
-               placeholder="Jane Doe" />
+               value="@(!string.IsNullOrEmpty(Model.hmpeData.Student) ? Model.hmpeData.Student : string.Empty)" />
     </div>
     <div class="col">
         <label for="studentDateDateAdministered" class="form-label">Date Date Administered</label>
         <input type="text"
                class="form-control"
                id="studentDateDateAdministered"
-               placeholder="10/11/2023" />
+               value="@(!string.IsNullOrEmpty(Model.hmpeData.DateAdministrated.ToString()) ? Model.hmpeData.DateAdministrated : string.Empty)" />
     </div>
     <div class="col">
         <label for="studentAdministeredBy" class="form-label">Administered by</label>
         <input type="text"
                class="form-control"
                id="studentAdministeredBy"
-               placeholder="Walter" />
+               value="@(!string.IsNullOrEmpty(Model.hmpeData.AdministratedBy) ? Model.hmpeData.AdministratedBy : string.Empty)" />
     </div>
 </div>
 
@@ -38,7 +39,7 @@
             <input type="number"
                    class="form-control"
                    id="actualDuration"
-                   placeholder="15" />
+                   value="@(!string.IsNullOrEmpty(Model.hmpeData.ActualDuration.ToString()) ? Model.hmpeData.ActualDuration : string.Empty)" />
         </div>
     </div>
 </div>
@@ -137,71 +138,50 @@
                 <div class="col-4 ps-3">
                     <p class="mb-1">1. Student's Effort was :</p>
                     <div class="d-flex flex-column ms-4 checkBox-label">
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="Very Poor">
-                            <label class="form-check-label" for="inlineCheckbox1">Very Poor</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" checked value="Poor">
-                            <label class="form-check-label" for="inlineCheckbox1">Poor</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="Average">
-                            <label class="form-check-label" for="inlineCheckbox1">Average</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="Good">
-                            <label class="form-check-label" for="inlineCheckbox1">Good</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="Very Good">
-                            <label class="form-check-label" for="inlineCheckbox1">Very Good</label>
-                        </div>
+                        @foreach (EffortRate effortRate in Enum.GetValues(typeof(EffortRate)))
+                        {
+                            var isChecked = Model.hmpeData.EffortRate.Equals(effortRate);
+                            var randomInputId = RandomStringHelper.GenerateRandomUniqueString(5);
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="@randomInputId" @(isChecked ? "checked" : "") value="@effortRate.ToString()">
+                                <label class="form-check-label" for="@randomInputId">@effortRate.ToString().ToProperCase()</label>
+                            </div>
+                        }
                     </div>
                 </div>
                 <div class="col px-0">
                     <p class="mb-1">2. Attention Span :</p>
                     <div class="d-flex flex-column ms-4 checkBox-label">
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="Very Poor">
-                            <label class="form-check-label" for="inlineCheckbox1">Very Poor</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" checked value="Poor">
-                            <label class="form-check-label" for="inlineCheckbox1">Poor</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="Average">
-                            <label class="form-check-label" for="inlineCheckbox1">Average</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="Good">
-                            <label class="form-check-label" for="inlineCheckbox1">Good</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="Very Good">
-                            <label class="form-check-label" for="inlineCheckbox1">Very Good</label>
-                        </div>
+                        @foreach (EffortRate effortRate in Enum.GetValues(typeof(EffortRate)))
+                        {
+                            var isChecked = Model.hmpeData.EffortRate.Equals(effortRate);
+                            var randomInputId = RandomStringHelper.GenerateRandomUniqueString(5);
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="@randomInputId" @(isChecked ? "checked" : "") value="@effortRate.ToString()">
+                                <label class="form-check-label" for="@randomInputId">@effortRate.ToString().ToProperCase()</label>
+                            </div>
+                        }
                     </div>
                 </div>
                 <div class="col-5 ps-3">
                     <p class="mb-1">3. Did student Exhibit frustration?</p>
                     <div class="ms-4 ">
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="Yes" value="Yes">
-                            <label class="form-check-label" for="inlineCheckbox1">Yes</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="No" checked value="No">
-                            <label class="form-check-label" for="inlineCheckbox1">No</label>
-                        </div>
+                        @foreach (ExhibitFrustration exhibitFrustration in Enum.GetValues(typeof(ExhibitFrustration)))
+                        {
+                            var isChecked = Model.hmpeData.ExhibitFrustration.Equals(exhibitFrustration);
+                            var randomInputId = RandomStringHelper.GenerateRandomUniqueString(2);
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="@randomInputId" @(isChecked ? "checked" : "") value="@exhibitFrustration.ToString()">
+                                <label class="form-check-label" for="@randomInputId">@exhibitFrustration.ToString().ToProperCase()</label>
+                            </div>
+                        }
                     </div>
                     <div class="mt-5">
                         <label for="studentLastName" class="fw-light">4. This test Administered by and responses recorded by :</label>
                         <input type="text"
                                class="form-control"
                                id="Walter"
-                               placeholder="Walter" />
+                               value="@(!string.IsNullOrEmpty(Model.hmpeData.ResponseBy) ? Model.hmpeData.ResponseBy : string.Empty)" />
                     </div>
                 </div>
             </div>
@@ -226,7 +206,9 @@
             <P class="form-label pb-2">1. How do you feel about Math?</P>
             <p class="normal_font fs-6 mb-0">Student Comments</p>
             <div class="border border-black rounded-1 mt-2">
-                <p class="mx-3 my-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus animi adipisci ea quo quis nulla tempora deserunt repellat et eum obcaecati tenetur hic cupiditate quod, vitae minima officiis! Aut obcaecati perferendis hic nihil eius enim possimus eligendi, veritatis veniam quia nesciunt a, ipsum voluptatum itaque eveniet explicabo nostrum dolorum! Possimus assumenda neque reiciendis ipsam commodi voluptatum natus quia ducimus amet! Aliquam modi eligendi in beatae temporibus quis perferendis laboriosam odio? Sapiente, nemo ab nesciunt expedita laudantium excepturi fuga aliquid quo repudiandae omnis necessitatibus quae eaque distinctio laboriosam magnam? Ratione, id facilis maiores illum deleniti hic aspernatur laboriosam architecto molestiae fugiat libero dignissimos eum ullam natus necessitatibus maxime non ipsam voluptatum quisquam quam dolorum placeat. Facilis reiciendis atque cupiditate natus inventore.</p>
+                <p class="m-3">
+                    @(!string.IsNullOrEmpty(Model.hmpeData.Paragraph) ? Model.hmpeData.Paragraph : string.Empty)
+                </p>
             </div>
         </div>
 
@@ -238,39 +220,42 @@
             <P class="form-label pb-2">2. What are you doing in math right now?</P>
             <p class="normal_font fs-6 mb-0">Student Comments</p>
             <div class="border border-black rounded-1 mt-2">
-                <p class="mx-3 my-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus animi adipisci ea quo quis nulla tempora deserunt repellat et eum obcaecati tenetur hic cupiditate quod, vitae minima officiis! Aut obcaecati perferendis hic nihil eius enim possimus eligendi, veritatis veniam quia nesciunt a, ipsum voluptatum itaque eveniet explicabo nostrum dolorum! Possimus assumenda neque reiciendis ipsam commodi voluptatum natus quia ducimus amet! Aliquam modi eligendi in beatae temporibus quis perferendis laboriosam odio? Sapiente, nemo ab nesciunt expedita laudantium excepturi fuga aliquid quo repudiandae omnis necessitatibus quae eaque distinctio laboriosam magnam? Ratione, id facilis maiores illum deleniti hic aspernatur laboriosam architecto molestiae fugiat libero dignissimos eum ullam natus necessitatibus maxime non ipsam voluptatum quisquam quam dolorum placeat. Facilis reiciendis atque cupiditate natus inventore.</p>
+                <p class="m-3">
+                    @(!string.IsNullOrEmpty(Model.hmpeData.Paragraph) ? Model.hmpeData.Paragraph : string.Empty)
+                </p>
             </div>
         </div>
 
         <div class="py-2">
             <span class="form-label">3. What is your math grade in your last report card?</span>
             <div class="border border-black rounded-1 mt-2">
-                <p class="mx-3 my-3">Lorem ipsum dolor sit amet, .</p>
+                <p class="m-3">
+                    @(!string.IsNullOrEmpty(Model.hmpeData.MathGrade.ToString()) ? Model.hmpeData.MathGrade : string.Empty)
+                </p>
             </div>
         </div>
 
         <div class="py-2">
             <label class="form-label">4. How happy are you rith this grade?</label>
             <div class="col checkbox-label">
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="Yes">
-                    <label class="form-check-label" for="Yes">Happy</label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="inlineCheckbox2" checked value="No">
-                    <label class="form-check-label" for="No">Don't care</label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="Not Sure">
-                    <label class="form-check-label" for="Not Sure">Unhappy</label>
-                </div>
+                @foreach (HowHappy howHappy in Enum.GetValues(typeof(HowHappy)))
+                {
+                    var isChecked = Model.hmpeData.HowHappy.Equals(howHappy);
+                    var randomInputId = RandomStringHelper.GenerateRandomUniqueString(3);
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="@randomInputId" @(isChecked ? "checked" : "") value="@howHappy.ToString()">
+                        <label class="form-check-label" for="@randomInputId">@howHappy.ToString().ToProperCase()</label>
+                    </div>
+                }
             </div>
         </div>
 
         <div class="py-2">
             <span class="form-label">Why do you feel this way? Student Comments</span>
             <div class="border border-black rounded-1 mt-2">
-                <p class="mx-3 my-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus animi adipisci ea quo quis nulla tempora deserunt repellat et eum obcaecati tenetur hic cupiditate quod, vitae minima officiis! Aut obcaecati perferendis hic nihil eius enim possimus eligendi, veritatis veniam quia nesciunt a, ipsum voluptatum itaque eveniet explicabo nostrum dolorum! Possimus assumenda neque reiciendis ipsam commodi voluptatum natus quia ducimus amet! Aliquam modi eligendi in beatae temporibus quis perferendis laboriosam odio? Sapiente, nemo ab nesciunt expedita laudantium excepturi fuga aliquid quo repudiandae omnis necessitatibus quae eaque distinctio laboriosam magnam? Ratione, id facilis maiores illum deleniti hic aspernatur laboriosam architecto molestiae fugiat libero dignissimos eum ullam natus necessitatibus maxime non ipsam voluptatum quisquam quam dolorum placeat. Facilis reiciendis atque cupiditate natus inventore.</p>
+                <p class="m-3">
+                    @(!string.IsNullOrEmpty(Model.hmpeData.Paragraph) ? Model.hmpeData.Paragraph : string.Empty)
+                </p>
             </div>
         </div>
     </div>
@@ -287,51 +272,16 @@
         <div class="py-2">
             <label class="form-label">5. What math class are you taking right now?</label>
             <div>
-                <div class="col pt-3">
-                    <div class="form-check form-check-inline col-3">
-                        <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="Yes">
-                        <label class="form-check-label" for="Yes">General Math</label>
-                    </div>
-                    <div class="form-check form-check-inline col-3">
-                        <input class="form-check-input" type="checkbox" id="inlineCheckbox2" checked value="No">
-                        <label class="form-check-label" for="No">Geometry</label>
-                    </div>
-                    <div class="form-check form-check-inline col-3">
-                        <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="Not Sure">
-                        <label class="form-check-label" for="Not Sure">Pre-Calculus</label>
-                    </div>
-                </div>
-            </div>
-            <div>
-                <div class="col pt-1">
-                    <div class="form-check form-check-inline col-3">
-                        <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="Yes">
-                        <label class="form-check-label" for="Yes">Pre-algebra</label>
-                    </div>
-                    <div class="form-check form-check-inline col-3">
-                        <input class="form-check-input" type="checkbox" id="inlineCheckbox2" checked value="No">
-                        <label class="form-check-label" for="No">Algebra II</label>
-                    </div>
-                    <div class="form-check form-check-inline col-3">
-                        <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="Not Sure">
-                        <label class="form-check-label" for="Not Sure">Calculus</label>
-                    </div>
-                </div>
-            </div>
-            <div>
-                <div class="col pt-1">
-                    <div class="form-check form-check-inline col-3">
-                        <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="Yes">
-                        <label class="form-check-label" for="Yes">Algebra I</label>
-                    </div>
-                    <div class="form-check form-check-inline col-3">
-                        <input class="form-check-input" type="checkbox" id="inlineCheckbox2" checked value="No">
-                        <label class="form-check-label" for="No">Trigonometry</label>
-                    </div>
-                    <div class="form-check form-check-inline col-3">
-                        <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="Not Sure">
-                        <label class="form-check-label" for="Not Sure">Other</label>
-                    </div>
+                <div class="col-9 pt-3 checkbox-label">
+                    @foreach (MathClass mathClass in Enum.GetValues(typeof(MathClass)))
+                    {
+                        var isChecked = Model.hmpeData.MathClass.Equals(mathClass);
+                        var randomInputId = RandomStringHelper.GenerateRandomUniqueString(3);
+                        <div class="col-3 form-check form-check-inline ">
+                            <input class="form-check-input" type="checkbox" id="@randomInputId" @(isChecked ? "checked" : "") value="@mathClass.ToString()">
+                            <label class="form-check-label" for="@randomInputId">@mathClass.ToString().ToProperCase()</label>
+                        </div>
+                    }
                 </div>
             </div>
         </div>
@@ -339,57 +289,57 @@
         <div class="py-2">
             <label class="form-label">6. Is this an Honorr or AP Class?</label>
             <div class="col checkbox-label">
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="Yes">
-                    <label class="form-check-label" for="Yes">Honors</label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="inlineCheckbox2" checked value="No">
-                    <label class="form-check-label" for="No">AP</label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="Not Sure">
-                    <label class="form-check-label" for="Not Sure">Standard</label>
-                </div>
+                @foreach (Classes classes in Enum.GetValues(typeof(Classes)))
+                {
+                    var isChecked = Model.hmpeData.Classes.Equals(classes);
+                    var randomInputId = RandomStringHelper.GenerateRandomUniqueString(3);
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="@randomInputId" @(isChecked ? "checked" : "") value="@classes.ToString()">
+                        <label class="form-check-label" for="@randomInputId">@classes.ToString().ToProperCase()</label>
+                    </div>
+                }
             </div>
         </div>
 
         <div class="py-2">
-            <span class="form-label">Student Comments</span>
+            <span class="form-label">7. What was your math grade in your last report card?</span>
             <div class="border border-black rounded-1 mt-2">
-                <p class="mx-3 my-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                <p class="m-3">
+                    @(!string.IsNullOrEmpty(Model.hmpeData.MathGrade.ToString()) ? Model.hmpeData.MathGrade : string.Empty)
+                </p>
             </div>
         </div>
 
         <div class="py-2">
             <label class="form-label">8. How happy are you wiih this grade?</label>
             <div class="col checkbox-label">
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="Yes">
-                    <label class="form-check-label" for="Yes">Happy</label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="inlineCheckbox2" checked value="No">
-                    <label class="form-check-label" for="No">I don't care</label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="Not Sure">
-                    <label class="form-check-label" for="No t Sure">Unhappy</label>
-                </div>
+                @foreach (HowHappy howHappy in Enum.GetValues(typeof(HowHappy)))
+                {
+                    var isChecked = Model.hmpeData.HowHappy.Equals(howHappy);
+                    var randomInputId = RandomStringHelper.GenerateRandomUniqueString(3);
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="@randomInputId" @(isChecked ? "checked" : "") value="@howHappy.ToString()">
+                        <label class="form-check-label" for="@randomInputId">@howHappy.ToString().ToProperCase()</label>
+                    </div>
+                }
             </div>
         </div>
 
         <div class="py-2">
             <span class="form-label">Why do you feel this way ? Student Comment</span>
             <div class="border border-black rounded-1 mt-2">
-                <p class="mx-3 my-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus animi adipisci ea quo quis nulla tempora deserunt repellat et eum obcaecati tenetur hic cupiditate quod, vitae minima officiis! Aut obcaecati perferendis hic nihil eius enim possimus eligendi, veritatis veniam quia nesciunt a, ipsum voluptatum itaque eveniet explicabo nostrum dolorum! Possimus assumenda neque reiciendis ipsam commodi voluptatum natus quia ducimus amet! Aliquam modi eligendi in beatae temporibus quis perferendis laboriosam odio? Sapiente, nemo ab nesciunt expedita laudantium excepturi fuga aliquid quo repudiandae omnis necessitatibus quae eaque distinctio laboriosam magnam? Ratione, id facilis maiores illum deleniti hic aspernatur laboriosam architecto molestiae fugiat libero dignissimos eum ullam natus necessitatibus maxime non ipsam voluptatum quisquam quam dolorum placeat. Facilis reiciendis atque cupiditate natus inventore.</p>
+                <p class="m-3">
+                    @(!string.IsNullOrEmpty(Model.hmpeData.Paragraph) ? Model.hmpeData.Paragraph : string.Empty)
+                </p>
             </div>
         </div>
 
         <div class="py-2">
             <span class="form-label">Student Comments</span>
             <div class="border border-black rounded-1 mt-2">
-                <p class="mx-3 my-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus animi adipisci ea quo quis nulla tempora deserunt repellat et eum obcaecati tenetur hic cupiditate quod, vitae minima officiis! Aut obcaecati perferendis hic nihil eius enim possimus eligendi, veritatis veniam quia nesciunt a, ipsum voluptatum itaque eveniet explicabo nostrum dolorum! Possimus assumenda neque reiciendis ipsam commodi voluptatum natus quia ducimus amet! Aliquam modi eligendi in beatae temporibus quis perferendis laboriosam odio? Sapiente, nemo ab nesciunt expedita laudantium excepturi fuga aliquid quo repudiandae omnis necessitatibus quae eaque distinctio laboriosam magnam? Ratione, id facilis maiores illum deleniti hic aspernatur laboriosam architecto molestiae fugiat libero dignissimos eum ullam natus necessitatibus maxime non ipsam voluptatum quisquam quam dolorum placeat. Facilis reiciendis atque cupiditate natus inventore.</p>
+                <p class="m-3">
+                    @(!string.IsNullOrEmpty(Model.hmpeData.Paragraph) ? Model.hmpeData.Paragraph : string.Empty)
+                </p>
             </div>
         </div>
     </div>

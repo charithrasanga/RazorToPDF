@@ -1,4 +1,5 @@
-﻿
+﻿@using RazorToPDF.ViewModels
+
 @model RazorToPDF.Views.Shared.GeneralQuestion.IRI._IRIPartialModel
 @{
 }
@@ -9,21 +10,21 @@
         <input type="text"
                class="form-control"
                id="StudentName"
-               placeholder="Jane Doe" />
+               value="@(!string.IsNullOrEmpty(Model.iriGQData.Student) ? Model.iriGQData.Student : string.Empty)" />
     </div>
     <div class="col">
         <label for="studentDateDateAdministered" class="form-label">Date Date Administered</label>
         <input type="text"
                class="form-control"
                id="studentDateDateAdministered"
-               placeholder="10/11/2023" />
+               value="@(!string.IsNullOrEmpty(Model.iriGQData.DateAdministrated.ToString()) ? Model.iriGQData.DateAdministrated : string.Empty)" />
     </div>
     <div class="col">
         <label for="studentAdministeredBy" class="form-label">Administered by</label>
         <input type="text"
                class="form-control"
                id="studentAdministeredBy"
-               placeholder="Walter" />
+               value="@(!string.IsNullOrEmpty(Model.iriGQData.AdministratedBy) ? Model.iriGQData.AdministratedBy : string.Empty)" />
     </div>
 </div>
 
@@ -41,72 +42,63 @@
         <div class="py-2">
             <label class="form-label">1. How much time do you spend on home ork each weekday night?</label>
             <div class="col checkbox-label">
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="Yes">
-                    <label class="form-check-label" for="Yes">I don't get homework</label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="inlineCheckbox2" checked value="No">
-                    <label class="form-check-label" for="No">1 - 2 Hours</label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="Not Sure">
-                    <label class="form-check-label" for="Not Sure">2 - 3 Hours</label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="Not Sure">
-                    <label class="form-check-label" for="Not Sure">More than 3 hours</label>
-                </div>
+                @foreach (HomeWorkTime homeWorkTime in Enum.GetValues(typeof(HomeWorkTime)))
+                {
+                    var isChecked = Model.iriGQData.HomeWorkTime.Equals(homeWorkTime);
+                    var randomInputId = RandomStringHelper.GenerateRandomUniqueString(3);
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="@randomInputId" @(isChecked ? "checked" : "") value="@homeWorkTime.ToString()">
+                        <label class="form-check-label" for="@randomInputId">@homeWorkTime.ToString().ToProperCase()</label>
+                    </div>
+                }
             </div>
         </div>
 
         <div class="py-2">
             <label class="form-label">2. Is home ork easy or hard for you?</label>
             <div class="col checkbox-label">
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="Yes">
-                    <label class="form-check-label" for="Yes">Hard</label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="inlineCheckbox2" checked value="No">
-                    <label class="form-check-label" for="No">Some hard & some easy</label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="Not Sure">
-                    <label class="form-check-label" for="Not Sure">Easy</label>
-                </div>
+                @foreach (EasyOrHard easyOrHard in Enum.GetValues(typeof(EasyOrHard)))
+                {
+                    var isChecked = Model.iriGQData.EasyOrHard.Equals(easyOrHard);
+                    var randomInputId = RandomStringHelper.GenerateRandomUniqueString(3);
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="@randomInputId" @(isChecked ? "checked" : "") value="@easyOrHard.ToString()">
+                        <label class="form-check-label" for="@randomInputId">@easyOrHard.ToString().ToProperCase()</label>
+                    </div>
+                }
             </div>
         </div>
 
         <div class="py-2">
             <span class="form-label">Why is home ork easy or hard for you? Student Comments</span>
             <div class="border border-black rounded-1 mt-2">
-                <p class="mx-3 my-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus animi adipisci ea quo quis nulla tempora deserunt repellat et eum obcaecati tenetur hic cupiditate quod, vitae minima officiis! Aut obcaecati perferendis hic nihil eius enim possimus eligendi, veritatis veniam quia nesciunt a, ipsum voluptatum itaque eveniet explicabo nostrum dolorum! Possimus assumenda neque reiciendis ipsam commodi voluptatum natus quia ducimus amet! Aliquam modi eligendi in beatae temporibus quis perferendis laboriosam odio? Sapiente, nemo ab nesciunt expedita laudantium excepturi fuga aliquid quo repudiandae omnis necessitatibus quae eaque distinctio laboriosam magnam? </p>
+                <p class="m-3">
+                    @(!string.IsNullOrEmpty(Model.iriGQData.Paragraph) ? Model.iriGQData.Paragraph : string.Empty)
+                </p>
             </div>
         </div>
 
         <div class="py-2">
             <label class="form-label">3. Ho often do your parents have to tell you to do homework?</label>
             <div class="col checkbox-label">
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="Yes">
-                    <label class="form-check-label" for="Yes">Always</label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="inlineCheckbox2" checked value="No">
-                    <label class="form-check-label" for="No">Sometimes</label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="Not Sure">
-                    <label class="form-check-label" for="Not Sure">Never</label>
-                </div>
+                @foreach (HowOftenHomeWork howOftenHomeWork in Enum.GetValues(typeof(HowOftenHomeWork)))
+                {
+                    var isChecked = Model.iriGQData.HowOftenHomeWork.Equals(howOftenHomeWork);
+                    var randomInputId = RandomStringHelper.GenerateRandomUniqueString(3);
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="@randomInputId" @(isChecked ? "checked" : "") value="@howOftenHomeWork.ToString()">
+                        <label class="form-check-label" for="@randomInputId">@howOftenHomeWork.ToString().ToProperCase()</label>
+                    </div>
+                }
             </div>
         </div>
 
         <div class="py-2">
             <span class="form-label">Additional comments</span>
             <div class="border border-black rounded-1 mt-2">
-                <p class="mx-3 my-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus animi adipisci ea quo quis nulla tempora deserunt repellat et eum obcaecati tenetur hic cupiditate quod, vitae minima officiis! Aut obcaecati perferendis hic nihil eius enim possimus eligendi, veritatis veniam quia nesciunt a, ipsum voluptatum itaque eveniet explicabo nostrum dolorum! Possimus assumenda neque reiciendis ipsam commodi voluptatum natus quia ducimus amet! Aliquam modi eligendi in beatae temporibus quis perferendis laboriosam odio? Sapiente, nemo ab nesciunt expedita laudantium excepturi fuga aliquid quo repudiandae omnis necessitatibus quae eaque distinctio laboriosam magnam? </p>
+                <p class="m-3">
+                    @(!string.IsNullOrEmpty(Model.iriGQData.Paragraph) ? Model.iriGQData.Paragraph : string.Empty)
+                </p>
             </div>
         </div>
 
@@ -149,32 +141,33 @@
         <div class="py-2">
             <label class="form-label">2. How happy are you with these grades ?</label>
             <div class="col checkbox-label">
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="Yes">
-                    <label class="form-check-label" for="Yes">Happy</label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="inlineCheckbox2" checked value="No">
-                    <label class="form-check-label" for="No">I don't care</label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="Not Sure">
-                    <label class="form-check-label" for="Not Sure">Unhappy</label>
-                </div>
+                    @foreach (HowHappy howHappy in Enum.GetValues(typeof(HowHappy)))
+                    {
+                        var isChecked = Model.iriGQData.HowHappy.Equals(howHappy);
+                        var randomInputId = RandomStringHelper.GenerateRandomUniqueString(3);
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="@randomInputId" @(isChecked ? "checked" : "") value="@howHappy.ToString()">
+                        <label class="form-check-label" for="@randomInputId">@howHappy.ToString().ToProperCase()</label>
+                    </div>
+                    }
             </div>
         </div>
 
         <div class="py-2">
             <span class="form-label">Why do you feel this way ? Student Comments</span>
             <div class="border border-black rounded-1 mt-2">
-                <p class="mx-3 my-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus animi adipisci ea quo quis nulla tempora deserunt repellat et eum obcaecati tenetur hic cupiditate quod, vitae minima officiis! Aut obcaecati perferendis hic nihil eius enim possimus eligendi, veritatis veniam quia nesciunt a, ipsum voluptatum itaque eveniet explicabo nostrum dolorum! Possimus assumenda neque reiciendis ipsam commodi voluptatum natus quia ducimus amet! Aliquam modi eligendi in beatae temporibus quis perferendis laboriosam odio? Sapiente, nemo ab nesciunt expedita laudantium excepturi fuga aliquid quo repudiandae omnis necessitatibus quae eaque distinctio laboriosam magnam? </p>
+                <p class="m-3">
+                    @(!string.IsNullOrEmpty(Model.iriGQData.Paragraph) ? Model.iriGQData.Paragraph : string.Empty)
+                </p>
             </div>
         </div>
 
         <div class="py-2">
             <span class="form-label">Additional Comments</span>
             <div class="border border-black rounded-1 mt-2">
-                <p class="mx-3 my-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus animi adipisci ea quo quis nulla tempora deserunt repellat et eum obcaecati tenetur hic cupiditate quod, vitae minima officiis! Aut obcaecati perferendis hic nihil eius enim possimus eligendi, veritatis veniam quia nesciunt a, ipsum voluptatum itaque eveniet explicabo nostrum dolorum! Possimus assumenda neque reiciendis ipsam commodi voluptatum natus quia ducimus amet! Aliquam modi eligendi in beatae temporibus quis perferendis laboriosam odio? Sapiente, nemo ab nesciunt expedita laudantium excepturi fuga aliquid quo repudiandae omnis necessitatibus quae eaque distinctio laboriosam magnam?</p>
+                <p class="m-3">
+                    @(!string.IsNullOrEmpty(Model.iriGQData.Paragraph) ? Model.iriGQData.Paragraph : string.Empty)
+                </p>
             </div>
         </div>
 
