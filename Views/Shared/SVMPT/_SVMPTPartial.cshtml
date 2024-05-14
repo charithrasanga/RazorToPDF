@@ -1,4 +1,5 @@
-﻿
+﻿@using RazorToPDF.ViewModels
+
 @model RazorToPDF.Views.Shared.SVMPT._SVMPTPartialModel
 @{
 }
@@ -8,21 +9,21 @@
         <input type="text"
                class="form-control"
                id="StudentName"
-               placeholder="Jane Doe" />
+               value="@(!string.IsNullOrEmpty(Model.svmptData.Student) ? Model.svmptData.Student : string.Empty)" />
     </div>
     <div class="col">
-        <label for="studentDateDateAdministered" class="form-label">Date Date Administered</label>
+        <label for="studentDateDateAdministered" class="form-label">Date Administered</label>
         <input type="text"
                class="form-control"
                id="studentDateDateAdministered"
-               placeholder="10/11/2023" />
+               value="@(!string.IsNullOrEmpty(Model.svmptData.DateAdministrated.ToString()) ? Model.svmptData.DateAdministrated : string.Empty)" />
     </div>
     <div class="col">
         <label for="studentAdministeredBy" class="form-label">Administered by</label>
         <input type="text"
                class="form-control"
                id="studentAdministeredBy"
-               placeholder="Walter" />
+               value="@(!string.IsNullOrEmpty(Model.svmptData.AdministratedBy) ? Model.svmptData.AdministratedBy : string.Empty)" />
     </div>
 </div>
 
@@ -37,7 +38,7 @@
             <input type="number"
                    class="form-control"
                    id="actualDuration"
-                   placeholder="15" />
+                   value="@(!string.IsNullOrEmpty(Model.svmptData.ActualDuration.ToString()) ? Model.svmptData.ActualDuration : string.Empty)" />
         </div>
     </div>
 </div>
@@ -93,7 +94,16 @@
                 <div class="col-4 ps-3">
                     <p class="mb-1">1. Student's Effort was :</p>
                     <div class="d-flex flex-column ms-4 checkBox-label">
-                        <div class="form-check form-check-inline">
+                        @foreach (EffortRate effortRate in Enum.GetValues(typeof(EffortRate)))
+                        {
+                            var isChecked = Model.svmptData.EffortRate.Equals(effortRate);
+                            var randomInputId = RandomStringHelper.GenerateRandomUniqueString(5);
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="@randomInputId" @(isChecked ? "checked" : "") value="@effortRate.ToString()">
+                                <label class="form-check-label" for="@randomInputId">@effortRate.ToString().ToProperCase()</label>
+                            </div>
+                        }
+                        @* <div class="form-check form-check-inline">
                             <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="Very Poor">
                             <label class="form-check-label" for="inlineCheckbox1">Very Poor</label>
                         </div>
@@ -112,13 +122,22 @@
                         <div class="form-check form-check-inline">
                             <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="Very Good">
                             <label class="form-check-label" for="inlineCheckbox1">Very Good</label>
-                        </div>
+                        </div> *@
                     </div>
                 </div>
                 <div class="col px-0">
                     <p class="mb-1">2. Attention Span :</p>
                     <div class="d-flex flex-column ms-4 checkBox-label">
-                        <div class="form-check form-check-inline">
+                        @foreach (EffortRate effortRate in Enum.GetValues(typeof(EffortRate)))
+                        {
+                            var isChecked = Model.svmptData.EffortRate.Equals(effortRate);
+                            var randomInputId = RandomStringHelper.GenerateRandomUniqueString(5);
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="@randomInputId" @(isChecked ? "checked" : "") value="@effortRate.ToString()">
+                                <label class="form-check-label" for="@randomInputId">@effortRate.ToString().ToProperCase()</label>
+                            </div>
+                        }
+                        @* <div class="form-check form-check-inline">
                             <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="Very Poor">
                             <label class="form-check-label" for="inlineCheckbox1">Very Poor</label>
                         </div>
@@ -137,27 +156,28 @@
                         <div class="form-check form-check-inline">
                             <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="Very Good">
                             <label class="form-check-label" for="inlineCheckbox1">Very Good</label>
-                        </div>
+                        </div> *@
                     </div>
                 </div>
                 <div class="col-5 ps-3">
                     <p class="mb-1">3. Did student Exhibit frustration?</p>
                     <div class="ms-4 ">
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="Yes" value="Yes">
-                            <label class="form-check-label" for="inlineCheckbox1">Yes</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="No" checked value="No">
-                            <label class="form-check-label" for="inlineCheckbox1">No</label>
-                        </div>
+                        @foreach (ExhibitFrustration exhibitFrustration in Enum.GetValues(typeof(ExhibitFrustration)))
+                        {
+                            var isChecked = Model.svmptData.ExhibitFrustration.Equals(exhibitFrustration);
+                            var randomInputId = RandomStringHelper.GenerateRandomUniqueString(2);
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="@randomInputId" @(isChecked ? "checked" : "") value="@exhibitFrustration.ToString()">
+                                <label class="form-check-label" for="@randomInputId">@exhibitFrustration.ToString().ToProperCase()</label>
+                            </div>
+                        }
                     </div>
                     <div class="mt-5">
                         <label for="studentLastName" class="fw-light">4. This test Administered by and responses recorded by :</label>
                         <input type="text"
                                class="form-control"
                                id="Walter"
-                               placeholder="Walter" />
+                               value="@(!string.IsNullOrEmpty(Model.svmptData.ResponseBy) ? Model.svmptData.ResponseBy : string.Empty)" />
                     </div>
                 </div>
             </div>
@@ -176,42 +196,55 @@
         <div>
             <label class="form-label">Do you know what we do here?</label>
             <div class="col checkbox-label">
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="Yes">
-                    <label class="form-check-label" for="Yes">Yes</label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="inlineCheckbox2" checked value="No">
-                    <label class="form-check-label" for="No">No</label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="Not Sure">
-                    <label class="form-check-label" for="Not Sure">Not Sure</label>
-                </div>
+                @foreach (KnowWhatToDo knowWhatToDo in Enum.GetValues(typeof(KnowWhatToDo)))
+                {
+                    var isChecked = Model.svmptData.KnowWhatToDo.Equals(knowWhatToDo);
+                    var randomInputId = RandomStringHelper.GenerateRandomUniqueString(3);
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="@randomInputId" @(isChecked ? "checked" : "") value="@knowWhatToDo.ToString()">
+                        <label class="form-check-label" for="@randomInputId">@knowWhatToDo.ToString().ToProperCase()</label>
+                    </div>
+                }
             </div>
         </div>
         <div class="py-2 myContainer">
             <span class="form-label">Student Comment</span>
             <div class="border border-black rounded-1 mt-2">
-                <p class="mx-3 my-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus animi adipisci ea quo quis nulla tempora deserunt repellat et eum obcaecati tenetur hic cupiditate quod, vitae minima officiis! Aut obcaecati perferendis hic nihil eius enim possimus eligendi, veritatis veniam quia nesciunt a, ipsum voluptatum itaque eveniet explicabo nostrum dolorum! Possimus assumenda neque reiciendis ipsam commodi voluptatum natus quia ducimus amet! Aliquam modi eligendi in beatae temporibus quis perferendis laboriosam odio? Sapiente, nemo ab nesciunt expedita laudantium excepturi fuga aliquid quo repudiandae omnis necessitatibus quae eaque distinctio laboriosam magnam? Ratione, id facilis maiores illum deleniti hic aspernatur laboriosam architecto molestiae fugiat libero dignissimos eum ullam natus necessitatibus maxime non ipsam voluptatum quisquam quam dolorum placeat. Facilis reiciendis atque cupiditate natus inventore.</p>
+                <p class="m-3">
+                    @(!string.IsNullOrEmpty(Model.svmptData.Paragraph) ? Model.svmptData.Paragraph : string.Empty)
+                </p>
+
             </div>
         </div>
         <div class="py-2 myContainer">
             <span class="form-label">How do you feel about getting help here?</span>
             <div class="border border-black rounded-1 mt-2">
-                <p class="mx-3 my-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus animi adipisci ea quo quis nulla tempora deserunt repellat et eum obcaecati tenetur hic cupiditate quod, vitae minima officiis! Aut obcaecati perferendis hic nihil eius enim possimus eligendi, veritatis veniam quia nesciunt a, ipsum voluptatum itaque eveniet explicabo nostrum dolorum! Possimus assumenda neque reiciendis ipsam commodi voluptatum natus quia ducimus amet! Aliquam modi eligendi in beatae temporibus quis perferendis laboriosam odio? Sapiente, nemo ab nesciunt expedita laudantium excepturi fuga aliquid quo repudiandae omnis necessitatibus quae eaque distinctio laboriosam magnam? Ratione, id facilis maiores illum deleniti hic aspernatur laboriosam architecto molestiae fugiat libero dignissimos eum ullam natus necessitatibus maxime non ipsam voluptatum quisquam quam dolorum placeat. Facilis reiciendis atque cupiditate natus inventore.</p>
+                <p class="m-3">
+                    @(!string.IsNullOrEmpty(Model.svmptData.Paragraph) ? Model.svmptData.Paragraph : string.Empty)
+                </p>
             </div>
         </div>
         <div class="py-2 myContainer">
             <span class="form-label">What do you like to do in your spare time? (Sport, Club,etc.)</span>
             <div class="border border-black rounded-1 mt-2">
-                <p class="mx-3 my-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus animi adipisci ea quo quis nulla tempora deserunt repellat et eum obcaecati tenetur hic cupiditate quod, vitae minima officiis! Aut obcaecati perferendis hic nihil eius enim possimus eligendi, veritatis veniam quia nesciunt a, ipsum voluptatum itaque eveniet explicabo nostrum dolorum! Possimus assumenda neque reiciendis ipsam commodi voluptatum natus quia ducimus amet! Aliquam modi eligendi in beatae temporibus quis perferendis laboriosam odio? Sapiente, nemo ab nesciunt expedita laudantium excepturi fuga aliquid quo repudiandae omnis necessitatibus quae eaque distinctio laboriosam magnam? Ratione, id facilis maiores illum deleniti hic aspernatur laboriosam architecto molestiae fugiat libero dignissimos eum ullam natus necessitatibus maxime non ipsam voluptatum quisquam quam dolorum placeat. Facilis reiciendis atque cupiditate natus inventore.</p>
+                <p class="m-3">
+                    @(!string.IsNullOrEmpty(Model.svmptData.Paragraph) ? Model.svmptData.Paragraph : string.Empty)
+                </p>
             </div>
         </div>
         <div class="py-2">
             <label class="form-label">Do you like or dislike going to school?</label>
             <div class="col checkbox-label">
-                <div class="form-check form-check-inline">
+                @foreach (Likability likability in Enum.GetValues(typeof(Likability)))
+                {
+                    var isChecked = Model.svmptData.Likability.Equals(likability);
+                    var randomInputId = RandomStringHelper.GenerateRandomUniqueString(3);
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="@randomInputId" @(isChecked ? "checked" : "") value="@likability.ToString()">
+                        <label class="form-check-label" for="@randomInputId">@likability.ToString().ToProperCase()</label>
+                    </div>
+                }
+                @* <div class="form-check form-check-inline">
                     <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="Like it">
                     <label class="form-check-label" for="likeIt">Like it</label>
                 </div>
@@ -222,19 +255,23 @@
                 <div class="form-check form-check-inline">
                     <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="Dislike it">
                     <label class="form-check-label" for="dislikeIt">Dislike it</label>
-                </div>
+                </div> *@
             </div>
         </div>
         <div class="py-2 myContainer">
             <span class="form-label">Why</span>
             <div class="border border-black rounded-1 mt-2">
-                <p class="mx-3 my-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus animi adipisci ea quo quis nulla tempora deserunt repellat et eum obcaecati tenetur hic cupiditate quod, vitae minima officiis! Aut obcaecati perferendis hic nihil eius enim possimus eligendi, veritatis veniam quia nesciunt a, ipsum voluptatum itaque eveniet explicabo nostrum dolorum! Possimus assumenda neque reiciendis ipsam commodi voluptatum natus quia ducimus amet! Aliquam modi eligendi in beatae temporibus quis perferendis laboriosam odio? Sapiente, nemo ab nesciunt expedita laudantium excepturi fuga aliquid quo repudiandae omnis necessitatibus quae eaque distinctio laboriosam magnam? Ratione, id facilis maiores illum deleniti hic aspernatur laboriosam architecto molestiae fugiat libero dignissimos eum ullam natus necessitatibus maxime non ipsam voluptatum quisquam quam dolorum placeat. Facilis reiciendis atque cupiditate natus inventore.</p>
+                <p class="m-3">
+                    @(!string.IsNullOrEmpty(Model.svmptData.Paragraph) ? Model.svmptData.Paragraph : string.Empty)
+                </p>
             </div>
         </div>
         <div class="py-2 myContainer">
             <span class="form-label">What do you like or dislike about school?</span>
             <div class="border border-black rounded-1 mt-2">
-                <p class="mx-3 my-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                <p class="m-3">
+                    @(!string.IsNullOrEmpty(Model.svmptData.Sentense) ? Model.svmptData.Sentense : string.Empty)
+                </p>
             </div>
         </div>
     </div>
@@ -247,7 +284,9 @@
         <div class="py-2">
             <span class="form-label">Additional Comments</span>
             <div class="border border-black rounded-1 mt-2">
-                <p class="mx-3 my-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus animi adipisci ea quo quis nulla tempora deserunt repellat et eum obcaecati tenetur hic cupiditate quod, vitae minima officiis! Aut obcaecati perferendis hic nihil eius enim possimus eligendi, veritatis veniam quia nesciunt a, ipsum voluptatum itaque eveniet explicabo nostrum dolorum! Possimus assumenda neque reiciendis ipsam commodi voluptatum natus quia ducimus amet! Aliquam modi eligendi in beatae temporibus quis perferendis laboriosam odio? Sapiente, nemo ab nesciunt expedita laudantium excepturi fuga aliquid quo repudiandae omnis necessitatibus quae eaque distinctio laboriosam magnam? Ratione, id facilis maiores illum deleniti hic aspernatur laboriosam architecto molestiae fugiat libero dignissimos eum ullam natus necessitatibus maxime non ipsam voluptatum quisquam quam dolorum placeat. Facilis reiciendis atque cupiditate natus inventore.</p>
+                <p class="m-3">
+                    @(!string.IsNullOrEmpty(Model.svmptData.Paragraph) ? Model.svmptData.Paragraph : string.Empty)
+                </p>
             </div>
         </div>
     </div>

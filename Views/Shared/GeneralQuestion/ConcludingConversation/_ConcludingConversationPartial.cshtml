@@ -1,4 +1,5 @@
-﻿
+﻿@using RazorToPDF.ViewModels
+
 @model RazorToPDF.Views.Shared.GeneralQuestion.ConcludingConversation._ConcludingConversationPartialModel
 @{
 }
@@ -8,21 +9,21 @@
         <input type="text"
                class="form-control"
                id="StudentName"
-               placeholder="Jane Doe" />
+               value="@(!string.IsNullOrEmpty(Model.concludingConversationGQData.Student) ? Model.concludingConversationGQData.Student : string.Empty)" />
     </div>
     <div class="col">
         <label for="studentDateDateAdministered" class="form-label">Date Date Administered</label>
         <input type="text"
                class="form-control"
                id="studentDateDateAdministered"
-               placeholder="10/11/2023" />
+               value="@(!string.IsNullOrEmpty(Model.concludingConversationGQData.DateAdministrated.ToString()) ? Model.concludingConversationGQData.DateAdministrated : string.Empty)" />
     </div>
     <div class="col">
         <label for="studentAdministeredBy" class="form-label">Administered by</label>
         <input type="text"
                class="form-control"
                id="studentAdministeredBy"
-               placeholder="Walter" />
+               value="@(!string.IsNullOrEmpty(Model.concludingConversationGQData.AdministratedBy) ? Model.concludingConversationGQData.AdministratedBy : string.Empty)" />
     </div>
 </div>
 
@@ -38,46 +39,51 @@
                 1. Now that we’re finished with the testing, what do you think about coming here to help you do better in school?
             </label>
             <div class="col checkbox-label">
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="Yes">
-                    <label class="form-check-label" for="Yes">Want to come here</label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="inlineCheckbox2" checked value="No">
-                    <label class="form-check-label" for="No">Don’t Care</label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="Not Sure">
-                    <label class="form-check-label" for="Not Sure">Don’t want to come here</label>
-                </div>
+                @foreach (ThinkAboutComming thinkAboutComming in Enum.GetValues(typeof(ThinkAboutComming)))
+                {
+                    var isChecked = Model.concludingConversationGQData.ThinkAboutComming.Equals(thinkAboutComming);
+                    var randomInputId = RandomStringHelper.GenerateRandomUniqueString(3);
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="@randomInputId" @(isChecked ? "checked" : "") value="@thinkAboutComming.ToString()">
+                        <label class="form-check-label" for="@randomInputId">@thinkAboutComming.ToString().ToProperCase()</label>
+                    </div>
+                }
             </div>
         </div>
 
         <div class="py-2">
             <span class="form-label">Why?</span>
             <div class="border border-black rounded-1 mt-2">
-                <p class="mx-3 my-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus animi adipisci ea quo quis nulla tempora deserunt repellat et eum obcaecati tenetur hic cupiditate quod, vitae minima officiis! Aut obcaecati perferendis hic nihil eius enim possimus eligendi, veritatis veniam quia nesciunt a, ipsum voluptatum itaque eveniet explicabo nostrum dolorum! Possimus assumenda neque reiciendis ipsam commodi voluptatum natus quia ducimus amet! Aliquam modi eligendi in beatae temporibus quis perferendis laboriosam odio? Sapiente, nemo ab nesciunt expedita laudantium excepturi fuga aliquid quo repudiandae omnis necessitatibus quae eaque distinctio laboriosam magnam? Ratione, id facilis maiores illum deleniti hic aspernatur laboriosam architecto molestiae fugiat libero dignissimos eum ullam natus necessitatibus maxime non ipsam voluptatum quisquam quam dolorum placeat. Facilis reiciendis atque cupiditate natus inventore.</p>
+                <p class="m-3">
+                    @(!string.IsNullOrEmpty(Model.concludingConversationGQData.Paragraph) ? Model.concludingConversationGQData.Paragraph : string.Empty)
+                </p>
             </div>
         </div>
 
         <div class="py-2">
             <span class="form-label">2. If you were to come here, what days and times would be best for you?</span>
             <div class="border border-black rounded-1 mt-2">
-                <p class="mx-3 my-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus animi adipisci ea quo quis nulla tempora deserunt repellat et eum obcaecati tenetur hic cupiditate quod, vitae minima officiis! Aut obcaecati perferendis hic nihil eius enim possimus eligendi, veritatis veniam quia nesciunt a, ipsum voluptatum itaque eveniet explicabo nostrum dolorum! Possimus assumenda neque reiciendis ipsam commodi voluptatum natus quia ducimus amet! Aliquam modi eligendi in beatae temporibus quis perferendis laboriosam odio? Sapiente, nemo ab nesciunt expedita laudantium excepturi fuga aliquid quo repudiandae omnis necessitatibus quae eaque distinctio laboriosam magnam? Ratione, id facilis maiores illum deleniti hic aspernatur laboriosam architecto molestiae fugiat libero dignissimos eum ullam natus necessitatibus maxime non ipsam voluptatum quisquam quam dolorum placeat. Facilis reiciendis atque cupiditate natus inventore.</p>
+                <p class="m-3">
+                    @(!string.IsNullOrEmpty(Model.concludingConversationGQData.Paragraph) ? Model.concludingConversationGQData.Paragraph : string.Empty)
+                </p>
             </div>
         </div>
 
         <div class="py-2">
             <span class="form-label">3. What days and times are not good for you? Why?</span>
             <div class="border border-black rounded-1 mt-2">
-                <p class="mx-3 my-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus animi adipisci ea quo quis nulla tempora deserunt repellat et eum obcaecati tenetur hic cupiditate quod, vitae minima officiis! Aut obcaecati perferendis hic nihil eius enim possimus eligendi, veritatis veniam quia nesciunt a, ipsum voluptatum itaque eveniet explicabo nostrum dolorum! Possimus assumenda neque reiciendis ipsam commodi voluptatum natus quia ducimus amet! Aliquam modi eligendi in beatae temporibus quis perferendis laboriosam odio? Sapiente, nemo ab nesciunt expedita laudantium excepturi fuga aliquid quo repudiandae omnis necessitatibus quae eaque distinctio laboriosam magnam? Ratione, id facilis maiores illum deleniti hic aspernatur laboriosam architecto molestiae fugiat libero dignissimos eum ullam natus necessitatibus maxime non ipsam voluptatum quisquam quam dolorum placeat. Facilis reiciendis atque cupiditate natus inventore.</p>
+                <p class="m-3">
+                    @(!string.IsNullOrEmpty(Model.concludingConversationGQData.Paragraph) ? Model.concludingConversationGQData.Paragraph : string.Empty)
+                </p>
             </div>
         </div>
 
         <div class="py-2">
             <span class="form-label">4. Do you know anyone who comes here now or came in the past?</span>
             <div class="border border-black rounded-1 mt-2">
-                <p class="mx-3 my-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus animi adipisci ea quo quis nulla tempora deserunt repellat et eum obcaecati tenetur hic cupiditate quod, vitae minima officiis! Aut obcaecati perferendis hic nihil eius enim possimus eligendi, veritatis veniam quia nesciunt a, ipsum voluptatum itaque eveniet explicabo nostrum dolorum! Possimus assumenda neque reiciendis ipsam commodi voluptatum natus quia ducimus amet! Aliquam modi eligendi in beatae temporibus quis perferendis laboriosam odio? Sapiente, nemo ab nesciunt expedita laudantium excepturi fuga aliquid quo repudiandae omnis necessitatibus quae eaque distinctio laboriosam magnam? Ratione, id facilis maiores illum deleniti hic aspernatur laboriosam architecto molestiae fugiat libero dignissimos eum ullam natus necessitatibus maxime non ipsam voluptatum quisquam quam dolorum placeat. Facilis reiciendis atque cupiditate natus inventore.</p>
+                <p class="m-3">
+                    @(!string.IsNullOrEmpty(Model.concludingConversationGQData.Paragraph) ? Model.concludingConversationGQData.Paragraph : string.Empty)
+                </p>
             </div>
         </div>
     </div>

@@ -1,6 +1,8 @@
-﻿
+﻿@using RazorToPDF.ViewModels
+
 @model RazorToPDF.Views.Shared.StudentDetails._StudentInformationPartialModel
 @{
+
 }
 
 
@@ -34,28 +36,30 @@
         <input type="text"
                class="form-control"
                id="dateOfBirth"
-               placeholder="10/11/2023 " />
+               value="@(!string.IsNullOrEmpty(Model.intakeData.DateOfBirth.ToString()) ? Model.intakeData.DateOfBirth : string.Empty)" />
     </div>
     <div class="col">
         <label for="age" class="form-label">Age (Years)</label>
         <input type="text"
                class="form-control"
                id="age"
-               placeholder="9" />
+               value="@(!string.IsNullOrEmpty(Model.intakeData.Age.ToString()) ? Model.intakeData.Age : string.Empty)" />
     </div>
     <div class="col">
         <label for="grade" class="form-label"><span class="text-danger">* </span>Grade</label>
         <input type="text"
                class="form-control"
                id="grade"
-               placeholder="4 - Fourth Grade" />
+               value="@(!string.IsNullOrEmpty(Model.intakeData.Grade.ToString()) ? Model.intakeData.Grade : string.Empty)" />
     </div>
 </div>
 
-<div class="py-2">
+@* <div class="py-2">
     <label class="form-label">Gender</label>
     <div class="print-row  checkbox-label">
-        <div class="form-check form-check-inline">
+        @foreach (var gender in Enum.GetValues(typeof(Gender)))
+        {
+            <div class="form-check form-check-inline">
             <input class="form-check-input" type="checkbox" id="inlineCheckbox1" checked value="Male">
             <label class="form-check-label" for="inlineCheckbox1">Male</label>
         </div>
@@ -71,8 +75,24 @@
             <input class="form-check-input" type="checkbox" id="inlineCheckbox4" value="Prefer not to share">
             <label class="form-check-label" for="inlineCheckbox4">Prefer not to share</label>
         </div>
+        }
     </div>
-</div>
+</div> *@
+
+<div class="py-2">
+    <label class="form-label">Gender</label>
+    <div class="print-row checkbox-label">
+        @foreach (Gender gender in Enum.GetValues(typeof(Gender)))
+        {
+            var isChecked = Model.intakeData.Gender.Equals(gender);
+            var randomInputId = RandomStringHelper.GenerateRandomUniqueString(4);
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="@randomInputId" @(isChecked ? "checked" : "") value="@gender.ToString()">
+                <label class="form-check-label" for="@randomInputId">@gender.ToString().ToProperCase()</label>
+            </div>
+        }
+    </div>
+</div>  
 
 <div>
     <ul class="list-points">
@@ -90,21 +110,21 @@
         <input type="text"
                class="form-control"
                id="studentIntakeBy"
-               placeholder="5 Elliot, George" />
+               value="@(!string.IsNullOrEmpty(Model.intakeData.IntakeBy) ? Model.intakeData.IntakeBy : string.Empty)" />
     </div>
     <div class="col">
         <label for="studentService" class="form-label"><span class="text-danger">* </span>Service</label>
         <input type="text"
                class="form-control"
                id="studentService"
-               placeholder="L1" />
+               value="@(!string.IsNullOrEmpty(Model.intakeData.Service) ? Model.intakeData.Service : string.Empty)" />
     </div>
     <div class="col">
         <label for="studentCenterAEFee" class="form-label">Center AE Fee</label>
         <input type="text"
                class="form-control"
                id="studentCenterAEFee"
-               placeholder="$15" />
+               value="@(!string.IsNullOrEmpty(Model.intakeData.CenterAEFee) ? Model.intakeData.CenterAEFee : string.Empty)" />
     </div>
 </div>
 
@@ -114,24 +134,35 @@
         <input type="text"
                class="form-control"
                id="studentAEDiscount"
-               placeholder="Bulk" />
+               value="@(!string.IsNullOrEmpty(Model.intakeData.AEDiscount) ? Model.intakeData.AEDiscount : string.Empty)" />
     </div>
     <div class="col">
         <div class="print-row mb-0 checkbox-label">
-            <div class="form-check form-check-inline col-1 me-1 pt-5">
+            @foreach (AEDiscountType aEDiscountType in Enum.GetValues(typeof(AEDiscountType)))
+            {
+                var isChecked = Model.intakeData.AEDiscountType.Equals(aEDiscountType);
+                var randomInputId = RandomStringHelper.GenerateRandomUniqueString(2);
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="@randomInputId" @(isChecked ? "checked" : "") value="@aEDiscountType.ToString()">
+                    <label class="form-check-label" for="@randomInputId">@aEDiscountType.ToString().ToProperCase()</label>
+                </div>
+            }
+            @* <div class="form-check form-check-inline col-1 me-1 pt-5">
                 <input class="form-check-input" type="checkbox" id="inlineCheckbox1" checked value="$">
                 <label class="form-check-label pe-2" for="inlineCheckbox1">$</label>
             </div>
             <div class="form-check form-check-inline col-1 me-1 pt-5">
                 <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="%">
                 <label class="form-check-label" for="inlineCheckbox2">%</label>
-            </div>
+            </div> *@
+            
+            
             <div class="col ps-2">
                 <label for="studentDiscount" class="form-label">Discount ($)/(%)</label>
                 <input type="text"
                        class="form-control"
                        id="studentDiscount"
-                       placeholder="$15" />
+                       value="@(!string.IsNullOrEmpty(Model.intakeData.AEDiscountAmount.ToString()) ? Model.intakeData.AEDiscountAmount : string.Empty)" />
             </div>
         </div>
     </div>
@@ -140,7 +171,7 @@
         <input type="text"
                class="form-control"
                id="studentDiscountedAEFee"
-               placeholder="$2" />
+               value="@(!string.IsNullOrEmpty(Model.intakeData.DiscounttedAEFee.ToString()) ? Model.intakeData.DiscounttedAEFee : string.Empty)" />
     </div>
 </div>
 
@@ -150,7 +181,7 @@
         <input type="text"
                class="form-control"
                id="studentPromoCode"
-               placeholder="123" />
+               value="@(!string.IsNullOrEmpty(Model.intakeData.Promocode) ? Model.intakeData.Promocode : string.Empty)" />
     </div>
 </div>
 
@@ -160,7 +191,7 @@
         <input type="text"
                class="form-control"
                id="studentIntakeNotes"
-               placeholder=" Intake Notes" />
+               value="@(!string.IsNullOrEmpty(Model.intakeData.IntakeNote) ? Model.intakeData.IntakeNote : string.Empty)" />
     </div>
 </div>
 

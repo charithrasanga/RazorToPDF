@@ -1,4 +1,5 @@
-﻿
+﻿@using RazorToPDF.ViewModels
+
 @model RazorToPDF.Views.Shared.GeneralQuestion.HMPE._HMPEPartialModel
 @{
 }
@@ -9,21 +10,21 @@
         <input type="text"
                class="form-control"
                id="StudentName"
-               placeholder="Jane Doe" />
+               value="@(!string.IsNullOrEmpty(Model.hmpeGQData.Student) ? Model.hmpeGQData.Student : string.Empty)" />
     </div>
     <div class="col">
         <label for="studentDateDateAdministered" class="form-label">Date Date Administered</label>
         <input type="text"
                class="form-control"
                id="studentDateDateAdministered"
-               placeholder="10/11/2023" />
+               value="@(!string.IsNullOrEmpty(Model.hmpeGQData.DateAdministrated.ToString()) ? Model.hmpeGQData.DateAdministrated : string.Empty)" />
     </div>
     <div class="col">
         <label for="studentAdministeredBy" class="form-label">Administered by</label>
         <input type="text"
                class="form-control"
                id="studentAdministeredBy"
-               placeholder="Walter" />
+               value="@(!string.IsNullOrEmpty(Model.hmpeGQData.AdministratedBy) ? Model.hmpeGQData.AdministratedBy : string.Empty)" />
     </div>
 </div>
 
@@ -42,7 +43,9 @@
             <P class="form-label pb-2">1. How do you feel about Math?</P>
             <p class="normal_font fs-6 mb-0">Student Comments</p>
             <div class="border border-black rounded-1 mt-2">
-                <p class="mx-3 my-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus animi adipisci ea quo quis nulla tempora deserunt repellat et eum obcaecati tenetur hic cupiditate quod, vitae minima officiis! Aut obcaecati perferendis hic nihil eius enim possimus eligendi, veritatis veniam quia nesciunt a, ipsum voluptatum itaque eveniet explicabo nostrum dolorum! Possimus assumenda neque reiciendis ipsam commodi voluptatum natus quia ducimus amet! Aliquam modi eligendi in beatae temporibus quis perferendis laboriosam odio? Sapiente, nemo ab nesciunt expedita laudantium excepturi fuga aliquid quo repudiandae omnis necessitatibus quae eaque distinctio laboriosam magnam? Ratione, id facilis maiores illum deleniti hic aspernatur laboriosam architecto molestiae fugiat libero dignissimos eum ullam natus necessitatibus maxime non ipsam voluptatum quisquam quam dolorum placeat. Facilis reiciendis atque cupiditate natus inventore.</p>
+                <p class="m-3">
+                    @(!string.IsNullOrEmpty(Model.hmpeGQData.Paragraph) ? Model.hmpeGQData.Paragraph : string.Empty)
+                </p>
             </div>
         </div>
 
@@ -54,39 +57,42 @@
             <P class="form-label pb-2">2. What are you doing in math right now?</P>
             <p class="normal_font fs-6 mb-0">Student Comments</p>
             <div class="border border-black rounded-1 mt-2">
-                <p class="mx-3 my-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus animi adipisci ea quo quis nulla tempora deserunt repellat et eum obcaecati tenetur hic cupiditate quod, vitae minima officiis! Aut obcaecati perferendis hic nihil eius enim possimus eligendi, veritatis veniam quia nesciunt a, ipsum voluptatum itaque eveniet explicabo nostrum dolorum! Possimus assumenda neque reiciendis ipsam commodi voluptatum natus quia ducimus amet! Aliquam modi eligendi in beatae temporibus quis perferendis laboriosam odio? Sapiente, nemo ab nesciunt expedita laudantium excepturi fuga aliquid quo repudiandae omnis necessitatibus quae eaque distinctio laboriosam magnam? Ratione, id facilis maiores illum deleniti hic aspernatur laboriosam architecto molestiae fugiat libero dignissimos eum ullam natus necessitatibus maxime non ipsam voluptatum quisquam quam dolorum placeat. Facilis reiciendis atque cupiditate natus inventore.</p>
+                <p class="m-3">
+                    @(!string.IsNullOrEmpty(Model.hmpeGQData.Paragraph) ? Model.hmpeGQData.Paragraph : string.Empty)
+                </p>
             </div>
         </div>
 
         <div class="py-2">
             <span class="form-label">3. What is your math grade in your last report card?</span>
             <div class="border border-black rounded-1 mt-2">
-                <p class="mx-3 my-3">Lorem ipsum dolor sit amet, .</p>
+                <p class="m-3">
+                    @(!string.IsNullOrEmpty(Model.hmpeGQData.MathGrade.ToString()) ? Model.hmpeGQData.MathGrade : string.Empty)
+                </p>
             </div>
         </div>
 
         <div class="py-2">
             <label class="form-label">4. How happy are you rith this grade?</label>
             <div class="col checkbox-label">
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="Yes">
-                    <label class="form-check-label" for="Yes">Happy</label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="inlineCheckbox2" checked value="No">
-                    <label class="form-check-label" for="No">Don't care</label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="Not Sure">
-                    <label class="form-check-label" for="Not Sure">Unhappy</label>
-                </div>
+                @foreach (HowHappy howHappy in Enum.GetValues(typeof(HowHappy)))
+                {
+                    var isChecked = Model.hmpeGQData.HowHappy.Equals(howHappy);
+                    var randomInputId = RandomStringHelper.GenerateRandomUniqueString(3);
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="@randomInputId" @(isChecked ? "checked" : "") value="@howHappy.ToString()">
+                        <label class="form-check-label" for="@randomInputId">@howHappy.ToString().ToProperCase()</label>
+                    </div>
+                }
             </div>
         </div>
 
         <div class="py-2">
             <span class="form-label">Why do you feel this way? Student Comments</span>
             <div class="border border-black rounded-1 mt-2">
-                <p class="mx-3 my-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus animi adipisci ea quo quis nulla tempora deserunt repellat et eum obcaecati tenetur hic cupiditate quod, vitae minima officiis! Aut obcaecati perferendis hic nihil eius enim possimus eligendi, veritatis veniam quia nesciunt a, ipsum voluptatum itaque eveniet explicabo nostrum dolorum! Possimus assumenda neque reiciendis ipsam commodi voluptatum natus quia ducimus amet! Aliquam modi eligendi in beatae temporibus quis perferendis laboriosam odio? Sapiente, nemo ab nesciunt expedita laudantium excepturi fuga aliquid quo repudiandae omnis necessitatibus quae eaque distinctio laboriosam magnam? Ratione, id facilis maiores illum deleniti hic aspernatur laboriosam architecto molestiae fugiat libero dignissimos eum ullam natus necessitatibus maxime non ipsam voluptatum quisquam quam dolorum placeat. Facilis reiciendis atque cupiditate natus inventore.</p>
+                <p class="m-3">
+                    @(!string.IsNullOrEmpty(Model.hmpeGQData.Paragraph) ? Model.hmpeGQData.Paragraph : string.Empty)
+                </p>
             </div>
         </div>
     </div>
@@ -104,51 +110,16 @@
         <div class="py-2">
             <label class="form-label">5. What math class are you taking right now?</label>
             <div>
-                <div class="col pt-3">
-                    <div class="form-check form-check-inline col-2">
-                        <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="Yes">
-                        <label class="form-check-label" for="Yes">General Math</label>
-                    </div>
-                    <div class="form-check form-check-inline col-2">
-                        <input class="form-check-input" type="checkbox" id="inlineCheckbox2" checked value="No">
-                        <label class="form-check-label" for="No">Geometry</label>
-                    </div>
-                    <div class="form-check form-check-inline col-2">
-                        <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="Not Sure">
-                        <label class="form-check-label" for="Not Sure">Pre-Calculus</label>
-                    </div>
-                </div>
-            </div>
-            <div>
-                <div class="col pt-1">
-                    <div class="form-check form-check-inline col-2">
-                        <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="Yes">
-                        <label class="form-check-label" for="Yes">Pre-algebra</label>
-                    </div>
-                    <div class="form-check form-check-inline col-2">
-                        <input class="form-check-input" type="checkbox" id="inlineCheckbox2" checked value="No">
-                        <label class="form-check-label" for="No">Algebra II</label>
-                    </div>
-                    <div class="form-check form-check-inline col-2">
-                        <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="Not Sure">
-                        <label class="form-check-label" for="Not Sure">Calculus</label>
-                    </div>
-                </div>
-            </div>
-            <div>
-                <div class="col pt-1">
-                    <div class="form-check form-check-inline col-2">
-                        <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="Yes">
-                        <label class="form-check-label" for="Yes">Algebra I</label>
-                    </div>
-                    <div class="form-check form-check-inline col-2">
-                        <input class="form-check-input" type="checkbox" id="inlineCheckbox2" checked value="No">
-                        <label class="form-check-label" for="No">Trigonometry</label>
-                    </div>
-                    <div class="form-check form-check-inline col-2">
-                        <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="Not Sure">
-                        <label class="form-check-label" for="Not Sure">Other</label>
-                    </div>
+                <div class="col-9 pt-3 checkbox-label">
+                    @foreach (MathClass mathClass in Enum.GetValues(typeof(MathClass)))
+                    {
+                        var isChecked = Model.hmpeGQData.MathClass.Equals(mathClass);
+                        var randomInputId = RandomStringHelper.GenerateRandomUniqueString(3);
+                        <div class="col-3 form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="@randomInputId" @(isChecked ? "checked" : "") value="@mathClass.ToString()">
+                            <label class="form-check-label" for="@randomInputId">@mathClass.ToString().ToProperCase()</label>
+                        </div>
+                    }
                 </div>
             </div>
         </div>
@@ -156,57 +127,57 @@
         <div class="py-2">
             <label class="form-label">6. Is this an Honorr or AP Class?</label>
             <div class="col checkbox-label">
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="Yes">
-                    <label class="form-check-label" for="Yes">Honors</label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="inlineCheckbox2" checked value="No">
-                    <label class="form-check-label" for="No">AP</label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="Not Sure">
-                    <label class="form-check-label" for="Not Sure">Standard</label>
-                </div>
+                @foreach (Classes classes in Enum.GetValues(typeof(Classes)))
+                {
+                    var isChecked = Model.hmpeGQData.Classes.Equals(classes);
+                    var randomInputId = RandomStringHelper.GenerateRandomUniqueString(3);
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="@randomInputId" @(isChecked ? "checked" : "") value="@classes.ToString()">
+                        <label class="form-check-label" for="@randomInputId">@classes.ToString().ToProperCase()</label>
+                    </div>
+                }
             </div>
         </div>
 
         <div class="py-2">
-            <span class="form-label">Student Comments</span>
+            <span class="form-label">7. What was your math grade in your last report card?</span>
             <div class="border border-black rounded-1 mt-2">
-                <p class="mx-3 my-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                <p class="m-3">
+                    @(!string.IsNullOrEmpty(Model.hmpeGQData.MathGrade.ToString()) ? Model.hmpeGQData.MathGrade : string.Empty)
+                </p>
             </div>
         </div>
 
         <div class="py-2">
             <label class="form-label">8. How happy are you wiih this grade?</label>
             <div class="col checkbox-label">
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="Yes">
-                    <label class="form-check-label" for="Yes">Happy</label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="inlineCheckbox2" checked value="No">
-                    <label class="form-check-label" for="No">I don't care</label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="Not Sure">
-                    <label class="form-check-label" for="No t Sure">Unhappy</label>
-                </div>
+                @foreach (HowHappy howHappy in Enum.GetValues(typeof(HowHappy)))
+                {
+                    var isChecked = Model.hmpeGQData.HowHappy.Equals(howHappy);
+                    var randomInputId = RandomStringHelper.GenerateRandomUniqueString(3);
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="@randomInputId" @(isChecked ? "checked" : "") value="@howHappy.ToString()">
+                        <label class="form-check-label" for="@randomInputId">@howHappy.ToString().ToProperCase()</label>
+                    </div>
+                }
             </div>
         </div>
 
         <div class="py-2">
             <span class="form-label">Why do you feel this way ? Student Comment</span>
             <div class="border border-black rounded-1 mt-2">
-                <p class="mx-3 my-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus animi adipisci ea quo quis nulla tempora deserunt repellat et eum obcaecati tenetur hic cupiditate quod, vitae minima officiis! Aut obcaecati perferendis hic nihil eius enim possimus eligendi, veritatis veniam quia nesciunt a, ipsum voluptatum itaque eveniet explicabo nostrum dolorum! Possimus assumenda neque reiciendis ipsam commodi voluptatum natus quia ducimus amet! Aliquam modi eligendi in beatae temporibus quis perferendis laboriosam odio? Sapiente, nemo ab nesciunt expedita laudantium excepturi fuga aliquid quo repudiandae omnis necessitatibus quae eaque distinctio laboriosam magnam? Ratione, id facilis maiores illum deleniti hic aspernatur laboriosam architecto molestiae fugiat libero dignissimos eum ullam natus necessitatibus maxime non ipsam voluptatum quisquam quam dolorum placeat. Facilis reiciendis atque cupiditate natus inventore.</p>
+                <p class="m-3">
+                    @(!string.IsNullOrEmpty(Model.hmpeGQData.Paragraph) ? Model.hmpeGQData.Paragraph : string.Empty)
+                </p>
             </div>
         </div>
 
         <div class="py-2">
             <span class="form-label">Student Comments</span>
             <div class="border border-black rounded-1 mt-2">
-                <p class="mx-3 my-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus animi adipisci ea quo quis nulla tempora deserunt repellat et eum obcaecati tenetur hic cupiditate quod, vitae minima officiis! Aut obcaecati perferendis hic nihil eius enim possimus eligendi, veritatis veniam quia nesciunt a, ipsum voluptatum itaque eveniet explicabo nostrum dolorum! Possimus assumenda neque reiciendis ipsam commodi voluptatum natus quia ducimus amet! Aliquam modi eligendi in beatae temporibus quis perferendis laboriosam odio? Sapiente, nemo ab nesciunt expedita laudantium excepturi fuga aliquid quo repudiandae omnis necessitatibus quae eaque distinctio laboriosam magnam? Ratione, id facilis maiores illum deleniti hic aspernatur laboriosam architecto molestiae fugiat libero dignissimos eum ullam natus necessitatibus maxime non ipsam voluptatum quisquam quam dolorum placeat. Facilis reiciendis atque cupiditate natus inventore.</p>
+                <p class="m-3">
+                    @(!string.IsNullOrEmpty(Model.hmpeGQData.Paragraph) ? Model.hmpeGQData.Paragraph : string.Empty)
+                </p>
             </div>
         </div>
     </div>
