@@ -1,0 +1,256 @@
+﻿
+@model RazorToPDF.Views.Shared.TestSelection._TestSelectionModel
+@{
+}
+
+<div class="print-row py-2 mt-4 ">
+    <div class="col">
+        <label for="studentAEStartDate" class="form-label">AE Start Date</label>
+        <input type="text"
+               class="form-control"
+               id="studentAEStartDate"
+               value="@(!string.IsNullOrEmpty(Model.testSelectionData.AEStartDate.ToString()) ? Model.testSelectionData.AEStartDate : string.Empty)" />
+    </div>
+    <div class="col">
+        <label for="studentAEEndDate" class="form-label">AE End Date</label>
+        <input type="text"
+               class="form-control"
+               id="studentAEEndDate"
+               value="@(!string.IsNullOrEmpty(Model.testSelectionData.AEEndDate.ToString()) ? Model.testSelectionData.AEEndDate : string.Empty)" />
+    </div>
+    <div class="col">
+        <label for="studentGradeAtAE" class="form-label">Grade at AE</label>
+        <input type="text"
+               class="form-control"
+               id="studentGradeAtAE"
+               value="@(!string.IsNullOrEmpty(Model.testSelectionData.Grade) ? Model.testSelectionData.Grade : string.Empty)" />
+    </div>
+</div>
+
+<div class="print-row py-2 mt-4">
+    <div class="col">
+        <label for="studentTestLocation" class="form-label">Test Location</label>
+        <input type="text"
+               class="form-control"
+               id="studentTestLocation"
+               value="@(!string.IsNullOrEmpty(Model.testSelectionData.TestLocation) ? Model.testSelectionData.TestLocation : string.Empty)" />
+    </div>
+    <div class="col">
+        <label for="studentTestingRoom" class="form-label">Testing Room</label>
+        <input type="text"
+               class="form-control"
+               id="studentTestingRoom"
+               value="@(!string.IsNullOrEmpty(Model.testSelectionData.TestRoom) ? Model.testSelectionData.TestRoom : string.Empty)" />
+    </div>
+    <div class="col"></div>
+</div>
+
+<div>
+    <p class="mt-3">Order the Student LC test administration pages in the sequence in which you plan to administer the tests.</p>
+    <div style="background-color:#398842" class=" text-light p-3">
+        <div class="d-flex flex-row ms-5" style="height: 30px;">
+            <p class="fw-bold">Table 1. Typical LC Test Administration Sequence by grade group</p>
+        </div>
+    </div>
+    <table class="table table-bordered border-black LCTestAdministration">
+        <thead>
+            <tr>
+                <th class="testWidth">Test</th>
+                <th class="checkWidth">Check to adm test to this student</th>
+                <th class="dataWidth">Date test adm</th>
+                <th class="dataWidth">Estimated Time (Mins)</th>
+                <th class="checkWidth">Test Administrator</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (int i = 0; i < 15; i++)
+            {
+                <tr>
+                    <td>@(!string.IsNullOrEmpty(Model.testSelectionData.TestName) ? Model.testSelectionData.TestName : string.Empty)</td>
+                    <td class="checkbox-label">
+                        <div class="form-check form-check-inline ">
+                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" @(!string.IsNullOrEmpty(Model.testSelectionData.TestCheck.ToString()) ? "checked" : "") value="$">
+                        </div>
+                    </td>
+                    <td>@(!string.IsNullOrEmpty(Model.testSelectionData.TestDate.ToString()) ? Model.testSelectionData.TestDate : string.Empty)</td>
+                    <td>@(!string.IsNullOrEmpty(Model.testSelectionData.EstimatedTime.ToString()) ? Model.testSelectionData.EstimatedTime : string.Empty)</td>
+                    <td>@(!string.IsNullOrEmpty(Model.testSelectionData.TestAdministrator) ? Model.testSelectionData.TestAdministrator : string.Empty)</td>
+                </tr>
+            }
+
+            @* <tr>
+                <td>Informal Reading Inventory - Oral & Silent (IRI)</td>
+                <td class="checkbox-label">
+                    <div class="form-check form-check-inline ">
+                        <input class="form-check-input" type="checkbox" id="inlineCheckbox1" checked value="$">
+                    </div>
+                </td>
+                <td>05/11/2022</td>
+                <td>15</td>
+                <td>Walter</td>
+            </tr>
+
+            <tr>
+                <td>STAR Assessment</td>
+                <td class="checkbox-label">
+                    <div class="form-check form-check-inline ">
+                        <input class="form-check-input" type="checkbox" id="inlineCheckbox1" checked value="$">
+                    </div>
+                </td>
+                <td>05/11/2022</td>
+                <td>60 - 90</td>
+                <td>Walter</td>
+            </tr>
+
+            <tr>
+                <td>Huntington Math Placement Exam (HMPE)</td>
+                <td class="checkbox-label">
+                    <div class="form-check form-check-inline ">
+                        <input class="form-check-input" type="checkbox" id="inlineCheckbox1" checked value="$">
+                    </div>
+                </td>
+                <td>05/11/2022</td>
+                <td>45</td>
+                <td>Walter</td>
+            </tr>
+
+            <tr>
+                <td>Writing Sample 1 (Grade K-3)</td>
+                <td class="checkbox-label">
+                    <div class="form-check form-check-inline ">
+                        <input class="form-check-input" type="checkbox" id="inlineCheckbox1" checked value="$">
+                    </div>
+                </td>
+                <td>05/11/2022</td>
+                <td>10 - 20</td>
+                <td>Walter</td>
+            </tr>
+
+            <tr>
+                <td>Writing Sample 2 (Grade 4-6)</td>
+                <td class="checkbox-label">
+                    <div class="form-check form-check-inline ">
+                        <input class="form-check-input" type="checkbox" id="inlineCheckbox1" checked value="$">
+                    </div>
+                </td>
+                <td>05/11/2022</td>
+                <td>10 - 20</td>
+                <td>Walter</td>
+            </tr>
+
+            <tr>
+                <td>Writing Sample 3 (Grade 7 8)</td>
+                <td class="checkbox-label">
+                    <div class="form-check form-check-inline ">
+                        <input class="form-check-input" type="checkbox" id="inlineCheckbox1" checked value="$">
+                    </div>
+                </td>
+                <td>05/11/2022</td>
+                <td>10 - 20</td>
+                <td>Walter</td>
+            </tr>
+
+            <tr>
+                <td>Writing Sample 4 (Grade 9-12) </td>
+                <td class="checkbox-label">
+                    <div class="form-check form-check-inline ">
+                        <input class="form-check-input" type="checkbox" id="inlineCheckbox1" checked value="$">
+                    </div>
+                </td>
+                <td>05/11/2022</td>
+                <td>10 - 20</td>
+                <td>Walter</td>
+            </tr>
+
+            <tr>
+                <td>Huntington Study Skills Survey (HSSS)</td>
+                <td class="checkbox-label">
+                    <div class="form-check form-check-inline ">
+                        <input class="form-check-input" type="checkbox" id="inlineCheckbox1" checked value="$">
+                    </div>
+                </td>
+                <td>05/11/2022</td>
+                <td>15</td>
+                <td>Walter</td>
+            </tr>
+
+            <tr>
+                <td>Wold Sentence Copying Test (WOLD)</td>
+                <td class="checkbox-label">
+                    <div class="form-check form-check-inline ">
+                        <input class="form-check-input" type="checkbox" id="inlineCheckbox1" checked value="$">
+                    </div>
+                </td>
+                <td>05/11/2022</td>
+                <td>15</td>
+                <td>Walter</td>
+            </tr>
+
+            <tr>
+                <td>Boehm Test of Basic Concepts (Boehm)</td>
+                <td class="checkbox-label">
+                    <div class="form-check form-check-inline ">
+                        <input class="form-check-input" type="checkbox" id="inlineCheckbox1" checked value="$">
+                    </div>
+                </td>
+                <td>05/11/2022</td>
+                <td>15 - 20</td>
+                <td>Walter</td>
+            </tr>
+
+            <tr>
+                <td>Reading Readiness</td>
+                <td class="checkbox-label">
+                    <div class="form-check form-check-inline ">
+                        <input class="form-check-input" type="checkbox" id="inlineCheckbox1" checked value="$">
+                    </div>
+                </td>
+                <td>05/11/2022</td>
+                <td>15 - 20</td>
+                <td>Walter</td>
+            </tr>
+
+            <tr>
+                <td>Rosner s Test of Auditory Perception (Rosner)</td>
+                <td class="checkbox-label">
+                    <div class="form-check form-check-inline ">
+                        <input class="form-check-input" type="checkbox" id="inlineCheckbox1" checked value="$">
+                    </div>
+                </td>
+                <td>05/11/2022</td>
+                <td>5</td>
+                <td>Walter</td>
+            </tr>
+
+            <tr>
+                <td>Huntington Sight Word Assessment (HSWA)</td>
+                <td class="checkbox-label">
+                    <div class="form-check form-check-inline ">
+                        <input class="form-check-input" type="checkbox" id="inlineCheckbox1" checked value="$">
+                    </div>
+                </td>
+                <td>05/11/2022</td>
+                <td>10 - 15</td>
+                <td>Walter</td>
+            </tr>
+
+            <tr>
+                <td>Huntington Phonics Assessment (HPA)</td>
+                <td class="checkbox-label">
+                    <div class="form-check form-check-inline ">
+                        <input class="form-check-input" type="checkbox" id="inlineCheckbox1" checked value="$">
+                    </div>
+                </td>
+                <td>05/11/2022</td>
+                <td>10 - 20</td>
+                <td>Walter</td>
+            </tr>
+ *@
+        <td class="fw-bold">Total estimated hours to complete</td>
+        <td colspan="4">@(!string.IsNullOrEmpty(Model.testSelectionData.EstimatedHours.ToString()) ? Model.testSelectionData.EstimatedHours : string.Empty)</td>
+        <tr>
+        </tr>
+        </tbody>
+
+    </table>
+</div>

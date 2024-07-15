@@ -1,0 +1,120 @@
+﻿@using RazorToPDF.ViewModels
+
+@model RazorToPDF.Views.Shared.GeneralQuestion.HSWA._HSWAPartialModel
+@{
+}
+
+<div class="print-row py-2  mt-4 ash_box border border-2">
+    <div class="ms-3 col-11">
+
+        <div class="d-flex flex-row">
+            <div><p class="fs-5 fw-bold form-label">HSWA</p></div>
+            <div class="green_line"></div>
+        </div>
+
+        <div class="py-2">
+            <label class="form-label">In school, do you understand most everything the teacher tells in class?</label>
+            <div class="col checkbox-label">
+                @foreach (UnderstandLevel understandLevel in Enum.GetValues(typeof(UnderstandLevel)))
+                {
+                    var isChecked = Model.hswaGQData.UnderstandLevel.Equals(understandLevel);
+                    var randomInputId = RandomStringHelper.GenerateRandomUniqueString(3);
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="@randomInputId" @(isChecked ? "checked" : "") value="@understandLevel.ToString()">
+                        <label class="form-check-label" for="@randomInputId">@understandLevel.ToString().ToProperCase()</label>
+                    </div>
+                }
+            </div>
+        </div>
+
+        <div class="py-2">
+            <span class="form-label">Student Comments</span>
+            <div class="border border-black rounded-1 mt-2">
+                <p class="m-3">
+                    @(!string.IsNullOrEmpty(Model.hswaGQData.Paragraph) ? Model.hswaGQData.Paragraph : string.Empty)
+                </p>
+            </div>
+        </div>
+
+        <div class="py-2">
+            <label class="form-label">2. When you do not understand something, how do you feel about raising your hand to ask the teacher to review it again?</label>
+            <div class="col checkbox-label">
+                @foreach (Likability likability in Enum.GetValues(typeof(Likability)))
+                {
+                    var isChecked = Model.hswaGQData.Likability.Equals(likability);
+                    var randomInputId = RandomStringHelper.GenerateRandomUniqueString(3);
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="@randomInputId" @(isChecked ? "checked" : "") value="@likability.ToString()">
+                        <label class="form-check-label" for="@randomInputId">@likability.ToString().ToProperCase()</label>
+                    </div>
+                }
+            </div>
+        </div>
+
+        <div class="py-2">
+            <span class="form-label">Why do you feel this way? Student Comments</span>
+            <div class="border border-black rounded-1 mt-2">
+                <p class="m-3">
+                    @(!string.IsNullOrEmpty(Model.hswaGQData.Paragraph) ? Model.hswaGQData.Paragraph : string.Empty)
+                </p>
+            </div>
+        </div>
+
+        <div class="py-2">
+            <label class="form-label">3. How do you feel about asking your teacher for extra help privately?</label>
+            <div class="col checkbox-label">
+                @foreach (Likability likability in Enum.GetValues(typeof(Likability)))
+                {
+                    var isChecked = Model.hswaGQData.Likability.Equals(likability);
+                    var randomInputId = RandomStringHelper.GenerateRandomUniqueString(3);
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="@randomInputId" @(isChecked ? "checked" : "") value="@likability.ToString()">
+                        <label class="form-check-label" for="@randomInputId">@likability.ToString().ToProperCase()</label>
+                    </div>
+                }
+            </div>
+        </div>
+
+        <div class="py-2">
+            <span class="form-label">Why do you feel this way? Student Comments</span>
+            <div class="border border-black rounded-1 mt-2">
+                <p class="m-3">
+                    @(!string.IsNullOrEmpty(Model.hswaGQData.Paragraph) ? Model.hswaGQData.Paragraph : string.Empty)
+                </p>
+            </div>
+        </div>
+
+        <div class="py-2">
+            <label class="form-label">4. How satisfied are you with your overall school performance?</label>
+            <div class="col checkbox-label">
+                @foreach (Likability likability in Enum.GetValues(typeof(Likability)))
+                {
+                    var isChecked = Model.hswaGQData.Likability.Equals(likability);
+                    var randomInputId = RandomStringHelper.GenerateRandomUniqueString(3);
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="@randomInputId" @(isChecked ? "checked" : "") value="@likability.ToString()">
+                        <label class="form-check-label" for="@randomInputId">@likability.ToString().ToProperCase()</label>
+                    </div>
+                }
+            </div>
+        </div>
+
+        <div class="py-2">
+            <span class="form-label">Why do you feel this way? Student Comments</span>
+            <div class="border border-black rounded-1 mt-2">
+                <p class="m-3">
+                    @(!string.IsNullOrEmpty(Model.hswaGQData.Paragraph) ? Model.hswaGQData.Paragraph : string.Empty)
+                </p>
+            </div>
+        </div>
+
+        <div class="py-2">
+            <span class="form-label">Additional Comments</span>
+            <div class="border border-black rounded-1 mt-2">
+                <p class="m-3">
+                    @(!string.IsNullOrEmpty(Model.hswaGQData.Paragraph) ? Model.hswaGQData.Paragraph : string.Empty)
+                </p>
+            </div>
+        </div>
+    </div>
+</div>

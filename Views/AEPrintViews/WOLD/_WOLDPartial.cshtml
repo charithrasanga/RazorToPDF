@@ -1,0 +1,227 @@
+﻿@using RazorToPDF.ViewModels
+
+@model RazorToPDF.Views.Shared.WOLD._WOLDPartialModel
+@{
+}
+<div class="print-row py-2 mt-4">
+    <div class="col">
+        <label for="StudentName" class="form-label">Student</label>
+        <input type="text"
+               class="form-control"
+               id="StudentName"
+               value="@(!string.IsNullOrEmpty(Model.woldData.Student.ToString()) ? Model.woldData.Student : string.Empty)" />
+    </div>
+    <div class="col">
+        <label for="studentDateDateAdministered" class="form-label">Date Date Administered</label>
+        <input type="text"
+               class="form-control"
+               id="studentDateDateAdministered"
+               value="@(!string.IsNullOrEmpty(Model.woldData.DateAdministrated.ToString()) ? Model.woldData.DateAdministrated : string.Empty)" />
+    </div>
+    <div class="col">
+        <label for="studentAdministeredBy" class="form-label">Administered by</label>
+        <input type="text"
+               class="form-control"
+               id="studentAdministeredBy"
+               value="@(!string.IsNullOrEmpty(Model.woldData.AdministratedBy) ? Model.woldData.AdministratedBy : string.Empty)" />
+    </div>
+</div>
+
+<div class="px-3 py-2 blue_box mt-4 border border-2 bg-opacity-10">
+    <div class="print-row ">
+        <div class="col">
+            <p class="form-label">Typical Duration (minutes)</p>
+            <p>10</p>
+        </div>
+        <div class="col-7 me-3">
+            <label for="actualDuration" class="form-label">Actual Duration</label>
+            <input type="number"
+                   class="form-control"
+                   id="actualDuration"
+                   value="@(!string.IsNullOrEmpty(Model.woldData.ActualDuration.ToString()) ? Model.woldData.ActualDuration : string.Empty)" />
+        </div>
+    </div>
+</div>
+
+<div class="px-3 py-2 mt-4 ash_box border border-2">
+    <div class="d-flex flex-row">
+        <div><p class="fs-5 fw-bold form-label">Test Purpose</p></div>
+        <div class="green_line"></div>
+    </div>
+    <p>This test detects possible problems in visual perception, conceptualization and fine muscle control</p>
+</div>
+
+<div class="px-3 py-2 blue_box mt-4 border border-2 bg-opacity-10">
+    <div>
+        <div class="d-flex flex-row">
+            <p class="fs-5 fw-bold form-label">Directions / Test Specific Observations</p>
+            <div class="green_line"></div>
+        </div>
+    </div>
+    <div>
+        <div>
+            <div class="heading_size ">A. DIRECTIONS</div>
+            <div class="print-row list_size ">
+                <div class="px-4 col-6">
+                    <p class="mb-0">
+                        1. Give him the test booklet <br>
+                        2. Says,
+                    </p>
+                    <ul class="italic_font ">
+                        <li>I want you to copy this sentence [point to the typed version];</li>
+                        <li>First print it on these lines [point to all the lines available] and write it on these lines [pointing].</li>
+                        <li>Don't rush</li>
+                        <li>Use your pencil.</li>
+                        <li> If you make an error, don't erase.</li>
+                        <li>Cross out the error and try again</li>
+                        <li>Start printing beginning with this word [point to 'Four]."</li>
+                    </ul>
+                </div>
+                <div class="px-4">
+                </div>
+            </div>
+        </div>
+        <div>
+            <div class="heading_size">B. TEST SPECIFIC OBSERVATIONS</div>
+            <div class="print-row list_size">
+                <div class="col-4 ps-3">
+                    <p class="mb-1">1. Student's Effort was :</p>
+                    <div class="d-flex flex-column ms-4 checkBox-label">
+                        @foreach (EffortRate effortRate in Enum.GetValues(typeof(EffortRate)))
+                        {
+                            var isChecked = Model.woldData.EffortRate.Equals(effortRate);
+                            var randomInputId = RandomStringHelper.GenerateRandomUniqueString(5);
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="@randomInputId" @(isChecked ? "checked" : "") value="@effortRate.ToString()">
+                                <label class="form-check-label" for="@randomInputId">@effortRate.ToString().ToProperCase()</label>
+                            </div>
+                        }
+                        @* <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="Very Poor">
+                            <label class="form-check-label" for="inlineCheckbox1">Very Poor</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" checked value="Poor">
+                            <label class="form-check-label" for="inlineCheckbox1">Poor</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="Average">
+                            <label class="form-check-label" for="inlineCheckbox1">Average</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="Good">
+                            <label class="form-check-label" for="inlineCheckbox1">Good</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="Very Good">
+                            <label class="form-check-label" for="inlineCheckbox1">Very Good</label>
+                        </div> *@
+                    </div>
+                </div>
+                <div class="col px-0">
+                    <p class="mb-1">2. Attention Span :</p>
+                    <div class="d-flex flex-column ms-4 checkBox-label">
+                        @foreach (EffortRate effortRate in Enum.GetValues(typeof(EffortRate)))
+                        {
+                            var isChecked = Model.woldData.EffortRate.Equals(effortRate);
+                            var randomInputId = RandomStringHelper.GenerateRandomUniqueString(5);
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="@randomInputId" @(isChecked ? "checked" : "") value="@effortRate.ToString()">
+                                <label class="form-check-label" for="@randomInputId">@effortRate.ToString().ToProperCase()</label>
+                            </div>
+                        }
+                        @* <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="Very Poor">
+                            <label class="form-check-label" for="inlineCheckbox1">Very Poor</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" checked value="Poor">
+                            <label class="form-check-label" for="inlineCheckbox1">Poor</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="Average">
+                            <label class="form-check-label" for="inlineCheckbox1">Average</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="Good">
+                            <label class="form-check-label" for="inlineCheckbox1">Good</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="Very Good">
+                            <label class="form-check-label" for="inlineCheckbox1">Very Good</label>
+                        </div> *@
+                    </div>
+                </div>
+                <div class="col-5 ps-3">
+                    <p class="mb-1">3. Did student Exhibit frustration?</p>
+                    <div class="ms-4 ">
+                        @foreach (ExhibitFrustration exhibitFrustration in Enum.GetValues(typeof(ExhibitFrustration)))
+                        {
+                            var isChecked = Model.woldData.ExhibitFrustration.Equals(exhibitFrustration);
+                            var randomInputId = RandomStringHelper.GenerateRandomUniqueString(2);
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="@randomInputId" @(isChecked ? "checked" : "") value="@exhibitFrustration.ToString()">
+                                <label class="form-check-label" for="@randomInputId">@exhibitFrustration.ToString().ToProperCase()</label>
+                            </div>
+                        }
+                        @* <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="Yes" value="Yes">
+                            <label class="form-check-label" for="inlineCheckbox1">Yes</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="No" checked value="No">
+                            <label class="form-check-label" for="inlineCheckbox1">No</label>
+                        </div> *@
+                    </div>
+                    <div class="mt-5">
+                        <label for="studentLastName" class="fw-light">4. This test Administered by and responses recorded by :</label>
+                        <input type="text"
+                               class="form-control"
+                               id="Walter"
+                               value="@(!string.IsNullOrEmpty(Model.woldData.ResponseBy) ? Model.woldData.ResponseBy : string.Empty)" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="pagebreak"> </div>
+
+<div class="px-3 py-2 mt-4 ash_box border border-2">
+    <div class="d-flex flex-row">
+        <div><p class="fs-5 fw-bold">General Questions</p></div>
+        <div class="green_line"></div>
+    </div>
+
+    <div>
+        <span>Additional Comments</span>
+        <div class="border border-black rounded-1 mt-2">
+            <p class="m-3">
+                @(!string.IsNullOrEmpty(Model.woldData.Paragraph) ? Model.woldData.Paragraph : string.Empty)
+            </p>
+        </div>
+    </div>
+</div>
+
+<div class="py-2 blue_box mt-4 border border-2 bg-opacity-10">
+    <div class="ms-3">
+        <div class="d-flex flex-row">
+            <div><p class="fs-5 fw-bold">Next Test</p></div>
+            <div class="green_line"></div>
+        </div>
+        <div class="print-row">
+            <div class="col-3">
+                <span>Pre - K to 3:</span>
+                <p class="text-secondary">HSWA </p>
+            </div>
+            <div class="col-3">
+                <span>4 to 12:</span>
+                <p class="text-secondary">HSWA</p>
+            </div>
+            <div class="col me-5">
+                <span>If he is in grade 4 or above and he is unable to complete all figures on the SVMPT through his age level, administer the WOLD</span>
+            </div>
+        </div>
+    </div>
+</div>

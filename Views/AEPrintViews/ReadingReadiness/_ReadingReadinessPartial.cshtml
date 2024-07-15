@@ -1,34 +1,31 @@
 ﻿@using RazorToPDF.ViewModels
 
-@model RazorToPDF.Views.Shared.Boehm._BoehmPartialModel
+@model RazorToPDF.Views.Shared.ReadingReadiness._ReadingReadinessModel
 @{
 }
-
 <div class="print-row py-2 mt-4">
     <div class="col">
         <label for="StudentName" class="form-label">Student</label>
         <input type="text"
                class="form-control"
                id="StudentName"
-               value="@(!string.IsNullOrEmpty(Model.boehmdata.Student) ? Model.boehmdata.Student : string.Empty)" />
+               value="@(!string.IsNullOrEmpty(Model.readingReadinessData.Student) ? Model.readingReadinessData.Student : string.Empty)" />
     </div>
     <div class="col">
         <label for="studentDateDateAdministered" class="form-label">Date Date Administered</label>
         <input type="text"
                class="form-control"
                id="studentDateDateAdministered"
-               value="@(!string.IsNullOrEmpty(Model.boehmdata.DateAdministrated.ToString()) ? Model.boehmdata.DateAdministrated : string.Empty)" />
+               value="@(!string.IsNullOrEmpty(Model.readingReadinessData.DateAdministrated.ToString()) ? Model.readingReadinessData.DateAdministrated : string.Empty)" />
     </div>
     <div class="col">
         <label for="studentAdministeredBy" class="form-label">Administered by</label>
         <input type="text"
                class="form-control"
                id="studentAdministeredBy"
-               value="@(!string.IsNullOrEmpty(Model.boehmdata.AdministratedBy) ? Model.boehmdata.AdministratedBy : string.Empty)" />
+               value="@(!string.IsNullOrEmpty(Model.readingReadinessData.AdministratedBy) ? Model.readingReadinessData.AdministratedBy : string.Empty)" />
     </div>
 </div>
-
-@await Html.PartialAsync("~/Views/Shared/_PageHeaderBar.cshtml", new RazorToPDF.Views.Shared._PageHeaderBarModel { Title = "Initial Intake Information", Number = "1" })
 
 <div class="px-3 py-2 blue_box mt-4 border border-2 bg-opacity-10">
     <div class="print-row ">
@@ -41,7 +38,7 @@
             <input type="number"
                    class="form-control"
                    id="actualDuration"
-                   value="@(!string.IsNullOrEmpty(Model.boehmdata.ActualDuration.ToString()) ? Model.boehmdata.ActualDuration : string.Empty)" />
+                   value="@(!string.IsNullOrEmpty(Model.readingReadinessData.ActualDuration.ToString()) ? Model.readingReadinessData.ActualDuration : string.Empty)" />
         </div>
     </div>
 </div>
@@ -51,7 +48,7 @@
         <div><p class="fs-5 fw-bold form-label">Test Purpose</p></div>
         <div class="green_line"></div>
     </div>
-    <p>This test measures mastery of concepts considered necessary for achievement in the first years of school.</p>
+    <p>This test determines reading readiness based on the student's general knowledge and your observations.</p>
 </div>
 
 <div class="px-3 py-2 blue_box mt-4 border border-2 bg-opacity-10">
@@ -65,27 +62,68 @@
         <div>
             <div class="heading_size">A. DIRECTIONS</div>
             <div class="print-row list_size">
-                <div class="px-4 col-6">
+                <div class="px-4">
                     <ol>
-                        <li>
-                            Open to the Boehm Test of Basic Concepts in the Testing Binder.
+                        <li class="col-5">
+                            Open to the Reading Readiness Evaluation Student Copy in the Testing Binder.
                         </li>
-                        <li>
+                        <li class="col-5">
                             Say,
                             <ul class="italic_font" style="list-style-type:disc;">
-                                <li>I'm going to give you a book with some pictures in it.</li>
-                                <li>Do not open it until I tell you to do so.</li>
-                                <li> When you come to a difficult word, do the best you can."</li>
-                            </ul>
-                            <ul style="list-style-type:none" class="ps-0">
-                                <li class="pb-2">
-                                    The child does not write in the booklet. Have student point to student answers.
-                                </li>
                                 <li>
-                                    Use the summary page to record answers. Mark correct answers with a (+). Mark incorrect answers with a (-). Attempt to write the response student gave.
+                                    I'm going to ask you to identify and write some letters for me. Then we are going to do a few activities.”(Give lined paper to the student for them to write.)
                                 </li>
                             </ul>
                         </li>
+                        <li class="col-7">
+                            Use the directions on the Reading Readiness test sheet.
+                            <div>
+                                <table class="table table-bordered border-black table-2 table-font-size">
+                                    <thead style="background-color: rgba(200, 237, 243, 0.671);">
+                                    <th>Item</th>
+                                    <th>Direction</th>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Body Parts</td>
+                                            <td>Ask student to point to each part as named. Play Simon Says .</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Colors</td>
+                                            <td>Using crayons, ask student to name each color.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Spatial Orientation and Directionality</td>
+                                            <td>Using crayons, indicate each position and ask student to name the position of the crayon</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Laterality</td>
+                                            <td>Record left, right, and coordination difficulty.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Handedness</td>
+                                            <td>Ask student to write/draw and throw/catch a ball.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Footedness</td>
+                                            <td>Ask student to kick and hop.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>General Information</td>
+                                            <td>Ask student his address, phone number, age and grade</td>
+                                        </tr>
+                                        @* @for (int i = 0; i < 7; i++)
+                                        {
+                                            <tr>
+                                                <td>@(!string.IsNullOrEmpty(Model.readingReadinessData.Item) ? Model.readingReadinessData.Item : string.Empty)</td>
+                                                <td>@(!string.IsNullOrEmpty(Model.readingReadinessData.Direction) ? Model.readingReadinessData.Direction : string.Empty)</td>
+                                            </tr>
+                                        } *@
+                                    </tbody>
+                                </table>
+                            </div>
+                        </li>
+                        <li>Circle incorrect responses. Attempt to write what the student said.</li>
                     </ol>
                 </div>
                 <div class="px-4 col"></div>
@@ -99,7 +137,7 @@
                     <div class="d-flex flex-column ms-4 checkBox-label">
                         @foreach (EffortRate effortRate in Enum.GetValues(typeof(EffortRate)))
                         {
-                            var isChecked = Model.boehmdata.EffortRate.Equals(effortRate);
+                            var isChecked = Model.readingReadinessData.EffortRate.Equals(effortRate);
                             var randomInputId = RandomStringHelper.GenerateRandomUniqueString(5);
                             <div class="form-check form-check-inline">
                                 <input class="form-check-input" type="checkbox" id="@randomInputId" @(isChecked ? "checked" : "") value="@effortRate.ToString()">
@@ -113,7 +151,7 @@
                     <div class="d-flex flex-column ms-4 checkBox-label">
                         @foreach (EffortRate effortRate in Enum.GetValues(typeof(EffortRate)))
                         {
-                            var isChecked = Model.boehmdata.EffortRate.Equals(effortRate);
+                            var isChecked = Model.readingReadinessData.EffortRate.Equals(effortRate);
                             var randomInputId = RandomStringHelper.GenerateRandomUniqueString(5);
                             <div class="form-check form-check-inline">
                                 <input class="form-check-input" type="checkbox" id="@randomInputId" @(isChecked ? "checked" : "") value="@effortRate.ToString()">
@@ -127,7 +165,7 @@
                     <div class="ms-4 ">
                         @foreach (ExhibitFrustration exhibitFrustration in Enum.GetValues(typeof(ExhibitFrustration)))
                         {
-                            var isChecked = Model.boehmdata.ExhibitFrustration.Equals(exhibitFrustration);
+                            var isChecked = Model.readingReadinessData.ExhibitFrustration.Equals(exhibitFrustration);
                             var randomInputId = RandomStringHelper.GenerateRandomUniqueString(2);
                             <div class="form-check form-check-inline">
                                 <input class="form-check-input" type="checkbox" id="@randomInputId" @(isChecked ? "checked" : "") value="@exhibitFrustration.ToString()">
@@ -140,13 +178,15 @@
                         <input type="text"
                                class="form-control"
                                id="Walter"
-                               value="@(!string.IsNullOrEmpty(Model.boehmdata.ResponseBy) ? Model.boehmdata.ResponseBy : string.Empty)" />
+                               value="@(!string.IsNullOrEmpty(Model.readingReadinessData.ResponseBy) ? Model.readingReadinessData.ResponseBy : string.Empty)" />
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+<div class="pagebreak"> </div>
 
 <div class="px-3 py-2 mt-4 ash_box border border-2">
     <div class="d-flex flex-row">
@@ -158,7 +198,7 @@
         <span class="form-label">Student / Additional Comments</span>
         <div class="border border-black rounded-1 mt-2">
             <p class="m-3">
-                @(!string.IsNullOrEmpty(Model.boehmdata.Paragraph) ? Model.boehmdata.Paragraph : string.Empty)
+                @(!string.IsNullOrEmpty(Model.readingReadinessData.Paragraph) ? Model.readingReadinessData.Paragraph : string.Empty)
             </p>
         </div>
     </div>
@@ -173,11 +213,11 @@
         <div class="print-row">
             <div class="col-3">
                 <span>Pre - K to 3:</span>
-                <p class="text-secondary">WOLD</p>
+                <p class="text-secondary">HPA</p>
             </div>
             <div class="col-3">
                 <span>4 to 12:</span>
-                <p class="text-secondary">HSWA</p>
+                <p class="text-secondary">IRI</p>
             </div>
             <div class="col me-5">
             </div>

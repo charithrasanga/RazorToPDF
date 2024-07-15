@@ -1,0 +1,90 @@
+﻿@using RazorToPDF.ViewModels
+
+@model RazorToPDF.Views.Shared.GeneralQuestion.ConcludingConversation._ConcludingConversationPartialModel
+@{
+}
+<div class="print-row py-2 mt-4">
+    <div class="col">
+        <label for="StudentName" class="form-label">Student</label>
+        <input type="text"
+               class="form-control"
+               id="StudentName"
+               value="@(!string.IsNullOrEmpty(Model.concludingConversationGQData.Student) ? Model.concludingConversationGQData.Student : string.Empty)" />
+    </div>
+    <div class="col">
+        <label for="studentDateDateAdministered" class="form-label">Date Date Administered</label>
+        <input type="text"
+               class="form-control"
+               id="studentDateDateAdministered"
+               value="@(!string.IsNullOrEmpty(Model.concludingConversationGQData.DateAdministrated.ToString()) ? Model.concludingConversationGQData.DateAdministrated : string.Empty)" />
+    </div>
+    <div class="col">
+        <label for="studentAdministeredBy" class="form-label">Administered by</label>
+        <input type="text"
+               class="form-control"
+               id="studentAdministeredBy"
+               value="@(!string.IsNullOrEmpty(Model.concludingConversationGQData.AdministratedBy) ? Model.concludingConversationGQData.AdministratedBy : string.Empty)" />
+    </div>
+</div>
+
+<div class="print-row py-2  mt-4 blue_box border border-2">
+    <div class="ms-3 col-11">
+        <div class="d-flex flex-row">
+            <div><p class="fs-5 fw-bold form-label">Concluding Conversation</p></div>
+            <div class="green_line"></div>
+        </div>
+
+        <div class="py-2">
+            <label class="form-label">
+                1. Now that we’re finished with the testing, what do you think about coming here to help you do better in school?
+            </label>
+            <div class="col checkbox-label">
+                @foreach (ThinkAboutComming thinkAboutComming in Enum.GetValues(typeof(ThinkAboutComming)))
+                {
+                    var isChecked = Model.concludingConversationGQData.ThinkAboutComming.Equals(thinkAboutComming);
+                    var randomInputId = RandomStringHelper.GenerateRandomUniqueString(3);
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="@randomInputId" @(isChecked ? "checked" : "") value="@thinkAboutComming.ToString()">
+                        <label class="form-check-label" for="@randomInputId">@thinkAboutComming.ToString().ToProperCase()</label>
+                    </div>
+                }
+            </div>
+        </div>
+
+        <div class="py-2">
+            <span class="form-label">Why?</span>
+            <div class="border border-black rounded-1 mt-2">
+                <p class="m-3">
+                    @(!string.IsNullOrEmpty(Model.concludingConversationGQData.Paragraph) ? Model.concludingConversationGQData.Paragraph : string.Empty)
+                </p>
+            </div>
+        </div>
+
+        <div class="py-2">
+            <span class="form-label">2. If you were to come here, what days and times would be best for you?</span>
+            <div class="border border-black rounded-1 mt-2">
+                <p class="m-3">
+                    @(!string.IsNullOrEmpty(Model.concludingConversationGQData.Paragraph) ? Model.concludingConversationGQData.Paragraph : string.Empty)
+                </p>
+            </div>
+        </div>
+
+        <div class="py-2">
+            <span class="form-label">3. What days and times are not good for you? Why?</span>
+            <div class="border border-black rounded-1 mt-2">
+                <p class="m-3">
+                    @(!string.IsNullOrEmpty(Model.concludingConversationGQData.Paragraph) ? Model.concludingConversationGQData.Paragraph : string.Empty)
+                </p>
+            </div>
+        </div>
+
+        <div class="py-2">
+            <span class="form-label">4. Do you know anyone who comes here now or came in the past?</span>
+            <div class="border border-black rounded-1 mt-2">
+                <p class="m-3">
+                    @(!string.IsNullOrEmpty(Model.concludingConversationGQData.Paragraph) ? Model.concludingConversationGQData.Paragraph : string.Empty)
+                </p>
+            </div>
+        </div>
+    </div>
+</div>

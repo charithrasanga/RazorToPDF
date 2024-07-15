@@ -1,6 +1,6 @@
 ﻿@using RazorToPDF.ViewModels
 
-@model RazorToPDF.Views.Shared.Boehm._BoehmPartialModel
+@model RazorToPDF.Views.Shared.HSSS._HSSSPartialModel
 @{
 }
 
@@ -10,38 +10,36 @@
         <input type="text"
                class="form-control"
                id="StudentName"
-               value="@(!string.IsNullOrEmpty(Model.boehmdata.Student) ? Model.boehmdata.Student : string.Empty)" />
+               value="@(!string.IsNullOrEmpty(Model.hsssData.Student) ? Model.hsssData.Student : string.Empty)" />
     </div>
     <div class="col">
         <label for="studentDateDateAdministered" class="form-label">Date Date Administered</label>
         <input type="text"
                class="form-control"
                id="studentDateDateAdministered"
-               value="@(!string.IsNullOrEmpty(Model.boehmdata.DateAdministrated.ToString()) ? Model.boehmdata.DateAdministrated : string.Empty)" />
+               value="@(!string.IsNullOrEmpty(Model.hsssData.DateAdministrated.ToString()) ? Model.hsssData.DateAdministrated : string.Empty)" />
     </div>
     <div class="col">
         <label for="studentAdministeredBy" class="form-label">Administered by</label>
         <input type="text"
                class="form-control"
                id="studentAdministeredBy"
-               value="@(!string.IsNullOrEmpty(Model.boehmdata.AdministratedBy) ? Model.boehmdata.AdministratedBy : string.Empty)" />
+               value="@(!string.IsNullOrEmpty(Model.hsssData.AdministratedBy) ? Model.hsssData.AdministratedBy : string.Empty)" />
     </div>
 </div>
-
-@await Html.PartialAsync("~/Views/Shared/_PageHeaderBar.cshtml", new RazorToPDF.Views.Shared._PageHeaderBarModel { Title = "Initial Intake Information", Number = "1" })
 
 <div class="px-3 py-2 blue_box mt-4 border border-2 bg-opacity-10">
     <div class="print-row ">
         <div class="col">
             <p class="form-label">Typical Duration (minutes)</p>
-            <p>15 - 20</p>
+            <p>15</p>
         </div>
         <div class="col-7 me-3">
             <label for="actualDuration" class="form-label">Actual Duration</label>
             <input type="number"
                    class="form-control"
                    id="actualDuration"
-                   value="@(!string.IsNullOrEmpty(Model.boehmdata.ActualDuration.ToString()) ? Model.boehmdata.ActualDuration : string.Empty)" />
+                   value="@(!string.IsNullOrEmpty(Model.hsssData.ActualDuration.ToString()) ? Model.hsssData.ActualDuration : string.Empty)" />
         </div>
     </div>
 </div>
@@ -51,7 +49,7 @@
         <div><p class="fs-5 fw-bold form-label">Test Purpose</p></div>
         <div class="green_line"></div>
     </div>
-    <p>This test measures mastery of concepts considered necessary for achievement in the first years of school.</p>
+    <p>The purpose of this test is to identify students whose study habits and attitudes are different from those students who earn high grades. It also aids in understanding students with academic difficulties; and to provide a basis for helping such students improve their study habits and attitudes.</p>
 </div>
 
 <div class="px-3 py-2 blue_box mt-4 border border-2 bg-opacity-10">
@@ -65,30 +63,28 @@
         <div>
             <div class="heading_size">A. DIRECTIONS</div>
             <div class="print-row list_size">
-                <div class="px-4 col-6">
-                    <ol>
+                <div class="ps-4 col-6">
+                    <ol class="mb-0">
                         <li>
-                            Open to the Boehm Test of Basic Concepts in the Testing Binder.
-                        </li>
-                        <li>
-                            Say,
-                            <ul class="italic_font" style="list-style-type:disc;">
-                                <li>I'm going to give you a book with some pictures in it.</li>
-                                <li>Do not open it until I tell you to do so.</li>
-                                <li> When you come to a difficult word, do the best you can."</li>
-                            </ul>
                             <ul style="list-style-type:none" class="ps-0">
                                 <li class="pb-2">
-                                    The child does not write in the booklet. Have student point to student answers.
+                                    If completing the teacher’s scoring sheet online, have the document ready on the screen. If completing the teacher’s scoring on a print copy, have that copy ready.
                                 </li>
-                                <li>
-                                    Use the summary page to record answers. Mark correct answers with a (+). Mark incorrect answers with a (-). Attempt to write the response student gave.
+                                <li class="pb-2">
+                                    Use the following proctoring guidelines for administering the Huntington Study Skills Survey
                                 </li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            Say,
+                            <ul style="list-style-type:disc" class="italic_font">
+                                <li>I am going to read you a series of statements. <br> For each statement I want you to answer ‘yes’ or ‘no’. </li>
                             </ul>
                         </li>
                     </ol>
+                    <p class="ps-5">Read each statement to the student. Mark the student’s answer by checking appropriate box.</p>
                 </div>
-                <div class="px-4 col"></div>
             </div>
         </div>
         <div>
@@ -99,7 +95,7 @@
                     <div class="d-flex flex-column ms-4 checkBox-label">
                         @foreach (EffortRate effortRate in Enum.GetValues(typeof(EffortRate)))
                         {
-                            var isChecked = Model.boehmdata.EffortRate.Equals(effortRate);
+                            var isChecked = Model.hsssData.EffortRate.Equals(effortRate);
                             var randomInputId = RandomStringHelper.GenerateRandomUniqueString(5);
                             <div class="form-check form-check-inline">
                                 <input class="form-check-input" type="checkbox" id="@randomInputId" @(isChecked ? "checked" : "") value="@effortRate.ToString()">
@@ -113,7 +109,7 @@
                     <div class="d-flex flex-column ms-4 checkBox-label">
                         @foreach (EffortRate effortRate in Enum.GetValues(typeof(EffortRate)))
                         {
-                            var isChecked = Model.boehmdata.EffortRate.Equals(effortRate);
+                            var isChecked = Model.hsssData.EffortRate.Equals(effortRate);
                             var randomInputId = RandomStringHelper.GenerateRandomUniqueString(5);
                             <div class="form-check form-check-inline">
                                 <input class="form-check-input" type="checkbox" id="@randomInputId" @(isChecked ? "checked" : "") value="@effortRate.ToString()">
@@ -127,7 +123,7 @@
                     <div class="ms-4 ">
                         @foreach (ExhibitFrustration exhibitFrustration in Enum.GetValues(typeof(ExhibitFrustration)))
                         {
-                            var isChecked = Model.boehmdata.ExhibitFrustration.Equals(exhibitFrustration);
+                            var isChecked = Model.hsssData.ExhibitFrustration.Equals(exhibitFrustration);
                             var randomInputId = RandomStringHelper.GenerateRandomUniqueString(2);
                             <div class="form-check form-check-inline">
                                 <input class="form-check-input" type="checkbox" id="@randomInputId" @(isChecked ? "checked" : "") value="@exhibitFrustration.ToString()">
@@ -140,7 +136,7 @@
                         <input type="text"
                                class="form-control"
                                id="Walter"
-                               value="@(!string.IsNullOrEmpty(Model.boehmdata.ResponseBy) ? Model.boehmdata.ResponseBy : string.Empty)" />
+                               value="@(!string.IsNullOrEmpty(Model.hsssData.ResponseBy) ? Model.hsssData.ResponseBy : string.Empty)" />
                     </div>
                 </div>
             </div>
@@ -148,18 +144,22 @@
     </div>
 </div>
 
-<div class="px-3 py-2 mt-4 ash_box border border-2">
-    <div class="d-flex flex-row">
-        <div><p class="fs-5 fw-bold form-label">General Questions</p></div>
-        <div class="green_line"></div>
-    </div>
+<div class="pagebreak"> </div>
 
-    <div>
-        <span class="form-label">Student / Additional Comments</span>
-        <div class="border border-black rounded-1 mt-2">
-            <p class="m-3">
-                @(!string.IsNullOrEmpty(Model.boehmdata.Paragraph) ? Model.boehmdata.Paragraph : string.Empty)
-            </p>
+<div class="print-row py-2  mt-4 ash_box border border-2">
+    <div class="ms-3 col-11">
+        <div class="d-flex flex-row">
+            <div><p class="fs-5 fw-bold form-label">General Questions</p></div>
+            <div class="green_line"></div>
+        </div>
+
+        <div class="py-2">
+            <span class="form-label">Student/ Additional Comments</span>
+            <div class="border border-black rounded-1 mt-2">
+                <p class="m-3">
+                    @(!string.IsNullOrEmpty(Model.hsssData.Paragraph) ? Model.hsssData.Paragraph : string.Empty)
+                </p>
+            </div>
         </div>
     </div>
 </div>
@@ -173,11 +173,11 @@
         <div class="print-row">
             <div class="col-3">
                 <span>Pre - K to 3:</span>
-                <p class="text-secondary">WOLD</p>
+                <p class="text-secondary">N/A</p>
             </div>
             <div class="col-3">
                 <span>4 to 12:</span>
-                <p class="text-secondary">HSWA</p>
+                <p class="text-secondary">N/A</p>
             </div>
             <div class="col me-5">
             </div>

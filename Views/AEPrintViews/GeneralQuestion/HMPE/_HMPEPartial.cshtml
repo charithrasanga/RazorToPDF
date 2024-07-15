@@ -1,0 +1,184 @@
+﻿@using RazorToPDF.ViewModels
+
+@model RazorToPDF.Views.Shared.GeneralQuestion.HMPE._HMPEPartialModel
+@{
+}
+
+<div class="print-row py-2 mt-4">
+    <div class="col">
+        <label for="StudentName" class="form-label">Student</label>
+        <input type="text"
+               class="form-control"
+               id="StudentName"
+               value="@(!string.IsNullOrEmpty(Model.hmpeGQData.Student) ? Model.hmpeGQData.Student : string.Empty)" />
+    </div>
+    <div class="col">
+        <label for="studentDateDateAdministered" class="form-label">Date Date Administered</label>
+        <input type="text"
+               class="form-control"
+               id="studentDateDateAdministered"
+               value="@(!string.IsNullOrEmpty(Model.hmpeGQData.DateAdministrated.ToString()) ? Model.hmpeGQData.DateAdministrated : string.Empty)" />
+    </div>
+    <div class="col">
+        <label for="studentAdministeredBy" class="form-label">Administered by</label>
+        <input type="text"
+               class="form-control"
+               id="studentAdministeredBy"
+               value="@(!string.IsNullOrEmpty(Model.hmpeGQData.AdministratedBy) ? Model.hmpeGQData.AdministratedBy : string.Empty)" />
+    </div>
+</div>
+
+<div class="print-row py-2  mt-4 blue_box border border-2">
+    <div class="ms-3 col-11">
+        <div class="d-flex flex-row">
+            <div><p class="fs-5 fw-bold form-label">HMPE</p></div>
+            <div class="green_line"></div>
+        </div>
+
+        <div>
+            <p class="fs-5 fw-bold form-label"><u>For all students:</u></p>
+        </div>
+
+        <div class="py-2">
+            <P class="form-label pb-2">1. How do you feel about Math?</P>
+            <p class="normal_font fs-6 mb-0">Student Comments</p>
+            <div class="border border-black rounded-1 mt-2">
+                <p class="m-3">
+                    @(!string.IsNullOrEmpty(Model.hmpeGQData.Paragraph) ? Model.hmpeGQData.Paragraph : string.Empty)
+                </p>
+            </div>
+        </div>
+
+        <div>
+            <p class="fs-5 fw-bold form-label"><u>For elementry school students</u></p>
+        </div>
+
+        <div class="py-2">
+            <P class="form-label pb-2">2. What are you doing in math right now?</P>
+            <p class="normal_font fs-6 mb-0">Student Comments</p>
+            <div class="border border-black rounded-1 mt-2">
+                <p class="m-3">
+                    @(!string.IsNullOrEmpty(Model.hmpeGQData.Paragraph) ? Model.hmpeGQData.Paragraph : string.Empty)
+                </p>
+            </div>
+        </div>
+
+        <div class="py-2">
+            <span class="form-label">3. What is your math grade in your last report card?</span>
+            <div class="border border-black rounded-1 mt-2">
+                <p class="m-3">
+                    @(!string.IsNullOrEmpty(Model.hmpeGQData.MathGrade.ToString()) ? Model.hmpeGQData.MathGrade : string.Empty)
+                </p>
+            </div>
+        </div>
+
+        <div class="py-2">
+            <label class="form-label">4. How happy are you rith this grade?</label>
+            <div class="col checkbox-label">
+                @foreach (HowHappy howHappy in Enum.GetValues(typeof(HowHappy)))
+                {
+                    var isChecked = Model.hmpeGQData.HowHappy.Equals(howHappy);
+                    var randomInputId = RandomStringHelper.GenerateRandomUniqueString(3);
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="@randomInputId" @(isChecked ? "checked" : "") value="@howHappy.ToString()">
+                        <label class="form-check-label" for="@randomInputId">@howHappy.ToString().ToProperCase()</label>
+                    </div>
+                }
+            </div>
+        </div>
+
+        <div class="py-2">
+            <span class="form-label">Why do you feel this way? Student Comments</span>
+            <div class="border border-black rounded-1 mt-2">
+                <p class="m-3">
+                    @(!string.IsNullOrEmpty(Model.hmpeGQData.Paragraph) ? Model.hmpeGQData.Paragraph : string.Empty)
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="pagebreak"> </div>
+
+
+<div class="print-row py-2  mt-4 blue_box border border-2">
+    <div class="ms-3 col-11">
+        <div>
+            <p class="fs-5 fw-bold form-label"><u>For Middle School and High School students</u></p>
+        </div>
+
+        <div class="py-2">
+            <label class="form-label">5. What math class are you taking right now?</label>
+            <div>
+                <div class="col-9 pt-3 checkbox-label">
+                    @foreach (MathClass mathClass in Enum.GetValues(typeof(MathClass)))
+                    {
+                        var isChecked = Model.hmpeGQData.MathClass.Equals(mathClass);
+                        var randomInputId = RandomStringHelper.GenerateRandomUniqueString(3);
+                        <div class="col-3 form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="@randomInputId" @(isChecked ? "checked" : "") value="@mathClass.ToString()">
+                            <label class="form-check-label" for="@randomInputId">@mathClass.ToString().ToProperCase()</label>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+
+        <div class="py-2">
+            <label class="form-label">6. Is this an Honorr or AP Class?</label>
+            <div class="col checkbox-label">
+                @foreach (Classes classes in Enum.GetValues(typeof(Classes)))
+                {
+                    var isChecked = Model.hmpeGQData.Classes.Equals(classes);
+                    var randomInputId = RandomStringHelper.GenerateRandomUniqueString(3);
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="@randomInputId" @(isChecked ? "checked" : "") value="@classes.ToString()">
+                        <label class="form-check-label" for="@randomInputId">@classes.ToString().ToProperCase()</label>
+                    </div>
+                }
+            </div>
+        </div>
+
+        <div class="py-2">
+            <span class="form-label">7. What was your math grade in your last report card?</span>
+            <div class="border border-black rounded-1 mt-2">
+                <p class="m-3">
+                    @(!string.IsNullOrEmpty(Model.hmpeGQData.MathGrade.ToString()) ? Model.hmpeGQData.MathGrade : string.Empty)
+                </p>
+            </div>
+        </div>
+
+        <div class="py-2">
+            <label class="form-label">8. How happy are you wiih this grade?</label>
+            <div class="col checkbox-label">
+                @foreach (HowHappy howHappy in Enum.GetValues(typeof(HowHappy)))
+                {
+                    var isChecked = Model.hmpeGQData.HowHappy.Equals(howHappy);
+                    var randomInputId = RandomStringHelper.GenerateRandomUniqueString(3);
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="@randomInputId" @(isChecked ? "checked" : "") value="@howHappy.ToString()">
+                        <label class="form-check-label" for="@randomInputId">@howHappy.ToString().ToProperCase()</label>
+                    </div>
+                }
+            </div>
+        </div>
+
+        <div class="py-2">
+            <span class="form-label">Why do you feel this way ? Student Comment</span>
+            <div class="border border-black rounded-1 mt-2">
+                <p class="m-3">
+                    @(!string.IsNullOrEmpty(Model.hmpeGQData.Paragraph) ? Model.hmpeGQData.Paragraph : string.Empty)
+                </p>
+            </div>
+        </div>
+
+        <div class="py-2">
+            <span class="form-label">Student Comments</span>
+            <div class="border border-black rounded-1 mt-2">
+                <p class="m-3">
+                    @(!string.IsNullOrEmpty(Model.hmpeGQData.Paragraph) ? Model.hmpeGQData.Paragraph : string.Empty)
+                </p>
+            </div>
+        </div>
+    </div>
+</div>

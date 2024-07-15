@@ -1,0 +1,97 @@
+﻿@using RazorToPDF.ViewModels
+
+@model RazorToPDF.Views.Shared.GeneralQuestion.STAR._STARPartialModel
+@{
+}
+
+<div class="print-row py-2  mt-4 ash_box border border-2">
+    <div class="ms-3 col-11">
+        <div class="d-flex flex-row">
+            <div><p class="fs-5 fw-bold form-label">STAR Assessment</p></div>
+            <div class="green_line"></div>
+        </div>
+
+        <div class="py-2">
+            <label class="form-label">1. How happy are you with these grades ?</label>
+            <div class="col checkbox-label">
+                @foreach (HowHappy howHappy in Enum.GetValues(typeof(HowHappy)))
+                {
+                    var isChecked = Model.starGQData.HowHappy.Equals(howHappy);
+                    var randomInputId = RandomStringHelper.GenerateRandomUniqueString(3);
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="@randomInputId" @(isChecked ? "checked" : "") value="@howHappy.ToString()">
+                        <label class="form-check-label" for="@randomInputId">@howHappy.ToString().ToProperCase()</label>
+                    </div>
+                }
+            </div>
+        </div>
+
+        <div class="py-2">
+            <label class="form-label">2. Is it easy or hard to take notes in class?</label>
+            <div class="col checkbox-label">
+                @foreach (EasyOrHard easyOrHard in Enum.GetValues(typeof(EasyOrHard)))
+                {
+                    var isChecked = Model.starGQData.EasyOrHard.Equals(easyOrHard);
+                    var randomInputId = RandomStringHelper.GenerateRandomUniqueString(3);
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="@randomInputId" @(isChecked ? "checked" : "") value="@easyOrHard.ToString()">
+                        <label class="form-check-label" for="@randomInputId">@easyOrHard.ToString().ToProperCase()</label>
+                    </div>
+                }
+            </div>
+        </div>
+
+        <div class="py-2">
+            <span class="form-label">Why is it easy or hard? Student Comments</span>
+            <div class="border border-black rounded-1 mt-2">
+                <p class="m-3">
+                    @(!string.IsNullOrEmpty(Model.starGQData.Paragraph) ? Model.starGQData.Paragraph : string.Empty)
+                </p>
+            </div>
+        </div>
+
+        <div class="py-2">
+            <label class="form-label">3. Is it easy or hard to use your notes to study for a test or quiz?</label>
+            <div class="col checkbox-label">
+                @foreach (EasyOrHard easyOrHard in Enum.GetValues(typeof(EasyOrHard)))
+                {
+                    var isChecked = Model.starGQData.EasyOrHard.Equals(easyOrHard);
+                    var randomInputId = RandomStringHelper.GenerateRandomUniqueString(3);
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="@randomInputId" @(isChecked ? "checked" : "") value="@easyOrHard.ToString()">
+                        <label class="form-check-label" for="@randomInputId">@easyOrHard.ToString().ToProperCase()</label>
+                    </div>
+                }
+            </div>
+        </div>
+
+        <div class="py-2">
+            <span class="form-label">Why is it easy or hard? Student Comment</span>
+            <div class="border border-black rounded-1 mt-2">
+                <p class="m-3">
+                    @(!string.IsNullOrEmpty(Model.starGQData.Paragraph) ? Model.starGQData.Paragraph : string.Empty)
+                </p>
+            </div>
+        </div>
+
+        <div class="py-2">
+            <span class="form-label">4. When you do not do well on a quiz, test, project, or assignment, how does that make you feel?</span>
+            <span class="form-label">Student Comments</span>
+            <div class="border border-black rounded-1 mt-2">
+                <p class="m-3">
+                    @(!string.IsNullOrEmpty(Model.starGQData.Paragraph) ? Model.starGQData.Paragraph : string.Empty)
+                </p>
+            </div>
+        </div>
+
+        <div class="py-2">
+            <span class="form-label">Additional comments</span>
+            <div class="border border-black rounded-1 mt-2">
+                <p class="m-3">
+                    @(!string.IsNullOrEmpty(Model.starGQData.Paragraph) ? Model.starGQData.Paragraph : string.Empty)
+                </p>
+            </div>
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,57 @@
+﻿@using RazorToPDF.ViewModels
+
+@model RazorToPDF.Views.Shared.GeneralQuestion.WritingSample._WritingSampleModel
+@{
+}
+
+<div class="print-row py-2  mt-4 ash_box border border-2">
+    <div class="ms-3 col-11">
+        <div class="d-flex flex-row">
+            <div><p class="fs-5 fw-bold form-label"> Writing Sample</p></div>
+            <div class="green_line"></div>
+        </div>
+
+        <div class="py-2">
+            <label class="form-label">1. How do you feel about griting?</label>
+            <div class="col checkbox-label">
+                @foreach (Likability likability in Enum.GetValues(typeof(Likability)))
+                {
+                    var isChecked = Model.writingSampleGQData.Likability.Equals(likability);
+                    var randomInputId = RandomStringHelper.GenerateRandomUniqueString(3);
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="@randomInputId" @(isChecked ? "checked" : "") value="@likability.ToString()">
+                        <label class="form-check-label" for="@randomInputId">@likability.ToString().ToProperCase()</label>
+                    </div>
+                }
+            </div>
+        </div>
+
+        <div class="py-2">
+            <span class="form-label">Why and what kind of writing do you have to do?</span>
+            <div class="border border-black rounded-1 mt-2">
+                <p class="m-3">
+                    @(!string.IsNullOrEmpty(Model.writingSampleGQData.Paragraph) ? Model.writingSampleGQData.Paragraph : string.Empty)
+                </p>
+            </div>
+        </div>
+
+        <div class="py-2">
+            <P class="form-label pb-2">2. If you could change anything about school, ghat gould it be? Why</P>
+            <p class="normal_font fs-6 mb-0">Student Comments</p>
+            <div class="border border-black rounded-1 mt-2">
+                <p class="m-3">
+                    @(!string.IsNullOrEmpty(Model.writingSampleGQData.Paragraph) ? Model.writingSampleGQData.Paragraph : string.Empty)
+                </p>
+            </div>
+        </div>
+
+        <div class="py-2">
+            <span class="form-label">Additional Comments</span>
+            <div class="border border-black rounded-1 mt-2">
+                <p class="m-3">
+                    @(!string.IsNullOrEmpty(Model.writingSampleGQData.Paragraph) ? Model.writingSampleGQData.Paragraph : string.Empty)
+                </p>
+            </div>
+        </div>
+    </div>
+</div>

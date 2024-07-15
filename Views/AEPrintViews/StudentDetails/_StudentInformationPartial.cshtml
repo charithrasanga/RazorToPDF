@@ -1,0 +1,219 @@
+﻿@using RazorToPDF.ViewModels
+
+@model RazorToPDF.Views.Shared.StudentDetails._StudentInformationPartialModel
+@{
+
+}
+
+
+<div class="print-row py-2 mt-4 ">
+    <div class="col">
+        <label for="studentFirstName" class="form-label"><span class="text-danger">* </span>Student First Name</label>
+        <input type="text"
+               class="form-control"
+               id="studentFirstName"
+               value="@(!string.IsNullOrEmpty(Model.intakeData.FirstName) ? Model.intakeData.FirstName : string.Empty)" /> 
+    </div>
+    <div class="col">
+        <label for="studentLastName" class="form-label"><span class="text-danger">* </span>Last Name</label>
+        <input type="text"
+               class="form-control"
+               id="studentLastName"
+               value="@(!string.IsNullOrEmpty(Model.intakeData.LastName) ? Model.intakeData.LastName : string.Empty)" />
+    </div>
+    <div class="col">
+        <label for="callStudentBy" class="form-label">Nick Name</label>
+        <input type="text"
+               class="form-control"
+               id="callStudentBy"
+               value="@(!string.IsNullOrEmpty(Model.intakeData.Nickname) ? Model.intakeData.Nickname : string.Empty)" />
+    </div>
+</div>
+
+<div class="print-row py-2 mt-4">
+    <div class="col">
+        <label for="dateOfBirth" class="form-label"><span class="text-danger">* </span>Date of Birth</label>
+        <input type="text"
+               class="form-control"
+               id="dateOfBirth"
+               value="@(!string.IsNullOrEmpty(Model.intakeData.DateOfBirth.ToString()) ? Model.intakeData.DateOfBirth : string.Empty)" />
+    </div>
+    <div class="col">
+        <label for="age" class="form-label">Age (Years)</label>
+        <input type="text"
+               class="form-control"
+               id="age"
+               value="@(!string.IsNullOrEmpty(Model.intakeData.Age.ToString()) ? Model.intakeData.Age : string.Empty)" />
+    </div>
+    <div class="col">
+        <label for="grade" class="form-label"><span class="text-danger">* </span>Grade</label>
+        <input type="text"
+               class="form-control"
+               id="grade"
+               value="@(!string.IsNullOrEmpty(Model.intakeData.Grade.ToString()) ? Model.intakeData.Grade : string.Empty)" />
+    </div>
+</div>
+
+@* <div class="py-2">
+    <label class="form-label">Gender</label>
+    <div class="print-row  checkbox-label">
+        @foreach (var gender in Enum.GetValues(typeof(Gender)))
+        {
+            <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" checked value="Male">
+            <label class="form-check-label" for="inlineCheckbox1">Male</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="Female">
+            <label class="form-check-label" for="inlineCheckbox2">Female</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="Non-binary">
+            <label class="form-check-label" for="inlineCheckbox3">Non-binary</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" id="inlineCheckbox4" value="Prefer not to share">
+            <label class="form-check-label" for="inlineCheckbox4">Prefer not to share</label>
+        </div>
+        }
+    </div>
+</div> *@
+
+<div class="py-2">
+    <label class="form-label">Gender</label>
+    <div class="print-row checkbox-label">
+        @foreach (Gender gender in Enum.GetValues(typeof(Gender)))
+        {
+            var isChecked = Model.intakeData.Gender.Equals(gender);
+            var randomInputId = RandomStringHelper.GenerateRandomUniqueString(4);
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="@randomInputId" @(isChecked ? "checked" : "") value="@gender.ToString()">
+                <label class="form-check-label" for="@randomInputId">@gender.ToString().ToProperCase()</label>
+            </div>
+        }
+    </div>
+</div>  
+
+<div>
+    <ul class="list-points">
+        <li>Greet the parent and the student.</li>
+        <li>
+            Check if the parent has filled out the CCH, if they haven’t, please provide them with the link so you can start the student testing process
+            while the parent completes the CCH.
+        </li>
+    </ul>
+</div>
+
+<div class="print-row py-2 mt-4">
+    <div class="col">
+        <label for="studentIntakeBy" class="form-label"><span class="text-danger">* </span>Intake by</label>
+        <input type="text"
+               class="form-control"
+               id="studentIntakeBy"
+               value="@(!string.IsNullOrEmpty(Model.intakeData.IntakeBy) ? Model.intakeData.IntakeBy : string.Empty)" />
+    </div>
+    <div class="col">
+        <label for="studentService" class="form-label"><span class="text-danger">* </span>Service</label>
+        <input type="text"
+               class="form-control"
+               id="studentService"
+               value="@(!string.IsNullOrEmpty(Model.intakeData.Service) ? Model.intakeData.Service : string.Empty)" />
+    </div>
+    <div class="col">
+        <label for="studentCenterAEFee" class="form-label">Center AE Fee</label>
+        <input type="text"
+               class="form-control"
+               id="studentCenterAEFee"
+               value="@(!string.IsNullOrEmpty(Model.intakeData.CenterAEFee) ? Model.intakeData.CenterAEFee : string.Empty)" />
+    </div>
+</div>
+
+<div class="print-row py-2 mt-4">
+    <div class="col">
+        <label for="studentAEDiscount" class="form-label">AE Discount</label>
+        <input type="text"
+               class="form-control"
+               id="studentAEDiscount"
+               value="@(!string.IsNullOrEmpty(Model.intakeData.AEDiscount) ? Model.intakeData.AEDiscount : string.Empty)" />
+    </div>
+    <div class="col">
+        <div class="print-row mb-0 checkbox-label">
+            @foreach (AEDiscountType aEDiscountType in Enum.GetValues(typeof(AEDiscountType)))
+            {
+                var isChecked = Model.intakeData.AEDiscountType.Equals(aEDiscountType);
+                var randomInputId = RandomStringHelper.GenerateRandomUniqueString(2);
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="@randomInputId" @(isChecked ? "checked" : "") value="@aEDiscountType.ToString()">
+                    <label class="form-check-label" for="@randomInputId">@aEDiscountType.ToString().ToProperCase()</label>
+                </div>
+            }
+            @* <div class="form-check form-check-inline col-1 me-1 pt-5">
+                <input class="form-check-input" type="checkbox" id="inlineCheckbox1" checked value="$">
+                <label class="form-check-label pe-2" for="inlineCheckbox1">$</label>
+            </div>
+            <div class="form-check form-check-inline col-1 me-1 pt-5">
+                <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="%">
+                <label class="form-check-label" for="inlineCheckbox2">%</label>
+            </div> *@
+            
+            
+            <div class="col ps-2">
+                <label for="studentDiscount" class="form-label">Discount ($)/(%)</label>
+                <input type="text"
+                       class="form-control"
+                       id="studentDiscount"
+                       value="@(!string.IsNullOrEmpty(Model.intakeData.AEDiscountAmount.ToString()) ? Model.intakeData.AEDiscountAmount : string.Empty)" />
+            </div>
+        </div>
+    </div>
+    <div class="col">
+        <label for="studentDiscountedAEFee" class="form-label">Discounted AE Fee</label>
+        <input type="text"
+               class="form-control"
+               id="studentDiscountedAEFee"
+               value="@(!string.IsNullOrEmpty(Model.intakeData.DiscounttedAEFee.ToString()) ? Model.intakeData.DiscounttedAEFee : string.Empty)" />
+    </div>
+</div>
+
+<div class="print-row py-2 mt-4">
+    <div class="col-4">
+        <label for="studentPromoCode" class="form-label">Promo Code</label>
+        <input type="text"
+               class="form-control"
+               id="studentPromoCode"
+               value="@(!string.IsNullOrEmpty(Model.intakeData.Promocode) ? Model.intakeData.Promocode : string.Empty)" />
+    </div>
+</div>
+
+<div class="print-row py-2 mt-4">
+    <div class="col">
+        <label for="studentIntakeNotes" class="form-label"><span class="text-danger">* </span>Intake Notes</label>
+        <input type="text"
+               class="form-control"
+               id="studentIntakeNotes"
+               value="@(!string.IsNullOrEmpty(Model.intakeData.IntakeNote) ? Model.intakeData.IntakeNote : string.Empty)" />
+    </div>
+</div>
+
+<div>
+    <ul class="list-points">
+        <li>After you collect the AE fee, please enter it into LCOS.</li>
+        <li>
+            Please ensure that you have scheduled the initial conference with all appropriate attendees and recorded it in LCOS (hyperlink). The goal is
+            to have the child’s whole support system in the conference, whoever that may be
+            <ul>
+                <li>
+                    The next step is for us to set up a meeting as soon as possible for you and Jane’s full support system. At this meeting, we will review
+                    the results of the evaluation s/he’s taking right now and then discuss the plan to get Jane back on track. We’ll also discuss a
+                    schedule and tuition options. This meeting takes approximately 60-90 minutes, so we’ll need a time that works for everyone.
+                </li>
+            </ul>
+        </li>
+        <li>
+            If the conference is being held by Virtual Conferencing, add the following:
+            <ul>
+                <li>You’ll meet with our Enrollment Director via Zoom. You’ll want to make sure you are in a quiet, distraction-free setting so you can see the results and ask questions.</li>
+            </ul>
+        </li>
+    </ul>
+</div>

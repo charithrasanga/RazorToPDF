@@ -1,0 +1,122 @@
+﻿@using RazorToPDF.ViewModels
+
+@model RazorToPDF.Views.Shared.GeneralQuestion.SVMPT._SVMPTPartialModel
+@{
+}
+
+<div class="print-row py-2 mt-4">
+    <div class="col">
+        <label for="StudentName" class="form-label">Student</label>
+        <input type="text"
+               class="form-control"
+               id="StudentName"
+               value="@(!string.IsNullOrEmpty(Model.svmptGQData.Student) ? Model.svmptGQData.Student : string.Empty)" />
+    </div>
+    <div class="col">
+        <label for="studentDateDateAdministered" class="form-label">Date Date Administered</label>
+        <input type="text"
+               class="form-control"
+               id="studentDateDateAdministered"
+               value="@(!string.IsNullOrEmpty(Model.svmptGQData.DateAdministrated.ToString()) ? Model.svmptGQData.DateAdministrated : string.Empty)" />
+    </div>
+    <div class="col">
+        <label for="studentAdministeredBy" class="form-label">Administered by</label>
+        <input type="text"
+               class="form-control"
+               id="studentAdministeredBy"
+               value="@(!string.IsNullOrEmpty(Model.svmptGQData.AdministratedBy) ? Model.svmptGQData.AdministratedBy : string.Empty)" />
+    </div>
+</div>
+<div class="px-3 py-2 blue_box mt-4 border border-2 bg-opacity-10">
+    <div class="ms-3 col-11">
+
+        <div class="d-flex flex-row">
+            <div><p class="fs-5 fw-bold form-label">SWMPT</p></div>
+            <div class="green_line"></div>
+        </div>
+
+        <div class="py-2">
+            <label class="form-label">Do you know what we do here?</label>
+            <div class="col checkbox-label">
+                @foreach (KnowWhatToDo knowWhatToDo in Enum.GetValues(typeof(KnowWhatToDo)))
+                {
+                    var isChecked = Model.svmptGQData.KnowWhatToDo.Equals(knowWhatToDo);
+                    var randomInputId = RandomStringHelper.GenerateRandomUniqueString(3);
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="@randomInputId" @(isChecked ? "checked" : "") value="@knowWhatToDo.ToString()">
+                        <label class="form-check-label" for="@randomInputId">@knowWhatToDo.ToString().ToProperCase()</label>
+                    </div>
+                }
+            </div>
+        </div>
+
+        <div class="py-2">
+            <span class="form-label">Student Comment</span>
+            <div class="border border-black rounded-1 mt-2">
+                <p class="m-3">
+                    @(!string.IsNullOrEmpty(Model.svmptGQData.Paragraph) ? Model.svmptGQData.Paragraph : string.Empty)
+                </p>
+            </div>
+        </div>
+
+        <div class="py-2">
+            <span class="form-label">How do you feel about getting help here?</span>
+            <div class="border border-black rounded-1 mt-2">
+                <p class="m-3">
+                    @(!string.IsNullOrEmpty(Model.svmptGQData.Paragraph) ? Model.svmptGQData.Paragraph : string.Empty)
+                </p>
+            </div>
+        </div>
+
+        <div class="py-2">
+            <span class="form-label">What do you like to do in your spare time? (Sport, Club,etc.)</span>
+            <div class="border border-black rounded-1 mt-2">
+                <p class="m-3">
+                    @(!string.IsNullOrEmpty(Model.svmptGQData.Paragraph) ? Model.svmptGQData.Paragraph : string.Empty)
+                </p>
+            </div>
+        </div>
+
+        <div class="py-2">
+            <label class="form-label">Do you like or dislike going to school?</label>
+            <div class="col checkbox-label">
+                @foreach (Likability likability in Enum.GetValues(typeof(Likability)))
+                {
+                    var isChecked = Model.svmptGQData.Likability.Equals(likability);
+                    var randomInputId = RandomStringHelper.GenerateRandomUniqueString(3);
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="@randomInputId" @(isChecked ? "checked" : "") value="@likability.ToString()">
+                        <label class="form-check-label" for="@randomInputId">@likability.ToString().ToProperCase()</label>
+                    </div>
+                }
+            </div>
+        </div>
+
+        <div class="py-2">
+            <span class="form-label">Why</span>
+            <div class="border border-black rounded-1 mt-2">
+                <p class="m-3">
+                    @(!string.IsNullOrEmpty(Model.svmptGQData.Sentense) ? Model.svmptGQData.Sentense : string.Empty)
+                </p>
+            </div>
+        </div>
+
+        <div class="py-2">
+            <span class="form-label">What do you like or dislike about school?</span>
+            <div class="border border-black rounded-1 mt-2">
+                <p class="m-3">
+                    @(!string.IsNullOrEmpty(Model.svmptGQData.Sentense) ? Model.svmptGQData.Sentense : string.Empty)
+                </p>
+            </div>
+        </div>
+
+        <div class="py-2">
+            <span class="form-label">Additional Comments</span>
+            <div class="border border-black rounded-1 mt-2">
+                <p class="m-3">
+                    @(!string.IsNullOrEmpty(Model.svmptGQData.Paragraph) ? Model.svmptGQData.Paragraph : string.Empty)
+                </p>
+            </div>
+        </div>
+    </div>
+</div>

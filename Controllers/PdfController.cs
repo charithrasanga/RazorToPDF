@@ -18,7 +18,7 @@ public class PdfController : ControllerBase
     {
        
         var pdfData = await _pdfService.GeneratePdfAsync(request);
-        var downloadFilename = "file_" + Path.ChangeExtension(Path.GetRandomFileName(), ".pdf");
+        var downloadFilename = "CCH Print Blank.pdf";
         return new FileContentResult(pdfData, "application/pdf")
         {
             FileDownloadName = downloadFilename

@@ -1,0 +1,51 @@
+﻿@model RazorToPDF.Views.Shared.UI._PrintExamPrepScoresPartialModel
+
+<div class="px-3 pt-2" style="font-size:6px !important; page-break-inside: avoid;">
+    <div class="mb-3">
+        <label class="form-label">Scores</label>
+        <div class="print-row" style="gap: 4px !important;">
+            <div class="col">
+                <label class="form-label">
+                    Composite
+                </label>
+                @await Html.PartialAsync("~/Views/Shared/UI/_PrintTextareaPartial.cshtml", new RazorToPDF.Views.Shared.UI._PrintTextareaPartialModel { Rows = 1, InputPlaceholder = "" })
+            </div>
+            <div class="col">
+                <label class="form-label">
+                    English
+                </label>
+                @await Html.PartialAsync("~/Views/Shared/UI/_PrintTextareaPartial.cshtml", new RazorToPDF.Views.Shared.UI._PrintTextareaPartialModel { Rows = 1, InputPlaceholder = "" })
+            </div>
+        </div>
+
+        <div class="print-row" style="gap: 4px !important;">
+            <div class="col">
+                <label class="form-label">
+                    Math
+                </label>
+                @await Html.PartialAsync("~/Views/Shared/UI/_PrintTextareaPartial.cshtml", new RazorToPDF.Views.Shared.UI._PrintTextareaPartialModel { Rows = 1, InputPlaceholder = "" })
+            </div>
+            <div class="col">
+                <label class="form-label">
+                    Reading
+                </label>
+                @await Html.PartialAsync("~/Views/Shared/UI/_PrintTextareaPartial.cshtml", new RazorToPDF.Views.Shared.UI._PrintTextareaPartialModel { Rows = 1, InputPlaceholder = "" })
+            </div>
+        </div>
+
+        <div class="print-row" style="gap: 4px !important;">
+            <div class="col">
+                <label class="form-label">
+                    Science
+                </label>
+                @await Html.PartialAsync("~/Views/Shared/UI/_PrintTextareaPartial.cshtml", new RazorToPDF.Views.Shared.UI._PrintTextareaPartialModel { Rows = 1, InputPlaceholder = "" })
+            </div>
+            <div class="col">
+                <label class="form-label">
+                    Writing
+                </label>
+                @await Html.PartialAsync("~/Views/Shared/UI/_PrintTextareaPartial.cshtml", new RazorToPDF.Views.Shared.UI._PrintTextareaPartialModel { Rows = 1, InputPlaceholder = "" })
+            </div>
+        </div>
+    </div>
+</div>

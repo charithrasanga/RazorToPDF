@@ -1,0 +1,176 @@
+﻿@using RazorToPDF.ViewModels
+
+@model RazorToPDF.Views.Shared.GeneralQuestion.IRI._IRIPartialModel
+@{
+}
+
+<div class="print-row py-2 mt-4">
+    <div class="col">
+        <label for="StudentName" class="form-label">Student</label>
+        <input type="text"
+               class="form-control"
+               id="StudentName"
+               value="@(!string.IsNullOrEmpty(Model.iriGQData.Student) ? Model.iriGQData.Student : string.Empty)" />
+    </div>
+    <div class="col">
+        <label for="studentDateDateAdministered" class="form-label">Date Date Administered</label>
+        <input type="text"
+               class="form-control"
+               id="studentDateDateAdministered"
+               value="@(!string.IsNullOrEmpty(Model.iriGQData.DateAdministrated.ToString()) ? Model.iriGQData.DateAdministrated : string.Empty)" />
+    </div>
+    <div class="col">
+        <label for="studentAdministeredBy" class="form-label">Administered by</label>
+        <input type="text"
+               class="form-control"
+               id="studentAdministeredBy"
+               value="@(!string.IsNullOrEmpty(Model.iriGQData.AdministratedBy) ? Model.iriGQData.AdministratedBy : string.Empty)" />
+    </div>
+</div>
+
+<div class="print-row py-2  mt-4 ash_box border border-2">
+    <div class="ms-3 col-11">
+        <div class="d-flex flex-row">
+            <div><p class="fs-5 fw-bold form-label">IRI</p></div>
+            <div class="green_line"></div>
+        </div>
+
+        <div>
+            <p class="fs-5 fw-bold form-label"><u>Oral Reading (Form A)</u></p>
+        </div>
+
+        <div class="py-2">
+            <label class="form-label">1. How much time do you spend on home ork each weekday night?</label>
+            <div class="col checkbox-label">
+                @foreach (HomeWorkTime homeWorkTime in Enum.GetValues(typeof(HomeWorkTime)))
+                {
+                    var isChecked = Model.iriGQData.HomeWorkTime.Equals(homeWorkTime);
+                    var randomInputId = RandomStringHelper.GenerateRandomUniqueString(3);
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="@randomInputId" @(isChecked ? "checked" : "") value="@homeWorkTime.ToString()">
+                        <label class="form-check-label" for="@randomInputId">@homeWorkTime.ToString().ToProperCase()</label>
+                    </div>
+                }
+            </div>
+        </div>
+
+        <div class="py-2">
+            <label class="form-label">2. Is home ork easy or hard for you?</label>
+            <div class="col checkbox-label">
+                @foreach (EasyOrHard easyOrHard in Enum.GetValues(typeof(EasyOrHard)))
+                {
+                    var isChecked = Model.iriGQData.EasyOrHard.Equals(easyOrHard);
+                    var randomInputId = RandomStringHelper.GenerateRandomUniqueString(3);
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="@randomInputId" @(isChecked ? "checked" : "") value="@easyOrHard.ToString()">
+                        <label class="form-check-label" for="@randomInputId">@easyOrHard.ToString().ToProperCase()</label>
+                    </div>
+                }
+            </div>
+        </div>
+
+        <div class="py-2">
+            <span class="form-label">Why is home ork easy or hard for you? Student Comments</span>
+            <div class="border border-black rounded-1 mt-2">
+                <p class="m-3">
+                    @(!string.IsNullOrEmpty(Model.iriGQData.Paragraph) ? Model.iriGQData.Paragraph : string.Empty)
+                </p>
+            </div>
+        </div>
+
+        <div class="py-2">
+            <label class="form-label">3. Ho often do your parents have to tell you to do homework?</label>
+            <div class="col checkbox-label">
+                @foreach (HowOftenHomeWork howOftenHomeWork in Enum.GetValues(typeof(HowOftenHomeWork)))
+                {
+                    var isChecked = Model.iriGQData.HowOftenHomeWork.Equals(howOftenHomeWork);
+                    var randomInputId = RandomStringHelper.GenerateRandomUniqueString(3);
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="@randomInputId" @(isChecked ? "checked" : "") value="@howOftenHomeWork.ToString()">
+                        <label class="form-check-label" for="@randomInputId">@howOftenHomeWork.ToString().ToProperCase()</label>
+                    </div>
+                }
+            </div>
+        </div>
+
+        <div class="py-2">
+            <span class="form-label">Additional comments</span>
+            <div class="border border-black rounded-1 mt-2">
+                <p class="m-3">
+                    @(!string.IsNullOrEmpty(Model.iriGQData.Paragraph) ? Model.iriGQData.Paragraph : string.Empty)
+                </p>
+            </div>
+        </div>
+
+        <div>
+            <p class="fs-5 fw-bold form-label"><u>Silent Reading (Form B)</u></p>
+        </div>
+
+        <div class="d-flex flex-row">
+            <div><p class="fs-5 fw-bold form-label">General Questions</p></div>
+            <div class="green_line"></div>
+        </div>
+
+        <div class="py-2">
+            <span class="form-label">What Were your grades on your last report card?</span>
+            <div class="col-8 pt-3">
+                <table class="table table-bordered border-black table-2">
+                    <thead">
+                        <th>Subject</th>
+                        <th class="col-5">Grades</th>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Reading/English/Language Arts</td>
+                                <td>5</td>
+                            </tr>
+                            <tr>
+                                <td>History/ Social Studies</td>
+                                <td>5</td>
+                            </tr>
+                            <tr>
+                                <td>Science</td>
+                                <td>5</td>
+                            </tr>
+                        </tbody>
+                </table>
+            </div>
+            <span class="form-label">Indicate if any of the above are Honors or AP Classes.</span>
+        </div>
+
+        <div class="py-2">
+            <label class="form-label">2. How happy are you with these grades ?</label>
+            <div class="col checkbox-label">
+                    @foreach (HowHappy howHappy in Enum.GetValues(typeof(HowHappy)))
+                    {
+                        var isChecked = Model.iriGQData.HowHappy.Equals(howHappy);
+                        var randomInputId = RandomStringHelper.GenerateRandomUniqueString(3);
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="@randomInputId" @(isChecked ? "checked" : "") value="@howHappy.ToString()">
+                        <label class="form-check-label" for="@randomInputId">@howHappy.ToString().ToProperCase()</label>
+                    </div>
+                    }
+            </div>
+        </div>
+
+        <div class="py-2">
+            <span class="form-label">Why do you feel this way ? Student Comments</span>
+            <div class="border border-black rounded-1 mt-2">
+                <p class="m-3">
+                    @(!string.IsNullOrEmpty(Model.iriGQData.Paragraph) ? Model.iriGQData.Paragraph : string.Empty)
+                </p>
+            </div>
+        </div>
+
+        <div class="py-2">
+            <span class="form-label">Additional Comments</span>
+            <div class="border border-black rounded-1 mt-2">
+                <p class="m-3">
+                    @(!string.IsNullOrEmpty(Model.iriGQData.Paragraph) ? Model.iriGQData.Paragraph : string.Empty)
+                </p>
+            </div>
+        </div>
+
+    </div>
+
+</div>

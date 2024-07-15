@@ -1,0 +1,283 @@
+﻿@using RazorToPDF.ViewModels
+
+@model RazorToPDF.Views.Shared.STAR._STARPartialModel
+@{
+}
+
+<div class="print-row py-2 mt-4">
+    <div class="col">
+        <label for="StudentName" class="form-label">Student</label>
+        <input type="text"
+               class="form-control"
+               id="StudentName"
+               value="@(!string.IsNullOrEmpty(Model.starData.Student) ? Model.starData.Student : string.Empty)" />
+    </div>
+    <div class="col">
+        <label for="studentDateDateAdministered" class="form-label">Date Date Administered</label>
+        <input type="text"
+               class="form-control"
+               id="studentDateDateAdministered"
+               value="@(!string.IsNullOrEmpty(Model.starData.DateAdministrated.ToString()) ? Model.starData.DateAdministrated : string.Empty)" />
+    </div>
+    <div class="col">
+        <label for="studentAdministeredBy" class="form-label">Administered by</label>
+        <input type="text"
+               class="form-control"
+               id="studentAdministeredBy"
+               value="@(!string.IsNullOrEmpty(Model.starData.AdministratedBy) ? Model.starData.AdministratedBy : string.Empty)" />
+    </div>
+</div>
+
+<div class="px-3 py-2 blue_box mt-4 border border-2 bg-opacity-10">
+    <div class="print-row ">
+        <div class="col">
+            <p class="form-label">Typical Duration (minutes)</p>
+            <p>40 - 60</p>
+        </div>
+        <div class="col-7 me-3">
+            <label for="actualDuration" class="form-label">Actual Duration</label>
+            <input type="number"
+                   class="form-control"
+                   id="actualDuration"
+                   value="@(!string.IsNullOrEmpty(Model.starData.ActualDuration.ToString()) ? Model.starData.ActualDuration : string.Empty)" />
+        </div>
+    </div>
+</div>
+
+<div class="px-3 py-2 mt-4 ash_box border border-2">
+    <div class="d-flex flex-row">
+        <div><p class="fs-5 fw-bold form-label">Test Purpose</p></div>
+        <div class="green_line"></div>
+    </div>
+    <p>This evaluation is a web-based, adaptive test which is nationally normed. It permits us to compare students in the same grade from across the country.</p>
+</div>
+
+<div class="px-3 py-2 ash_box mt-4 border border-2">
+    <div>
+        <div class="d-flex flex-row">
+            <p class="fs-5 fw-bold form-label">Directions / Test Specific Observations</p>
+            <div class="green_line"></div>
+        </div>
+    </div>
+    <div>
+        <div>
+            <div class="heading_size">A. DIRECTIONS</div>
+            <div class="print-row list_size">
+                <div class="px-4 col-6">
+                    <ol>
+                        <li>
+                            Open the Chromebook and navigate to the Renaissance Star website: <br>
+                            <a href="https://global-zone05.renaissancego.com welcomeportal/705992.">https://global-zone05.renaissancego.com welcomeportal/705992.</a>
+                        </li>
+                        <li>
+                            Enter the student username and password. The student username is a 3 Letter code plus the student s LCOS ID. The password is <u>hlc1</u> for all students. The monitor password is <u>admin</u> for all students.
+                        </li>
+                    </ol>
+                    <p class="px-3"><u>NOTE: If you unable to access the test for the student, skip the test, and continue to the next test.</u></p>
+                    <ol start="3    ">
+                        <li>
+                            Says,
+                            <ul style="list-style-type:disc" class="italic_font">
+                                <li>"Yop are going to complete the next few tests on the comppter</li>
+                                <li>Yop will see one question presented to you at a time.</li>
+                                <li>Try your best, but do not be afraid to guess. Complete the questions as quickly as yop can.”</li>
+                            </ul>
+                        </li>
+                    </ol>
+                </div>
+                <div class="px-4 col">
+                    <ol start="4    ">
+                        <li>
+                            Select the appropriate test for the student:
+                            <ul style="list-style-type:disc" class="italic_font">
+                                <li>Star Early Literacy Grades PK-1</li>
+                                <li>Star Reading Grades 2-12+</li>
+                                <li>Star Math Grades K-12+</li>
+                            </ul>
+                        </li>
+                        <li>
+                            Test the student's audio (Grades K-5) and complete the sample questions. <br>
+                            Testing Tips:
+                            <ul style="list-style-type:disc" class="italic_font">
+                                <li>Assist all students when entering student ID and selecting a subject </li>
+                                <li>Read the test instructions displayed on screen to the student</li>
+                                <li>Ensure students are working alone on the test</li>
+                            </ul>
+                        </li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+        <div>
+            <div class="heading_size">B. TEST SPECIFIC OBSERVATIONS</div>
+            <div class="print-row list_size">
+                <div class="col-4 ps-3">
+                    <p class="mb-1">1. Student's Effort was :</p>
+                    <div class="d-flex flex-column ms-4 checkBox-label">
+                        @foreach (EffortRate effortRate in Enum.GetValues(typeof(EffortRate)))
+                        {
+                            var isChecked = Model.starData.EffortRate.Equals(effortRate);
+                            var randomInputId = RandomStringHelper.GenerateRandomUniqueString(5);
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="@randomInputId" @(isChecked ? "checked" : "") value="@effortRate.ToString()">
+                                <label class="form-check-label" for="@randomInputId">@effortRate.ToString().ToProperCase()</label>
+                            </div>
+                        }
+                    </div>
+                </div>
+                <div class="col px-0">
+                    <p class="mb-1">2. Attention Span :</p>
+                    <div class="d-flex flex-column ms-4 checkBox-label">
+                        @foreach (EffortRate effortRate in Enum.GetValues(typeof(EffortRate)))
+                        {
+                            var isChecked = Model.starData.EffortRate.Equals(effortRate);
+                            var randomInputId = RandomStringHelper.GenerateRandomUniqueString(5);
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="@randomInputId" @(isChecked ? "checked" : "") value="@effortRate.ToString()">
+                                <label class="form-check-label" for="@randomInputId">@effortRate.ToString().ToProperCase()</label>
+                            </div>
+                        }
+                    </div>
+                </div>
+                <div class="col-5 ps-3">
+                    <p class="mb-1">3. Did student Exhibit frustration?</p>
+                    <div class="ms-4 ">
+                        @foreach (ExhibitFrustration exhibitFrustration in Enum.GetValues(typeof(ExhibitFrustration)))
+                        {
+                            var isChecked = Model.starData.ExhibitFrustration.Equals(exhibitFrustration);
+                            var randomInputId = RandomStringHelper.GenerateRandomUniqueString(2);
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="@randomInputId" @(isChecked ? "checked" : "") value="@exhibitFrustration.ToString()">
+                                <label class="form-check-label" for="@randomInputId">@exhibitFrustration.ToString().ToProperCase()</label>
+                            </div>
+                        }
+                    </div>
+                    <div class="mt-5">
+                        <label for="studentLastName" class="fw-light">4. This test Administered by and responses recorded by :</label>
+                        <input type="text"
+                               class="form-control"
+                               id="Walter"
+                               value="@(!string.IsNullOrEmpty(Model.starData.ResponseBy) ? Model.starData.ResponseBy : string.Empty)" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="pagebreak"> </div>
+
+<div class="print-row py-2  mt-4 ash_box border border-2">
+    <div class="ms-3 col-11">
+        <div class="d-flex flex-row">
+            <div><p class="fs-5 fw-bold form-label">General Questions</p></div>
+            <div class="green_line"></div>
+        </div>
+
+        <div class="py-2">
+            <label class="form-label">1. How happy are you with these grades ?</label>
+            <div class="col checkbox-label">
+                @foreach (HowHappy howHappy in Enum.GetValues(typeof(HowHappy)))
+                {
+                    var isChecked = Model.starData.HowHappy.Equals(howHappy);
+                    var randomInputId = RandomStringHelper.GenerateRandomUniqueString(3);
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="@randomInputId" @(isChecked ? "checked" : "") value="@howHappy.ToString()">
+                        <label class="form-check-label" for="@randomInputId">@howHappy.ToString().ToProperCase()</label>
+                    </div>
+                }
+            </div>
+        </div>
+
+        <div class="py-2">
+            <label class="form-label">2. Is it easy or hard to take notes in class?</label>
+            <div class="col checkbox-label">
+                @foreach (EasyOrHard easyOrHard in Enum.GetValues(typeof(EasyOrHard)))
+                {
+                    var isChecked = Model.starData.EasyOrHard.Equals(easyOrHard);
+                    var randomInputId = RandomStringHelper.GenerateRandomUniqueString(3);
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="@randomInputId" @(isChecked ? "checked" : "") value="@easyOrHard.ToString()">
+                        <label class="form-check-label" for="@randomInputId">@easyOrHard.ToString().ToProperCase()</label>
+                    </div>
+                }
+            </div>
+        </div>
+
+        <div class="py-2">
+            <span class="form-label">Why is it easy or hard? Student Comments</span>
+            <div class="border border-black rounded-1 mt-2">
+                <p class="m-3">
+                    @(!string.IsNullOrEmpty(Model.starData.Paragraph) ? Model.starData.Paragraph : string.Empty)
+                </p>
+            </div>
+        </div>
+
+        <div class="py-2">
+            <label class="form-label">3. Is it easy or hard to use your notes to study for a test or quiz?</label>
+            <div class="col checkbox-label">
+                <div class="col checkbox-label">
+                    @foreach (EasyOrHard easyOrHard in Enum.GetValues(typeof(EasyOrHard)))
+                    {
+                        var isChecked = Model.starData.EasyOrHard.Equals(easyOrHard);
+                        var randomInputId = RandomStringHelper.GenerateRandomUniqueString(3);
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="@randomInputId" @(isChecked ? "checked" : "") value="@easyOrHard.ToString()">
+                            <label class="form-check-label" for="@randomInputId">@easyOrHard.ToString().ToProperCase()</label>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+
+        <div class="py-2">
+            <span class="form-label">Why is it easy or hard? Student Comment</span>
+            <div class="border border-black rounded-1 mt-2">
+                <p class="m-3">
+                    @(!string.IsNullOrEmpty(Model.starData.Paragraph) ? Model.starData.Paragraph : string.Empty)
+                </p>
+            </div>
+        </div>
+
+        <div class="py-2">
+            <span class="form-label">4. When you do not do well on a quiz, test, project, or assignment, how does that make you feel?</span>
+            <span class="form-label">Student Comments</span>
+            <div class="border border-black rounded-1 mt-2">
+                <p class="m-3">
+                    @(!string.IsNullOrEmpty(Model.starData.Paragraph) ? Model.starData.Paragraph : string.Empty)
+                </p>
+            </div>
+        </div>
+
+        <div class="py-2">
+            <span class="form-label">Additional comments</span>
+            <div class="border border-black rounded-1 mt-2">
+                <p class="m-3">
+                    @(!string.IsNullOrEmpty(Model.starData.Paragraph) ? Model.starData.Paragraph : string.Empty)
+                </p>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="py-2 blue_box mt-4 border border-2 bg-opacity-10">
+    <div class="ms-3">
+        <div class="d-flex flex-row">
+            <div><p class="fs-5 fw-bold">Next Test</p></div>
+            <div class="green_line"></div>
+        </div>
+        <div class="print-row">
+            <div class="col-3">
+                <span>Pre - K to 3:</span>
+                <p class="text-secondary">HMPE</p>
+            </div>
+            <div class="col-3">
+                <span>4 to 12:</span>
+                <p class="text-secondary">HMPE</p>
+            </div>
+            <div class="col me-5">
+            </div>
+        </div>
+    </div>
+</div>
