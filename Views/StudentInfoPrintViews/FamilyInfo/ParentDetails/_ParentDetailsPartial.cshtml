@@ -116,7 +116,7 @@
 
 <div class="print-row element-bottom-gap mt-4" style="height: 10px;">
     <div>
-        <p class="form-label">Parent/ Guardian @Model.ParentCount</p>
+        <p class="form-label">OCCUPATION</p>
     </div>
     <div class="green_line"></div>
 </div>
@@ -146,3 +146,186 @@
         @await Html.PartialAsync("~/Views/Shared/UI/_PrintCheckboxPartial.cshtml", new RazorToPDF.Views.Shared.UI._PrintCheckboxPartialModel { LabelName = "Widowed" })
     </div>
 </div>
+
+@if (@Model.ParentCount == 1)
+{
+    <div class="element-bottom-gap">
+        <label class="form-label">How did you hear about us?</label>
+        <div class="print-row checkbox-label mb-2">
+            <div style="width: 20%">
+                @await Html.PartialAsync("~/Views/Shared/UI/_PrintCheckboxPartial.cshtml", new RazorToPDF.Views.Shared.UI._PrintCheckboxPartialModel { LabelName = "College Fair" })
+            </div>
+            <div style="width: 20%">
+                @await Html.PartialAsync("~/Views/Shared/UI/_PrintCheckboxPartial.cshtml", new RazorToPDF.Views.Shared.UI._PrintCheckboxPartialModel { LabelName = "Google" })
+            </div>
+            <div style="width: 20%">
+                @await Html.PartialAsync("~/Views/Shared/UI/_PrintCheckboxPartial.cshtml", new RazorToPDF.Views.Shared.UI._PrintCheckboxPartialModel { LabelName = "Other" })
+            </div>
+            <div style="width: 20%">
+                @await Html.PartialAsync("~/Views/Shared/UI/_PrintCheckboxPartial.cshtml", new RazorToPDF.Views.Shared.UI._PrintCheckboxPartialModel { LabelName = "Seminar" })
+            </div>
+            <div style="width: 20%">
+                @await Html.PartialAsync("~/Views/Shared/UI/_PrintCheckboxPartial.cshtml", new RazorToPDF.Views.Shared.UI._PrintCheckboxPartialModel { LabelName = "Yodle Online Form" })
+            </div>
+        </div>
+        <div class="print-row checkbox-label mb-2">
+            <div style="width: 20%">
+                @await Html.PartialAsync("~/Views/Shared/UI/_PrintCheckboxPartial.cshtml", new RazorToPDF.Views.Shared.UI._PrintCheckboxPartialModel { LabelName = "CompED" })
+            </div>
+            <div style="width: 20%">
+                @await Html.PartialAsync("~/Views/Shared/UI/_PrintCheckboxPartial.cshtml", new RazorToPDF.Views.Shared.UI._PrintCheckboxPartialModel { LabelName = "Group Testing" })
+            </div>
+            <div style="width: 20%">
+                @await Html.PartialAsync("~/Views/Shared/UI/_PrintCheckboxPartial.cshtml", new RazorToPDF.Views.Shared.UI._PrintCheckboxPartialModel { LabelName = "Paper-name unknown" })
+            </div>
+            <div style="width: 20%">
+                @await Html.PartialAsync("~/Views/Shared/UI/_PrintCheckboxPartial.cshtml", new RazorToPDF.Views.Shared.UI._PrintCheckboxPartialModel { LabelName = "Sign/ Inquired" })
+            </div>
+            <div style="width: 20%"></div>
+        </div>
+        <div class="print-row checkbox-label mb-2">
+            <div style="width: 20%">
+                @await Html.PartialAsync("~/Views/Shared/UI/_PrintCheckboxPartial.cshtml", new RazorToPDF.Views.Shared.UI._PrintCheckboxPartialModel { LabelName = "Counselor" })
+            </div>
+            <div style="width: 20%">
+                @await Html.PartialAsync("~/Views/Shared/UI/_PrintCheckboxPartial.cshtml", new RazorToPDF.Views.Shared.UI._PrintCheckboxPartialModel { LabelName = "Groupon" })
+            </div>
+            <div style="width: 20%">
+                @await Html.PartialAsync("~/Views/Shared/UI/_PrintCheckboxPartial.cshtml", new RazorToPDF.Views.Shared.UI._PrintCheckboxPartialModel { LabelName = "Poster" })
+            </div>
+            <div style="width: 20%">
+                @await Html.PartialAsync("~/Views/Shared/UI/_PrintCheckboxPartial.cshtml", new RazorToPDF.Views.Shared.UI._PrintCheckboxPartialModel { LabelName = "Sign/ Walk-in" })
+            </div>
+            <div style="width: 20%"></div>
+        </div>
+        <div class="print-row checkbox-label mb-2">
+            <div style="width: 20%">
+                @await Html.PartialAsync("~/Views/Shared/UI/_PrintCheckboxPartial.cshtml", new RazorToPDF.Views.Shared.UI._PrintCheckboxPartialModel { LabelName = "Coupon" })
+            </div>
+            <div style="width: 20%">
+                @await Html.PartialAsync("~/Views/Shared/UI/_PrintCheckboxPartial.cshtml", new RazorToPDF.Views.Shared.UI._PrintCheckboxPartialModel { LabelName = "HLC Mail/ Promo" })
+            </div>
+            <div style="width: 20%">
+                @await Html.PartialAsync("~/Views/Shared/UI/_PrintCheckboxPartial.cshtml", new RazorToPDF.Views.Shared.UI._PrintCheckboxPartialModel { LabelName = "Prepaid Other" })
+            </div>
+            <div style="width: 20%">
+                @await Html.PartialAsync("~/Views/Shared/UI/_PrintCheckboxPartial.cshtml", new RazorToPDF.Views.Shared.UI._PrintCheckboxPartialModel { LabelName = "Social Media Other" })
+            </div>
+            <div style="width: 20%"></div>
+        </div>
+        <div class="print-row checkbox-label mb-2">
+            <div style="width: 20%">
+                @await Html.PartialAsync("~/Views/Shared/UI/_PrintCheckboxPartial.cshtml", new RazorToPDF.Views.Shared.UI._PrintCheckboxPartialModel { LabelName = "Direct mail" })
+            </div>
+            <div style="width: 20%">
+                @await Html.PartialAsync("~/Views/Shared/UI/_PrintCheckboxPartial.cshtml", new RazorToPDF.Views.Shared.UI._PrintCheckboxPartialModel { LabelName = "Instagram" })
+            </div>
+            <div style="width: 20%">
+                @await Html.PartialAsync("~/Views/Shared/UI/_PrintCheckboxPartial.cshtml", new RazorToPDF.Views.Shared.UI._PrintCheckboxPartialModel { LabelName = "Principal" })
+            </div>
+            <div style="width: 20%">
+                @await Html.PartialAsync("~/Views/Shared/UI/_PrintCheckboxPartial.cshtml", new RazorToPDF.Views.Shared.UI._PrintCheckboxPartialModel { LabelName = "Superintendent" })
+            </div>
+            <div style="width: 20%"></div>
+        </div>
+        <div class="print-row checkbox-label mb-2">
+            <div style="width: 20%">
+                @await Html.PartialAsync("~/Views/Shared/UI/_PrintCheckboxPartial.cshtml", new RazorToPDF.Views.Shared.UI._PrintCheckboxPartialModel { LabelName = "Facebook" })
+            </div>
+            <div style="width: 20%">
+                @await Html.PartialAsync("~/Views/Shared/UI/_PrintCheckboxPartial.cshtml", new RazorToPDF.Views.Shared.UI._PrintCheckboxPartialModel { LabelName = "Internet Website" })
+            </div>
+            <div style="width: 20%">
+                @await Html.PartialAsync("~/Views/Shared/UI/_PrintCheckboxPartial.cshtml", new RazorToPDF.Views.Shared.UI._PrintCheckboxPartialModel { LabelName = "Psychologist" })
+            </div>
+            <div style="width: 20%">
+                @await Html.PartialAsync("~/Views/Shared/UI/_PrintCheckboxPartial.cshtml", new RazorToPDF.Views.Shared.UI._PrintCheckboxPartialModel { LabelName = "Teacher" })
+            </div>
+            <div style="width: 20%"></div>
+        </div>
+        <div class="print-row checkbox-label mb-2">
+            <div style="width: 20%">
+                @await Html.PartialAsync("~/Views/Shared/UI/_PrintCheckboxPartial.cshtml", new RazorToPDF.Views.Shared.UI._PrintCheckboxPartialModel { LabelName = "Former Student" })
+            </div>
+            <div style="width: 20%">
+                @await Html.PartialAsync("~/Views/Shared/UI/_PrintCheckboxPartial.cshtml", new RazorToPDF.Views.Shared.UI._PrintCheckboxPartialModel { LabelName = "Living Social" })
+            </div>
+            <div style="width: 20%">
+                @await Html.PartialAsync("~/Views/Shared/UI/_PrintCheckboxPartial.cshtml", new RazorToPDF.Views.Shared.UI._PrintCheckboxPartialModel { LabelName = "Radio" })
+            </div>
+            <div style="width: 20%">
+                @await Html.PartialAsync("~/Views/Shared/UI/_PrintCheckboxPartial.cshtml", new RazorToPDF.Views.Shared.UI._PrintCheckboxPartialModel { LabelName = "Television" })
+            </div>
+            <div style="width: 20%"></div>
+        </div>
+        <div class="print-row checkbox-label mb-2">
+            <div style="width: 20%">
+                @await Html.PartialAsync("~/Views/Shared/UI/_PrintCheckboxPartial.cshtml", new RazorToPDF.Views.Shared.UI._PrintCheckboxPartialModel { LabelName = "Friend/ Family" })
+            </div>
+            <div style="width: 20%">
+                @await Html.PartialAsync("~/Views/Shared/UI/_PrintCheckboxPartial.cshtml", new RazorToPDF.Views.Shared.UI._PrintCheckboxPartialModel { LabelName = "Medical" })
+            </div>
+            <div style="width: 20%">
+                @await Html.PartialAsync("~/Views/Shared/UI/_PrintCheckboxPartial.cshtml", new RazorToPDF.Views.Shared.UI._PrintCheckboxPartialModel { LabelName = "Scholarship" })
+            </div>
+            <div style="width: 20%">
+                @await Html.PartialAsync("~/Views/Shared/UI/_PrintCheckboxPartial.cshtml", new RazorToPDF.Views.Shared.UI._PrintCheckboxPartialModel { LabelName = "Twitter" })
+            </div>
+            <div style="width: 20%"></div>
+        </div>
+        <div class="print-row checkbox-label mb-2">
+            <div style="width: 20%">
+                @await Html.PartialAsync("~/Views/Shared/UI/_PrintCheckboxPartial.cshtml", new RazorToPDF.Views.Shared.UI._PrintCheckboxPartialModel { LabelName = "Fundraiser" })
+            </div>
+            <div style="width: 20%">
+                @await Html.PartialAsync("~/Views/Shared/UI/_PrintCheckboxPartial.cshtml", new RazorToPDF.Views.Shared.UI._PrintCheckboxPartialModel { LabelName = "Online AE" })
+            </div>
+            <div style="width: 20%">
+                @await Html.PartialAsync("~/Views/Shared/UI/_PrintCheckboxPartial.cshtml", new RazorToPDF.Views.Shared.UI._PrintCheckboxPartialModel { LabelName = "Scorecard- T.I.P" })
+            </div>
+            <div style="width: 20%">
+                @await Html.PartialAsync("~/Views/Shared/UI/_PrintCheckboxPartial.cshtml", new RazorToPDF.Views.Shared.UI._PrintCheckboxPartialModel { LabelName = "Unknown" })
+            </div>
+            <div style="width: 20%"></div>
+        </div>
+        @await Html.PartialAsync("~/Views/Shared/UI/_PrintNotMandatoryInputGroupPartial.cshtml", new RazorToPDF.Views.Shared.UI._PrintNotMandatoryInputGroupPartialModel { LabelName = "Other", InputType = "Text", InputId = "other", InputPlaceHolder = "Other" })
+    </div>
+}
+
+<div class="element-bottom-gap">
+    <label class="form-label">Would you like to receive out monthly newsletter with educational tips and advice?</label>
+    <div class="print-row checkbox-label">
+        @await Html.PartialAsync("~/Views/Shared/UI/_PrintCheckboxPartial.cshtml", new RazorToPDF.Views.Shared.UI._PrintCheckboxPartialModel { LabelName = "Yes" })
+        @await Html.PartialAsync("~/Views/Shared/UI/_PrintCheckboxPartial.cshtml", new RazorToPDF.Views.Shared.UI._PrintCheckboxPartialModel { LabelName = "No" })
+    </div>
+</div>
+
+@if (@Model.ParentCount == 3)
+{
+    <div class="element-bottom-gap">
+        <div>
+            <p class="italic-style">In the event that we cannot reach you, Please provide us an emergency contact, Ither that a parent or guardian.</p>
+        </div>
+        <div class="print-row element-bottom-gap">
+            <div class="col">
+                <label class="form-label">
+                    Emergency Contact Name
+                </label>
+                @await Html.PartialAsync("~/Views/Shared/UI/_PrintTextareaPartial.cshtml", new RazorToPDF.Views.Shared.UI._PrintTextareaPartialModel { Rows = 2 })
+            </div>
+            <div class="col">
+                <label class="form-label">
+                    Emergency Phone
+                </label>
+                @await Html.PartialAsync("~/Views/Shared/UI/_PrintTextareaPartial.cshtml", new RazorToPDF.Views.Shared.UI._PrintTextareaPartialModel { Rows = 1 })
+            </div>
+        </div>
+        <div class="col">
+            <label class="form-label">
+                Relationship to the student
+            </label>
+            @await Html.PartialAsync("~/Views/Shared/UI/_PrintTextareaPartial.cshtml", new RazorToPDF.Views.Shared.UI._PrintTextareaPartialModel { Rows = 1 })
+        </div>
+    </div>
+}
+    
