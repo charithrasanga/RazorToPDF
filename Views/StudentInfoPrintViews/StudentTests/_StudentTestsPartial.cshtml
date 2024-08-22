@@ -1,0 +1,47 @@
+﻿@page
+@model RazorToPDF.Views.StudentInfoPrintViews.StudentTests._StudentTestsPartialModel
+@{
+}
+
+<div class="page-padding">
+    <div class="element-bottom-gap mt-4">
+        <label class="form-label">* How satisfied are you with your students' test-taking ability?</label>
+        <div class="ash-box-satisfaction">
+            @await Html.PartialAsync("~/Views/Shared/UI/PrintSatisfactionSelector/_PrintSatisSelectWithoutHeadingPartial.cshtml", new RazorToPDF.Views.Shared.UI.PrintSatisfactionSelector._PrintSatisSelectWithoutHeadingPartialModel())
+        </div>
+    </div>
+
+    <div class="element-bottom-gap">
+        <div class="col">
+            <label class="form-label">
+                What state or proficiency test(s) has the student recently taken?
+            </label>
+            @await Html.PartialAsync("~/Views/Shared/UI/_PrintTextareaPartial.cshtml", new RazorToPDF.Views.Shared.UI._PrintTextareaPartialModel { Rows = 15, InputPlaceholder = "" })
+        </div>
+    </div>
+
+    <div class="element-bottom-gap">
+        <div class="col">
+            <label class="form-label">
+                What score did the student achieve?
+            </label>
+            @await Html.PartialAsync("~/Views/Shared/UI/_PrintTextareaPartial.cshtml", new RazorToPDF.Views.Shared.UI._PrintTextareaPartialModel { Rows = 1, InputPlaceholder = "" })
+        </div>
+    </div>
+
+    <div class="element-bottom-gap">
+        <label class="form-label">* How satisfied are you with these scores?</label>
+        <div class="ash-box-satisfaction">
+            @await Html.PartialAsync("~/Views/Shared/UI/PrintSatisfactionSelector/_PrintSatisSelectWithoutHeadingPartial.cshtml", new RazorToPDF.Views.Shared.UI.PrintSatisfactionSelector._PrintSatisSelectWithoutHeadingPartialModel())
+        </div>
+    </div>
+
+    <div class="element-bottom-gap">
+        <div class="col">
+            <label class="form-label">
+                Please explain
+            </label>
+            @await Html.PartialAsync("~/Views/Shared/UI/_PrintTextareaPartial.cshtml", new RazorToPDF.Views.Shared.UI._PrintTextareaPartialModel { Rows = 15, InputPlaceholder = "" })
+        </div>
+    </div>
+</div>

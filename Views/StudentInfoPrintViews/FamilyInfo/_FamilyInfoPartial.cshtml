@@ -1,0 +1,75 @@
+﻿@page
+@using RazorToPDF.ViewModels
+@model RazorToPDF.Views.StudentInfoPrintViews.FamilyInfo._FamilyInfoPartialModel
+@{
+}
+
+<div class="page-padding">
+    @for (int i = 0; i<3; i++)
+    {
+        <div>
+            @await Html.PartialAsync("~/Views/StudentInfoPrintViews/FamilyInfo/ParentDetails/_ParentDetailspartial.cshtml", new RazorToPDF.Views.StudentInfoPrintViews.FamilyInfo.ParentDetails._ParentDetailsPartialModel { ParentCount = (i+1) })
+        </div>
+    }
+
+    <div class="element-bottom-gap mt-4">
+        <div>
+            <label class="form-label">
+                Sibiling's names and grades
+            </label>
+        </div>
+        <div>
+            <table class="sibling-table">
+                <thead>
+                    <tr>
+                        <th><span style="font-size: 7px;">First name</span></th>
+                        <th><span style="font-size: 7px;">Last name</span></th>
+                        <th>
+                            <span style="font-size: 7px;">Grade (2021 - 2022 Academic Year)</span>
+                        </th>
+                        <th>
+                            <span style="font-size: 7px;">What grade is the sibling expected to be in the next year?</span>
+                        </th>
+                        <th><span style="font-size: 7px;">Age(Years)</span></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="default-data-row">
+                        <td>
+                            <span></span>
+                        </td>
+                        <td>
+                            <span></span>
+                        </td>
+                        <td>
+                            <span></span>
+                        </td>
+                        <td>
+                            <span></span>
+                        </td>
+                        <td>
+                            <span></span>
+                        </td>
+                    </tr>
+                    <tr class="default-data-row">
+                        <td>
+                            <span></span>
+                        </td>
+                        <td>
+                            <span></span>
+                        </td>
+                        <td>
+                            <span></span>
+                        </td>
+                        <td>
+                            <span></span>
+                        </td>
+                        <td>
+                            <span></span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
