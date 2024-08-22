@@ -1,0 +1,122 @@
+﻿@page
+@using RazorToPDF.ViewModels
+@model RazorToPDF.Views.StudentInfoPrintViews.StudentPerformance._StudentPerformancePartialModel
+@{
+}
+
+<div class="page-padding">
+    <div class="mt-4 element-bottom-gap">
+        <div class="col">
+            <label class="form-label">
+                <span class="text-danger"><b>*</b></span>What do you expect to learn from Huntington Learning Center?
+            </label>
+            @await Html.PartialAsync("~/Views/Shared/UI/_PrintTextareaPartial.cshtml", new RazorToPDF.Views.Shared.UI._PrintTextareaPartialModel { Rows = 15 })
+        </div>
+    </div>
+
+    <div class="element-bottom-gap">
+        <label class="form-label"><span class="text-danger"><b>*</b></span> How satisfied are you with your students' overall performance in school?</label>
+        <div class="ash-box-satisfaction">
+            @await Html.PartialAsync("~/Views/Shared/UI/PrintSatisfactionSelector/_PrintSatisSelectWithoutHeadingPartial.cshtml", new RazorToPDF.Views.Shared.UI.PrintSatisfactionSelector._PrintSatisSelectWithoutHeadingPartialModel())
+        </div>
+    </div>
+
+    <div class="element-bottom-gap">
+        <div class="col">
+            <label class="form-label">Please select what subject areas are of most concern</label>
+            <div class="print-row checkbox-label">
+                @await Html.PartialAsync("~/Views/Shared/UI/_PrintCheckboxPartial.cshtml", new RazorToPDF.Views.Shared.UI._PrintCheckboxPartialModel { LabelName = "Reading/ Language Arts/ English" })
+                @await Html.PartialAsync("~/Views/Shared/UI/_PrintCheckboxPartial.cshtml", new RazorToPDF.Views.Shared.UI._PrintCheckboxPartialModel { LabelName = "Math" })
+                @await Html.PartialAsync("~/Views/Shared/UI/_PrintCheckboxPartial.cshtml", new RazorToPDF.Views.Shared.UI._PrintCheckboxPartialModel { LabelName = "Social Studies/ History" })
+                @await Html.PartialAsync("~/Views/Shared/UI/_PrintCheckboxPartial.cshtml", new RazorToPDF.Views.Shared.UI._PrintCheckboxPartialModel { LabelName = "Science" })
+                @await Html.PartialAsync("~/Views/Shared/UI/_PrintCheckboxPartial.cshtml", new RazorToPDF.Views.Shared.UI._PrintCheckboxPartialModel { LabelName = "Other" })
+            </div>
+        </div>
+    </div>
+
+    <div class="element-bottom-gap">
+        <div class="print-row">
+            @await Html.PartialAsync("~/Views/Shared/UI/_PrintSubjectCardPartial.cshtml", new RazorToPDF.Views.Shared.UI._PrintSubjectCardPartialModel { SubjectName = "Reading/ Language Art/ English" })
+            @await Html.PartialAsync("~/Views/Shared/UI/_PrintSubjectCardPartial.cshtml", new RazorToPDF.Views.Shared.UI._PrintSubjectCardPartialModel { SubjectName = "Math" })
+        </div>
+    </div>
+
+    <div class="element-bottom-gap">
+        <div class="print-row">
+            @await Html.PartialAsync("~/Views/Shared/UI/_PrintSubjectCardPartial.cshtml", new RazorToPDF.Views.Shared.UI._PrintSubjectCardPartialModel { SubjectName = "Social Studies/ History" })
+            @await Html.PartialAsync("~/Views/Shared/UI/_PrintSubjectCardPartial.cshtml", new RazorToPDF.Views.Shared.UI._PrintSubjectCardPartialModel { SubjectName = "Science" })
+        </div>
+    </div>
+
+    <div class="element-bottom-gap print-row">
+        <div class="subject-card col">
+            <div class="print-row mb-2" style="height: 9px">
+                <div><p class="subject-card-header">Other</p></div>
+                <div class="subject-card-ash-line"></div>
+            </div>
+
+            <div class="col">
+                <label class="subject-card-form-label">
+                    Name of the subject
+                </label>
+                <div class="textarea-group">
+                    <textarea rows=4 class="subject-card-input"></textarea>
+                </div>
+            </div>
+
+            <div class="col">
+                <label class="subject-card-form-label">
+                    Most recent report card grade
+                </label>
+                <div class="textarea-group">
+                    <textarea rows=1 class="subject-card-input"></textarea>
+                </div>
+            </div>
+
+            <div class="col">
+                <label class="subject-card-form-label">
+                    Course name
+                </label>
+                <div class="textarea-group">
+                    <textarea rows=4 class="subject-card-input"></textarea>
+                </div>
+            </div>
+
+            <div class="">
+                <label class="subject-card-form-label">Is this</label>
+                <div>
+                    <div>
+                        <div class="print-row subject-card-checkbox-label">
+                            <div class="form-check form-check-inline subject-card-checkbox">
+                                <input class="form-check-input" type="checkbox" id="honors" value="Honors">
+                                <label class="form-check-label ms-1" style="margin-top:1px;">Honors</label>
+                            </div>
+                            <div class="form-check form-check-inline subject-card-checkbox">
+                                <input class="form-check-input" type="checkbox" id="ib" value="International Baccalaureate (IB)">
+                                <label class="form-check-label ms-1" style="margin-top:1px;">Honors</label>
+                            </div>
+                        </div>
+                        <div class="print-row subject-card-checkbox-label">
+                            <div class="form-check form-check-inline subject-card-checkbox">
+                                <input class="form-check-input" type="checkbox" id="ap" value="Advanced Placement (AP)">
+                                <label class="form-check-label ms-1" style="margin-top:1px;">Advanced Placement (AP)</label>
+                            </div>
+                            <div class="form-check form-check-inline subject-card-checkbox">
+                                <input class="form-check-input" type="checkbox" id="ib" value="Dual Enrollment (DE)">
+                                <label class="form-check-label ms-1" style="margin-top:1px;">Dual Enrollment (DE)</label>
+                            </div>
+                        </div>
+                        <div class="print-row subject-card-checkbox-label">
+                            <div class="form-check form-check-inline subject-card-checkbox">
+                                <input class="form-check-input" type="checkbox" id="honors" value="Gifted and Talented">
+                                <label class="form-check-label ms-1" style="margin-top:1px;">Gifted and Talented</label>
+                            </div>
+                            <div class="form-check form-check-inline subject-card-checkbox">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

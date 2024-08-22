@@ -1,0 +1,159 @@
+﻿@page
+@model RazorToPDF.Views.StudentInfoPrintViews.ExamPrep._ExamPrepPartialModel
+@{
+}
+
+<div class="page-padding">
+    <div class="mt-4 print-row mb-3">
+        <div class="blue-box">
+            @await Html.PartialAsync("~/Views/Shared/UI/_PrintExamPrepPartial.cshtml", new RazorToPDF.Views.Shared.UI._PrintExamPrepPartialModel { ExamType = "PreACT" })
+            @await Html.PartialAsync("~/Views/Shared/UI/_PrintExamPrepScoresPartial.cshtml", new RazorToPDF.Views.Shared.UI._PrintExamPrepScoresPartialModel())
+        </div>
+        <div class="ash-box">
+            @await Html.PartialAsync("~/Views/Shared/UI/_PrintExamPrepPartial.cshtml", new RazorToPDF.Views.Shared.UI._PrintExamPrepPartialModel { ExamType = "Act" })
+            @await Html.PartialAsync("~/Views/Shared/UI/_PrintExamPrepScoresPartial.cshtml", new RazorToPDF.Views.Shared.UI._PrintExamPrepScoresPartialModel())
+        </div>
+    </div>
+
+    <div class="print-row mb-3">
+        <div class="ash-box">
+            @await Html.PartialAsync("~/Views/Shared/UI/_PrintExamPrepPartial.cshtml", new RazorToPDF.Views.Shared.UI._PrintExamPrepPartialModel { ExamType = "PreACT" })
+        </div>
+        <div class="blue-box">
+            @await Html.PartialAsync("~/Views/Shared/UI/_PrintExamPrepPartial.cshtml", new RazorToPDF.Views.Shared.UI._PrintExamPrepPartialModel { ExamType = "Act" })
+        </div>
+    </div>
+
+    <div class="print-row mb-3">
+        <div class="ash-box">
+            @await Html.PartialAsync("~/Views/Shared/UI/_PrintExamPrepScoresPartial.cshtml", new RazorToPDF.Views.Shared.UI._PrintExamPrepScoresPartialModel())
+        </div>
+        <div class="blue-box">
+            @await Html.PartialAsync("~/Views/Shared/UI/_PrintExamPrepScoresPartial.cshtml", new RazorToPDF.Views.Shared.UI._PrintExamPrepScoresPartialModel())
+        </div>
+    </div>
+
+    <div class="mb-3">
+        <div class="print-row">
+            <div class="ash-box-satisfaction">
+                @await Html.PartialAsync("~/Views/Shared/UI/PrintSatisfactionSelector/_PrintSatisSelectWithoutHeadingPartial.cshtml", new RazorToPDF.Views.Shared.UI.PrintSatisfactionSelector._PrintSatisSelectWithoutHeadingPartialModel())
+            </div>            
+            <div class="col-6">
+                <label class="form-label">Has the student preppedfor any of these tests before?</label>
+                <div class="print-row checkbox-label">
+                    @await Html.PartialAsync("~/Views/Shared/UI/_PrintCheckboxPartial.cshtml", new RazorToPDF.Views.Shared.UI._PrintCheckboxPartialModel { LabelName = "Yes" })
+                    @await Html.PartialAsync("~/Views/Shared/UI/_PrintCheckboxPartial.cshtml", new RazorToPDF.Views.Shared.UI._PrintCheckboxPartialModel { LabelName = "No" })
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">If yes, select all that apply?</label>
+        <div class="print-row checkbox-label">
+            @await Html.PartialAsync("~/Views/Shared/UI/_PrintCheckboxPartial.cshtml", new RazorToPDF.Views.Shared.UI._PrintCheckboxPartialModel { LabelName = "PreACT" })
+            @await Html.PartialAsync("~/Views/Shared/UI/_PrintCheckboxPartial.cshtml", new RazorToPDF.Views.Shared.UI._PrintCheckboxPartialModel { LabelName = "ACT" })
+            @await Html.PartialAsync("~/Views/Shared/UI/_PrintCheckboxPartial.cshtml", new RazorToPDF.Views.Shared.UI._PrintCheckboxPartialModel { LabelName = "PSAT" })
+            @await Html.PartialAsync("~/Views/Shared/UI/_PrintCheckboxPartial.cshtml", new RazorToPDF.Views.Shared.UI._PrintCheckboxPartialModel { LabelName = "SAT" }) 
+        </div>
+    </div>
+
+    <div class="mb-3">
+        <div class="col">
+            <label class="form-label">
+                * If yes, with whom?
+            </label>
+            @await Html.PartialAsync("~/Views/Shared/UI/_PrintTextareaPartial.cshtml", new RazorToPDF.Views.Shared.UI._PrintTextareaPartialModel { Rows = 15 })
+        </div>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Does the student plan to take the</label>
+        <div class="print-row checkbox-label">
+            @await Html.PartialAsync("~/Views/Shared/UI/_PrintCheckboxPartial.cshtml", new RazorToPDF.Views.Shared.UI._PrintCheckboxPartialModel { LabelName = "PreACT" })
+            @await Html.PartialAsync("~/Views/Shared/UI/_PrintCheckboxPartial.cshtml", new RazorToPDF.Views.Shared.UI._PrintCheckboxPartialModel { LabelName = "ACT" })
+            @await Html.PartialAsync("~/Views/Shared/UI/_PrintCheckboxPartial.cshtml", new RazorToPDF.Views.Shared.UI._PrintCheckboxPartialModel { LabelName = "PSAT" })
+            @await Html.PartialAsync("~/Views/Shared/UI/_PrintCheckboxPartial.cshtml", new RazorToPDF.Views.Shared.UI._PrintCheckboxPartialModel { LabelName = "SAT" })
+        </div>
+    </div>  
+
+    <div class="mb-3">
+        <div class="print-row">
+                <div class="col">
+                    <label class="form-label">
+                        When does the student plan to take PreACT?
+                    </label>
+                    @await Html.PartialAsync("~/Views/Shared/UI/_PrintTextareaPartial.cshtml", new RazorToPDF.Views.Shared.UI._PrintTextareaPartialModel { Rows = 1, InputPlaceholder = "" })
+                </div>
+                <div class="col">
+                    <label class="form-label">
+                        When does the student plan to take ACT?
+                    </label>
+                    @await Html.PartialAsync("~/Views/Shared/UI/_PrintTextareaPartial.cshtml", new RazorToPDF.Views.Shared.UI._PrintTextareaPartialModel { Rows = 1, InputPlaceholder = "" })
+                </div>
+                <div class="col">
+                    <label class="form-label">
+                        When does the student plan to take PSAT?
+                    </label>
+                    @await Html.PartialAsync("~/Views/Shared/UI/_PrintTextareaPartial.cshtml", new RazorToPDF.Views.Shared.UI._PrintTextareaPartialModel { Rows = 1, InputPlaceholder = "" })
+                </div>
+                <div class="col">
+                    <label class="form-label">
+                        When does the student plan to take SAT?
+                    </label>
+                    @await Html.PartialAsync("~/Views/Shared/UI/_PrintTextareaPartial.cshtml", new RazorToPDF.Views.Shared.UI._PrintTextareaPartialModel { Rows = 1, InputPlaceholder = "" })
+                </div>
+        </div>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">What is your student's desired goal score?</label>
+        <div class="print-row">
+            <div class="col">
+                <label class="form-label">
+                    PreACT - Total
+                </label>
+                @await Html.PartialAsync("~/Views/Shared/UI/_PrintTextareaPartial.cshtml", new RazorToPDF.Views.Shared.UI._PrintTextareaPartialModel { Rows = 1, InputPlaceholder = "" })
+                @await Html.PartialAsync("~/Views/Shared/UI/_PrintCheckboxPartial.cshtml", new RazorToPDF.Views.Shared.UI._PrintCheckboxPartialModel { LabelName = "Don't know" })
+            </div>
+            <div class="col">
+                <label class="form-label">
+                    ACT - Total
+                </label>
+                @await Html.PartialAsync("~/Views/Shared/UI/_PrintTextareaPartial.cshtml", new RazorToPDF.Views.Shared.UI._PrintTextareaPartialModel { Rows = 1, InputPlaceholder = "" })
+                @await Html.PartialAsync("~/Views/Shared/UI/_PrintCheckboxPartial.cshtml", new RazorToPDF.Views.Shared.UI._PrintCheckboxPartialModel { LabelName = "Don't know" })
+            </div>
+            <div class="col">
+                <label class="form-label">
+                    PSAT - Total
+                </label>
+                @await Html.PartialAsync("~/Views/Shared/UI/_PrintTextareaPartial.cshtml", new RazorToPDF.Views.Shared.UI._PrintTextareaPartialModel { Rows = 1, InputPlaceholder = "" })
+                @await Html.PartialAsync("~/Views/Shared/UI/_PrintCheckboxPartial.cshtml", new RazorToPDF.Views.Shared.UI._PrintCheckboxPartialModel { LabelName = "Don't know" })
+            </div>
+            <div class="col">
+                <label class="form-label">
+                    SAT - Total
+                </label>
+                @await Html.PartialAsync("~/Views/Shared/UI/_PrintTextareaPartial.cshtml", new RazorToPDF.Views.Shared.UI._PrintTextareaPartialModel { Rows = 1, InputPlaceholder = "" })
+                @await Html.PartialAsync("~/Views/Shared/UI/_PrintCheckboxPartial.cshtml", new RazorToPDF.Views.Shared.UI._PrintCheckboxPartialModel { LabelName = "Don't know" })
+            </div>
+        </div>
+    </div>
+
+    <div class="mb-3">
+        <div class="col">
+            <label class="form-label">
+                Target Colleges:
+            </label>
+            <div class="mb-3">
+                @await Html.PartialAsync("~/Views/Shared/UI/_PrintTextareaPartial.cshtml", new RazorToPDF.Views.Shared.UI._PrintTextareaPartialModel { Rows = 15 })
+            </div>
+            <div class="mb-3">
+                @await Html.PartialAsync("~/Views/Shared/UI/_PrintTextareaPartial.cshtml", new RazorToPDF.Views.Shared.UI._PrintTextareaPartialModel { Rows = 15 })
+            </div>
+            <div class="mb-3">
+                @await Html.PartialAsync("~/Views/Shared/UI/_PrintTextareaPartial.cshtml", new RazorToPDF.Views.Shared.UI._PrintTextareaPartialModel { Rows = 15 })
+            </div>
+        </div>
+    </div>
+</div>
