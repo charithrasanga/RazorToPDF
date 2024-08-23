@@ -21,4 +21,49 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Views\InitialConferencePrintViews\CodeOfEthics\" />
+    <Folder Include="Views\InitialConferencePrintViews\CreditCardAR\AC_2\" />
+    <Folder Include="Views\InitialConferencePrintViews\CreditCardAR\AC_3\" />
+    <Folder Include="Views\InitialConferencePrintViews\GeneralEnrollmentAgreement\" />
+    <Folder Include="Views\InitialConferencePrintViews\AccreditationInformation\" />
+    <Folder Include="Views\InitialConferencePrintViews\StudentHolidayShedule\" />
+    <Folder Include="Views\InitialConferencePrintViews\WelcomeLetter\" />
+    <Folder Include="Views\InitialConferencePrintViews\SavingsCertificate\" />
+    <Folder Include="Views\InitialConferencePrintViews\SharingOurSuccess\" />
+    <Folder Include="Views\InitialConferencePrintViews\CoverSheet\CoverSheetAC_2\" />
+    <Folder Include="Views\InitialConferencePrintViews\CoverSheet\CoverSheetAC_3\" />
+    <Folder Include="Views\InitialConferencePrintViews\CoverSheet\CoverSheetAC_4\" />
+    <Folder Include="Views\InitialConferencePrintViews\CoverSheet\CoverSheetAC_5\" />
+    <Folder Include="Views\InitialConferencePrintViews\CoverSheet\CoverSheetAC_6\" />
+    <Folder Include="Views\InitialConferencePrintViews\HuntingtonResults\" />
+    <Folder Include="Views\InitialConferencePrintViews\GratefulParents\" />
+    <Folder Include="Views\InitialConferencePrintViews\StayingCommitedToSuccess\" />
+    <Folder Include="Views\InitialConferencePrintViews\Schedule&amp;Tution\AC_2&amp;3\" />
+    <Folder Include="Views\InitialConferencePrintViews\Schedule&amp;Tution\AC_4\" />
+    <Folder Include="Views\InitialConferencePrintViews\Schedule&amp;Tution\AC_5\" />
+    <Folder Include="Views\InitialConferencePrintViews\TutionOptions\" />
+    <Folder Include="Views\InitialConferencePrintViews\Schedule\Summer_AC_2&amp;3\" />
+    <Folder Include="Views\InitialConferencePrintViews\Schedule\Summer_AC_4\" />
+    <Folder Include="Views\InitialConferencePrintViews\Schedule\Summer_AC_5\" />
+    <Folder Include="Views\InitialConferencePrintViews\Schedule\SchoolYear_AC_2&amp;3\" />
+    <Folder Include="Views\InitialConferencePrintViews\Schedule\SchoolYear_AC_4\" />
+    <Folder Include="Views\InitialConferencePrintViews\Schedule\SchoolYear_AC_5\" />
+    <Folder Include="Views\InitialConferencePrintViews\StudentTests\BOEHM\" />
+    <Folder Include="Views\InitialConferencePrintViews\StudentTests\HSSS\" />
+    <Folder Include="Views\InitialConferencePrintViews\StudentTests\HPA\" />
+    <Folder Include="Views\InitialConferencePrintViews\StudentTests\Rosner\" />
+    <Folder Include="Views\InitialConferencePrintViews\StudentTests\WritingSample\" />
+    <Folder Include="Views\InitialConferencePrintViews\StudentTests\ReadingReadinessLR\" />
+    <Folder Include="Views\InitialConferencePrintViews\StudentTests\ReadingReadinessGK\" />
+    <Folder Include="Views\InitialConferencePrintViews\StudentTests\ReadingReadiness\" />
+    <Folder Include="Views\InitialConferencePrintViews\StudentTests\WOLD\" />
+    <Folder Include="Views\InitialConferencePrintViews\WhatWeSeeForStudent\AC_2&amp;3\" />
+    <Folder Include="Views\InitialConferencePrintViews\WhatWeSeeForStudent\AC_4\" />
+    <Folder Include="Views\InitialConferencePrintViews\WhatWeSeeForStudent\AC_5\" />
+    <Folder Include="Views\InitialConferencePrintViews\WhatWeSeeSoFar\AC_2&amp;3\" />
+    <Folder Include="Views\InitialConferencePrintViews\WhatWeSeeSoFar\AC_4\" />
+    <Folder Include="Views\InitialConferencePrintViews\WhatWeSeeSoFar\AC_5\" />
+  </ItemGroup>
+
 </Project>
