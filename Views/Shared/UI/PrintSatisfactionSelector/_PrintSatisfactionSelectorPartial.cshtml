@@ -1,0 +1,99 @@
+﻿@model RazorToPDF.Views.Shared.UI.PrintSatisfactionSelector._PrintSatisfactionSelectorPartialModel
+
+<div class="satisfaction-selector col-6">
+    <div class="satisfaction-selector__title">
+        <p class="mb-1">*@Model.SatisfactionArea</p>
+        <div></div>
+    </div>
+    <div class="satisfaction-selector__wrapper">
+        <div class="satisfaction-selector__container">
+            <div class="satisfaction-selector__container__image-container">
+                <div class="satisfaction-selector__container__svg__container">
+                    <svg style="height: 10.00px; width:10.00px;" width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M5.0002 9.74405C7.62036 9.74405 9.74442 7.61999 9.74442 4.99983C9.74442 2.37967 7.62036 0.255615 5.0002 0.255615C2.38004 0.255615 0.255981 2.37967 0.255981 4.99983C0.255981 7.61999 2.38004 9.74405 5.0002 9.74405Z" stroke="#00BA00" stroke-width="0.51079" />
+                        <path d="M3.51869 4.44388C4.02986 4.44388 4.44424 4.02949 4.44424 3.51832C4.44424 3.00716 4.02986 2.59277 3.51869 2.59277C3.00752 2.59277 2.59314 3.00716 2.59314 3.51832C2.59314 4.02949 3.00752 4.44388 3.51869 4.44388Z" fill="#00BA00" />
+                        <path d="M6.48134 4.44388C6.99251 4.44388 7.40689 4.02949 7.40689 3.51832C7.40689 3.00716 6.99251 2.59277 6.48134 2.59277C5.97017 2.59277 5.55579 3.00716 5.55579 3.51832C5.55579 4.02949 5.97017 4.44388 6.48134 4.44388Z" fill="#00BA00" />
+                        <path d="M4.86116 7.21777C4.39685 7.24067 3.93581 7.12897 3.53348 6.89609C3.13115 6.66321 2.80465 6.31906 2.59325 5.90504L7.21692 5.90504C6.98448 6.32068 6.64111 6.66353 6.22512 6.89534C5.80913 7.12715 5.33691 7.23878 4.86116 7.21777Z" fill="#00BA00" />
+                    </svg>
+                </div>
+                <span>VERY PLEASED</span>
+            </div>
+            <input type="checkbox" value="Pleased" />
+        </div>
+
+        <div class="satisfaction-selector__container">
+            <div class="satisfaction-selector__container__image-container">
+                <div class="satisfaction-selector__container__svg__container">
+                    <svg style="height: 9.49px; width:9.49px;" width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M5.00008 9.74405C7.62024 9.74405 9.7443 7.61999 9.7443 4.99983C9.7443 2.37967 7.62024 0.255615 5.00008 0.255615C2.37992 0.255615 0.255859 2.37967 0.255859 4.99983C0.255859 7.61999 2.37992 9.74405 5.00008 9.74405Z" stroke="#4EE07B" stroke-width="0.51079" />
+                        <path d="M3.51869 4.44388C4.02986 4.44388 4.44424 4.02949 4.44424 3.51832C4.44424 3.00716 4.02986 2.59277 3.51869 2.59277C3.00752 2.59277 2.59314 3.00716 2.59314 3.51832C2.59314 4.02949 3.00752 4.44388 3.51869 4.44388Z" fill="#4BE28B" />
+                        <path d="M6.48134 4.44388C6.99251 4.44388 7.40689 4.02949 7.40689 3.51832C7.40689 3.00716 6.99251 2.59277 6.48134 2.59277C5.97017 2.59277 5.55579 3.00716 5.55579 3.51832C5.55579 4.02949 5.97017 4.44388 6.48134 4.44388Z" fill="#4BE28B" />
+                        <path d="M3.00049 6.26904C3.2027 6.63873 3.50391 6.94506 3.87043 7.15295C4.23695 7.36084 4.65451 7.46242 5.07557 7.44625C5.47511 7.44312 5.86623 7.33217 6.20789 7.12502C6.54955 6.91786 6.82945 6.62185 7.01697 6.26904" stroke="#4EE07B" stroke-width="0.51079" />
+                    </svg>
+                </div>
+                <span>PLEASED</span>
+            </div>
+            <input type="checkbox" [checked]="value === 'Pleased'" />
+        </div>
+
+        <div class="satisfaction-selector__container">
+            <div class="satisfaction-selector__container__image-container">
+                <div class="satisfaction-selector__container__svg__container">
+                    <svg style="height: 10.00px; width:10.00px;" width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M5.0002 9.74405C7.62036 9.74405 9.74442 7.61999 9.74442 4.99983C9.74442 2.37967 7.62036 0.255615 5.0002 0.255615C2.38004 0.255615 0.255981 2.37967 0.255981 4.99983C0.255981 7.61999 2.38004 9.74405 5.0002 9.74405Z" stroke="#FFC32D" stroke-width="0.51079" />
+                        <path d="M3.51869 4.44388C4.02986 4.44388 4.44424 4.02949 4.44424 3.51832C4.44424 3.00716 4.02986 2.59277 3.51869 2.59277C3.00752 2.59277 2.59314 3.00716 2.59314 3.51832C2.59314 4.02949 3.00752 4.44388 3.51869 4.44388Z" fill="#FFC32D" />
+                        <path d="M6.48134 4.44388C6.99251 4.44388 7.40689 4.02949 7.40689 3.51832C7.40689 3.00716 6.99251 2.59277 6.48134 2.59277C5.97017 2.59277 5.55579 3.00716 5.55579 3.51832C5.55579 4.02949 5.97017 4.44388 6.48134 4.44388Z" fill="#FFC32D" />
+                        <path d="M2.96521 6.8335H7.22312" stroke="#FFC32D" stroke-width="0.51079" />
+                    </svg>
+                </div>
+                <span>NEUTRAL</span>
+            </div>
+            <input type="checkbox" [checked]="value === 'Neutral'" />
+        </div>
+
+        <div class="satisfaction-selector__container">
+            <div class="satisfaction-selector__container__image-container">
+                <div class="satisfaction-selector__container__svg__container">
+                    <svg style="height: 10.00px; width:10.00px;" width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M5.0002 9.74405C7.62036 9.74405 9.74442 7.61999 9.74442 4.99983C9.74442 2.37967 7.62036 0.255615 5.0002 0.255615C2.38004 0.255615 0.255981 2.37967 0.255981 4.99983C0.255981 7.61999 2.38004 9.74405 5.0002 9.74405Z" stroke="#FE6200" stroke-width="0.51079" />
+                        <path d="M3.51869 4.44388C4.02986 4.44388 4.44424 4.02949 4.44424 3.51832C4.44424 3.00716 4.02986 2.59277 3.51869 2.59277C3.00752 2.59277 2.59314 3.00716 2.59314 3.51832C2.59314 4.02949 3.00752 4.44388 3.51869 4.44388Z" fill="#FE6200" />
+                        <path d="M6.48134 4.44388C6.99251 4.44388 7.40689 4.02949 7.40689 3.51832C7.40689 3.00716 6.99251 2.59277 6.48134 2.59277C5.97017 2.59277 5.55579 3.00716 5.55579 3.51832C5.55579 4.02949 5.97017 4.44388 6.48134 4.44388Z" fill="#FE6200" />
+                        <path d="M2.98425 7.32445C3.22967 6.99333 3.54736 6.72243 3.91305 6.53233C4.27874 6.34223 4.68324 6.23769 5.09525 6.22705C5.48189 6.23528 5.86071 6.34072 6.19664 6.53233C6.53257 6.72393 6.81478 6.99585 7.0187 7.32445" stroke="#FE6200" stroke-width="0.51079" />
+                    </svg>
+                </div>
+                <span>DISSATISFIED</span>
+            </div>
+            <input type="checkbox" [checked]="value === 'Dissatisfied'" />
+        </div>
+
+        <div class="satisfaction-selector__container">
+            <div class="satisfaction-selector__container__image-container">
+                <div class="satisfaction-selector__container__svg__container">
+                    <svg style="height: 9.49px; width:9.49px;" width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M5.0002 9.74405C7.62036 9.74405 9.74442 7.61999 9.74442 4.99983C9.74442 2.37967 7.62036 0.255615 5.0002 0.255615C2.38004 0.255615 0.255981 2.37967 0.255981 4.99983C0.255981 7.61999 2.38004 9.74405 5.0002 9.74405Z" stroke="#FE6200" stroke-width="0.51079" />
+                        <path d="M3.51869 4.44388C4.02986 4.44388 4.44424 4.02949 4.44424 3.51832C4.44424 3.00716 4.02986 2.59277 3.51869 2.59277C3.00752 2.59277 2.59314 3.00716 2.59314 3.51832C2.59314 4.02949 3.00752 4.44388 3.51869 4.44388Z" fill="#FE6200" />
+                        <path d="M6.48134 4.44388C6.99251 4.44388 7.40689 4.02949 7.40689 3.51832C7.40689 3.00716 6.99251 2.59277 6.48134 2.59277C5.97017 2.59277 5.55579 3.00716 5.55579 3.51832C5.55579 4.02949 5.97017 4.44388 6.48134 4.44388Z" fill="#FE6200" />
+                        <path d="M2.98425 7.32445C3.22967 6.99333 3.54736 6.72243 3.91305 6.53233C4.27874 6.34223 4.68324 6.23769 5.09525 6.22705C5.48189 6.23528 5.86071 6.34072 6.19664 6.53233C6.53257 6.72393 6.81478 6.99585 7.0187 7.32445" stroke="#FE6200" stroke-width="0.51079" />
+                    </svg>
+
+                </div>
+                <span>VERY DISSATISFIED</span>
+            </div>
+            <input type="checkbox" [checked]="value === 'VeryDissatisfied'" />
+        </div>
+
+        <div class="satisfaction-selector__container">
+            <div class="satisfaction-selector__container__image-container">
+                <div class="satisfaction-selector__container__svg__container">
+                    <svg style="height: 10.00px; width:10.00px;" width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M5 0.51079C2.52464 0.51079 0.51079 2.52464 0.51079 5C0.51079 7.47536 2.52464 9.48921 5 9.48921C7.47536 9.48921 9.48921 7.47536 9.48921 5C9.48921 2.52464 7.47536 0.51079 5 0.51079ZM5 0C7.76142 0 10 2.23858 10 5C10 7.76142 7.76142 10 5 10C2.23858 10 0 7.76142 0 5C0 2.23858 2.23858 0 5 0Z" fill="#4EBCDD" />
+                        <path d="M3.51832 4.44388C4.02949 4.44388 4.44388 4.02949 4.44388 3.51832C4.44388 3.00716 4.02949 2.59277 3.51832 2.59277C3.00716 2.59277 2.59277 3.00716 2.59277 3.51832C2.59277 4.02949 3.00716 4.44388 3.51832 4.44388Z" fill="#4EBCDD" />
+                        <path d="M6.48073 4.44388C6.9919 4.44388 7.40628 4.02949 7.40628 3.51832C7.40628 3.00716 6.9919 2.59277 6.48073 2.59277C5.96956 2.59277 5.55518 3.00716 5.55518 3.51832C5.55518 4.02949 5.96956 4.44388 6.48073 4.44388Z" fill="#4EBCDD" />
+                    </svg>
+                </div>
+                <span>DON'T KNOW</span>
+            </div>
+            <input type="checkbox" [checked]="value === 'DontKnow'" />
+        </div>
+    </div>
+</div>

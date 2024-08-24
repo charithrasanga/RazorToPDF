@@ -1,0 +1,63 @@
+﻿@model RazorToPDF.Views.Shared.UI._PrintSubjectCardPartialModel
+
+<div class="subject-card col">
+    <div class="print-row mb-2" style="height: 9px">
+        <div><p class="subject-card-header">Parent/ Guardian @Model.SubjectName</p></div>
+        <div class="subject-card-ash-line"></div>
+    </div>
+
+    <div class="col">
+        <label class="subject-card-form-label">
+            Most recent report card grade
+        </label>
+        <div class="textarea-group">
+            <textarea rows=1 class="subject-card-input"></textarea>
+        </div>
+    </div>
+
+    <div class="col">
+        <label class="subject-card-form-label">
+            Course name
+        </label>
+        <div class="textarea-group">
+            <textarea rows=8 class="subject-card-input"></textarea>
+        </div>
+    </div>
+
+    <div>
+        <label class="subject-card-form-label">Is this</label>
+        <div>
+            <div>
+                <div class="print-row subject-card-checkbox-label">
+                    <div class="form-check form-check-inline subject-card-checkbox">
+                        <input class="form-check-input" type="checkbox" id="honors" value="Honors">
+                        <label class="form-check-label ms-1" style="margin-top:1px;">Honors</label>
+                    </div>
+                    <div class="form-check form-check-inline subject-card-checkbox">
+                        <input class="form-check-input" type="checkbox" id="ib" value="International Baccalaureate (IB)">
+                        <label class="form-check-label ms-1" style="margin-top:1px;">International Baccalaureate (IB)</label>
+                    </div>
+                </div>
+                <div class="print-row subject-card-checkbox-label">
+                    <div class="form-check form-check-inline subject-card-checkbox">
+                        <input class="form-check-input" type="checkbox" id="ap" value="Advanced Placement (AP)">
+                        <label class="form-check-label ms-1" style="margin-top:1px;">Advanced Placement (AP)</label>
+                    </div>
+                    <div class="form-check form-check-inline subject-card-checkbox">
+                        <input class="form-check-input" type="checkbox" id="ib" value="Dual Enrollment (DE)">
+                        <label class="form-check-label ms-1" style="margin-top:1px;">Dual Enrollment (DE)</label>
+                    </div>
+                </div>
+                <div class="print-row subject-card-checkbox-label">
+                    <div class="form-check form-check-inline subject-card-checkbox">
+                        <input class="form-check-input" type="checkbox" id="honors" value="Gifted and Talented">
+                        <label class="form-check-label ms-1" style="margin-top:1px;">Gifted and Talented</label>
+                    </div>
+                    <div class="form-check form-check-inline subject-card-checkbox">
+                     
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

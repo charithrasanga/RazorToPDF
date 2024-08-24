@@ -12,29 +12,32 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Color+Emoji&display=swap" rel="stylesheet">
-      <style>
-        
-        @@page{
-            size: 250mm 440mm; /*  this configurations will picked up by pupateersharp and use for printing */
+    <style>
+
+        @@page {
+            size: 595px 842px; /*  this configurations will picked up by pupateersharp and use for printing */
         }
 
         html {
-            font-size: 0.8rem;
-                
+            font-size: 0.5rem;
         }
-        
-        body{
+
+        body {
             overflow-x: hidden;
         }
+
         p,
         span,
         label,
-        li,th, td, div {
-        font-family:Arial, Helvetica, sans-serif;
+        li, th, td, div {
+            font-family: Montserrat !important;
+            accent-color: #475061;
         }
-        a{
+
+        a {
             color: blue;
         }
+
         .full-width-div {
             width: 100vw;
             position: relative;
@@ -43,101 +46,119 @@
             margin-left: -50vw;
             margin-right: -50vw;
         }
-        .container_padding{
+
+        .container_padding {
             padding-left: 0;
             padding-right: 0;
         }
+
         .form-label {
-            font-size: 14px;
-            font-weight: 600;
+            font-size: 7px;
+            font-weight: 700;
+            color: #475061;
+            margin-bottom: 0px;
+        }
+
+        .checkbox-label {
+            font-size: 7px;
+            font-weight: 400;
             color: #475061;
         }
-        .checkbox-label{
-            font-size: 16px;
-            font-weight: 200;
-            color: #475061;
-        }
-        .heading_size{
+
+        .heading_size {
             font-size: 18px;
             font-weight: 300;
             color: #475061;
         }
-        .sub-heading{
+
+        .sub-heading {
             font-size: 18px;
             font-weight: 200;
             color: #475061;
         }
-        .sentense-line{
+
+        .sentense-line {
             font-size: 14px;
             font-weight: 200;
             color: #475061;
         }
-        .italic_font{
+
+        .italic_font {
             font-size: 16px;
             font-weight: 100;
             font-style: italic;
             color: #475061af;
         }
+
         .table-font-size {
             font-size: 12.8px;
         }
-        .normal_font{
+
+        .normal_font {
             font-size: 16px;
             font-weight: 100;
             color: #475061 !important;
         }
-        .list_size{
+
+        .list_size {
             font-size: 16px;
             font-weight: 200;
             color: #475061;
         }
-        .list-points{
+
+        .list-points {
             font-size: 14px;
             font-weight: 200;
         }
+
         .form-control {
-            font-size: 14px;
-            color: black;
-            border-color: black;
-            border-radius: 2px;
-            width: 100%;
+            border: 0.5px solid #1d1f21;
+            background-color: white;
+            border-radius: 1px;
+            resize: none;
+            font-size: 7px;
+            line-height: 8.53px;
+            padding: 5px 6px 5px 6px;
         }
 
         input[type='checkbox']:after {
             box-shadow: none !important;
         }
-  
+
         .form-check-input[type='checkbox'] {
             appearance: none; /* This hides the default checkbox */
-            border: 1px solid black;
-            border-radius: 2px !important;
+            border: 0.5px solid #1D1F21;
+            border-radius: 1px !important;
+            width: 8.5px;
+            height: 8.5px;
         }
 
-        .form-check-input[type='checkbox']:checked {
-            background-color: transparent !important; /* This hides the default checkmark */
-        }
+            .form-check-input[type='checkbox']:checked {
+                background-color: transparent !important; /* This hides the default checkmark */
+            }
 
-        .form-check-input[type='checkbox']:checked:after {
-            content: "";
-            display: block;
-            width: 6px;
-            height: 12px;
-            border: solid black;
-            border-width: 0 2px 2px 0;
-            transform: rotate(45deg);
-            position: relative;
-            left: 4px; /* Adjust this value to move the checkmark to the right */
-        }
+                .form-check-input[type='checkbox']:checked:after {
+                    content: "";
+                    display: block;
+                    width: 3.5px;
+                    height: 6.5px;
+                    border: solid #1D1F21;
+                    border-width: 0 1px 1px 0;
+                    transform: rotate(45deg);
+                    position: relative;
+                    left: 2px; /* Adjust this value to move the checkmark to the right */
+                }
 
         @@media print {
             .pagebreak {
                 clear: both;
                 page-break-after: always;
             }
+
             .myContainer {
-            display: grid;
-            page-break-inside: avoid;
-        }
+                display: grid;
+                page-break-inside: avoid;
+            }
         }
 
         .noto-color-emoji-regular {
@@ -153,40 +174,61 @@
 
         /* Newly added ---------------------------------------------- */
 
-        .LCTestAdministration{
-            thead {
-                tr {
-                    th {                       
-                        text-align: center ;
-                        vertical-align: middle ;
-                        height: 53px
-                    }
-                }
-            }
-            tbody {
-                tr {
-                    td {
-                        text-align: center ;
-                        vertical-align: middle ;
-                        height: 53px
-                    }
-                    td:first-child {
-                        text-align: start ;
-                    }
-                }
-            }   
-            tfoot{
-                tr{
-                    td{
-                        text-align: center !important;
-                        vertical-align: middle !important;
-                        height: 53px;
-                    }
-                }
-            }
+        .LCTestAdministration {
+            thead
+
+        {
+            tr
+
+        {
+            th
+
+        {
+            text-align: center;
+            vertical-align: middle;
+            height: 53px
         }
 
-        .table-2{
+        }
+        }
+
+        tbody {
+            tr
+
+        {
+            td
+
+        {
+            text-align: center;
+            vertical-align: middle;
+            height: 53px
+        }
+
+        td:first-child {
+            text-align: start;
+            padding-left: 10px
+        }
+
+        }
+        }
+
+        tfoot {
+            tr
+
+        {
+            td
+
+        {
+            text-align: center !important;
+            vertical-align: middle !important;
+            height: 53px;
+        }
+
+        }
+        }
+        }
+
+        .table-2 {
             thead
 
         {
@@ -220,61 +262,81 @@
         }
         }
 
-        .table-3{
-            thead {
-                tr {
-                    th {                       
-                        text-align: center ;
-                        vertical-align: middle ;
-                        height: 53px
-                    }
-                }
-            }
-            tbody {
-                tr {
-                    td {
-                        text-align: center ;
-                        vertical-align: middle ;
-                        height: 53px
-                    }
-                }
-            }  
+        .table-3 {
+            thead
+
+        {
+            tr
+
+        {
+            th
+
+        {
+            text-align: center;
+            vertical-align: middle;
+            height: 53px
         }
-        .testWidth{
+
+        }
+        }
+
+        tbody {
+            tr
+
+        {
+            td
+
+        {
+            text-align: center;
+            vertical-align: middle;
+            height: 53px
+        }
+
+        }
+        }
+        }
+
+        .testWidth {
             width: 26%;
         }
-        .checkWidth{
+
+        .checkWidth {
             width: 19%;
         }
-        .dataWidth{
+
+        .dataWidth {
             width: 18%;
         }
 
         .green_line {
-            width: 20px;
+            width: 7px;
             height: 1px;
-            margin: 15px 10px ;
-            border: 2px solid rgba(83, 231, 157, 0.829);
+            margin: 15px 10px;
+            border: 1px solid #BED9C2;
             border-radius: 4px;
-        }   
+            position: relative;
+            top: -10px;
+            left: -15px;
+        }
 
-        .blue_box{
+        .blue_box {
             background-color: rgba(200, 237, 243, 0.219);
             border-left-width: 5px !important;
             border-radius: 5px;
-            border-left-color: rgba(200, 237, 243, 0.856) !important ;
+            border-left-color: rgba(200, 237, 243, 0.856) !important;
         }
-        .ash_box{
+
+        .ash_box {
             background-color: rgba(200, 237, 243, 0);
             border-left-width: 5px !important;
             border-radius: 5px;
         }
 
-        .margin_left{
+        .margin_left {
             margin-left: 50px;
         }
 
-        .paddingEdit{
+        .paddingEdit {
             padding-left: 10px;
         }
 
@@ -282,31 +344,313 @@
             display: flex;
             flex-direction: row;
             gap: 2.5mm;
-            margin-bottom: 3.8mm;
-            &.mb-0 {
-                margin-bottom: 0;
-            }
-            &.mb-1 {
-                margin-bottom: 1.5mm !important;
-            }
-            &.no-gutter {
-                gap: 0;
-            }
-            &.gap-2 {
-                gap: 5mm;
-            }
-            &.flex-col {
-                flex-direction: column;
-            }
         }
 
-        
+        /*         Newly added while creating CCH Print
+         */
+        .form-title {
+            margin-bottom: 2.5mm;
+            p
+
+        {
+            font-size: pt;
+            font-weight: 600;
+            line-height: 1;
+        }
+
+        div {
+            width: 20px;
+            height: 1px;
+            border-top: 2px solid $accent-green;
+        }
+
+        }
+
+        .italic-style {
+            font-size: 7px;
+            font-weight: 400;
+            font-style: italic;
+            color: #818991;
+            margin-bottom: 2px;
+        }
+
+        .sibling-table {
+            font-size: 7px;
+            font-weight: 400;
+            width: 100%;
+            thead
+
+        {
+            tr
+
+        {
+            border: 0.5px solid #1D1F21;
+            background-color: #FFFFFF;
+            th
+
+        {
+            padding-top: 6px;
+            padding-bottom: 6px;
+            span
+
+        {
+            font-size: 7pt;
+            font-weight: 400;
+        }
+
+        &:first-child {
+            padding-left: 10px;
+        }
+
+        }
+        }
+        }
+
+        tbody {
+            tr
+
+        {
+            border-left: 1px solid #1D1F21;
+            border-right: 1px solid #1D1F21;
+            border-bottom: 1px solid #1D1F21;
+            td
+
+        {
+            span
+
+        {
+            font-size: 7px;
+            font-weight: 400;
+        }
+
+        &:first-child {
+            padding-left: 10px;
+        }
+
+        }
+        }
+        }
+        }
+
+        .default-data-row {
+            border: 1px solid #1d1f21;
+            td
+
+        {
+            span
+
+        {
+            padding: 10px;
+        }
+
+        }
+        }
+
+        .page-padding {
+            padding: 0 40px 0px 40px;
+        }
+
+        .element-bottom-gap {
+            margin-bottom: 12px;
+            page-break-inside: avoid;
+        }
+
+        .form-check {
+            margin-bottom: 0;
+        }
+
+        /* For Print Satisfaction Selector */
+
+        /* For print satisfaction */
+
+        .satisfaction-selector {
+            padding: 8px;
+            height: 73px;
+            text-align: center;
+        }
+
+        .satisfaction-selector_without_heading {
+            padding: 8px;
+            height: 61px;
+            text-align: center;
+        }
 
 
+
+        .satisfaction-selector__title {
+            font-size: 7px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 2px;
+            width: 200px;
+            div
+
+        {
+            width: 7.5px;
+            height: 2px;
+            border-top: 1px solid #bed9c2;
+            position: relative;
+            top: -2px;
+        }
+
+        }
+
+        .satisfaction-selector__container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            gap: 3px;
+            input
+
+        {
+            border: 0.5px solid #1D1F21;
+            width: 8.5px;
+            height: 8.5px;
+        }
+
+        }
+
+        .satisfaction-selector__container__image-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-around;
+            background-color: #f6f6f6;
+            width: 36px;
+            height: 30px;
+            border-radius: 2px;
+            padding-bottom: 4px;
+            position: relative;
+            top: -2px;
+            gap: 2px;
+            span
+
+        {
+            font-size: 4px;
+            font-weight: 500;
+            color: #475061;
+            line-height: 4.88px;
+            position: relative;
+            width: 24px;
+            top: 2px;
+        }
+
+        }
+
+        .satisfaction-selector__wrapper {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 2px;
+            position: relative;
+            top: 0px
+        }
+
+        .satisfaction-selector__container__svg__container {
+            svg
+
+        {
+            width: 6.5mm;
+            height: 6.5mm;
+            display: inline-block;
+            box-sizing: border-box;
+            background: inherit;
+            background-color: inherit;
+            position: relative;
+            top: 2px;
+        }
+
+        }
+
+        /* For Print Subject Card */
+
+        .subject-card {
+            font-family: Montserrat !important;
+            padding: 8px 10px 8px 8px;
+            border-radius: 0.5rem;
+            border: 1px solid #e5e6e6;
+            color: #475061;
+            margin-bottom: 10px;
+        }
+
+        .subject-card-header {
+            font-family: Montserrat !important;
+            font-size: 7px;
+            font-weight: 700;
+            height: 8.53px;
+        }
+
+        .subject-card-form-label {
+            font-size: 6px;
+            font-weight: 700;
+            margin-bottom: 0px;
+        }
+
+        .subject-card-input {
+            border: 0.5px solid #1d1f21;
+            background-color: white;
+            border-radius: 1px;
+            resize: none;
+            font-size: 6px;
+            font-weight: 400;
+            line-height: 10px;
+            padding: 5px 6px 5px 6px;
+            width: 100%;
+        }
+
+        .subject-card-checkbox-label {
+            font-size: 6px;
+            font-weight: 400;
+            color: #475061;
+            margin-bottom: 2px;
+        }
+
+        .subject-card-checkbox {
+            width: 100px;
+        }
+
+        .subject-card-ash-line {
+            width: 7px;
+            height: 1px;
+            margin: 15px 10px;
+            border: 1px solid #BED9C2;
+            border-radius: 4px;
+            position: relative;
+            top: -10px;
+            left: -15px;
+        }
+
+        .blue-box {
+            border: 1px solid #E5E6E6;
+            border-left: 2px solid #ADD9C5;
+            border-radius: 2px;
+        }
+
+        .ash-box {
+            border: 1px solid #E5E6E6;
+            border-left: 2px solid #E5E6E6;
+            border-radius: 2px;
+        }
+
+        .blue-box-satisfaction {
+            border: 1px solid #E5E6E6;
+            border-left: 2px solid #ADD9C5;
+            border-radius: 2px;
+            width: 250px;
+        }
+
+        .ash-box-satisfaction {
+            border: 1px solid #E5E6E6;
+            border-left: 2px solid #E5E6E6;
+            border-radius: 2px;
+            width: 250px;
+        }
     </style>
 </head>
 <body>
-    <div class="container-fluid px-5">
+    <div class="container-fluid">
 
         @RenderBody()
     </div>
