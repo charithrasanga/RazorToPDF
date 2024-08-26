@@ -9,21 +9,21 @@
         <input type="text"
                class="form-control"
                id="studentAEStartDate"
-               placeholder="10/11/2023" />
+               value="@(!string.IsNullOrEmpty(Model.testSelectionData.AEStartDate.ToString()) ? Model.testSelectionData.AEStartDate : string.Empty)" />
     </div>
     <div class="col">
         <label for="studentAEEndDate" class="form-label">AE End Date</label>
         <input type="text"
                class="form-control"
                id="studentAEEndDate"
-               placeholder="10/11/2023 " />
+               value="@(!string.IsNullOrEmpty(Model.testSelectionData.AEEndDate.ToString()) ? Model.testSelectionData.AEEndDate : string.Empty)" />
     </div>
     <div class="col">
         <label for="studentGradeAtAE" class="form-label">Grade at AE</label>
         <input type="text"
                class="form-control"
                id="studentGradeAtAE"
-               placeholder="4 - Fourth Grade" />
+               value="@(!string.IsNullOrEmpty(Model.testSelectionData.Grade) ? Model.testSelectionData.Grade : string.Empty)" />
     </div>
 </div>
 
@@ -33,14 +33,14 @@
         <input type="text"
                class="form-control"
                id="studentTestLocation"
-               placeholder="In-Center" />
+               value="@(!string.IsNullOrEmpty(Model.testSelectionData.TestLocation) ? Model.testSelectionData.TestLocation : string.Empty)" />
     </div>
     <div class="col">
         <label for="studentTestingRoom" class="form-label">Testing Room</label>
         <input type="text"
                class="form-control"
                id="studentTestingRoom"
-               placeholder="Lorem ipsum dolor sit amet, consectetuer" />
+               value="@(!string.IsNullOrEmpty(Model.testSelectionData.TestRoom) ? Model.testSelectionData.TestRoom : string.Empty)" />
     </div>
     <div class="col"></div>
 </div>
@@ -63,19 +63,22 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>Slosson Visual Motor Performance Test (SVMPT)</td>
-                <td class="checkbox-label">
-                    <div class="form-check form-check-inline ">
-                        <input class="form-check-input" type="checkbox" id="inlineCheckbox1" checked value="$">
-                    </div>
-                </td>
-                <td>05/11/2022</td>
-                <td>15</td>
-                <td>Walter</td>
-            </tr>
+            @for (int i = 0; i < 15; i++)
+            {
+                <tr>
+                    <td>@(!string.IsNullOrEmpty(Model.testSelectionData.TestName) ? Model.testSelectionData.TestName : string.Empty)</td>
+                    <td class="checkbox-label">
+                        <div class="form-check form-check-inline ">
+                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" @(!string.IsNullOrEmpty(Model.testSelectionData.TestCheck.ToString()) ? "checked" : "") value="$">
+                        </div>
+                    </td>
+                    <td>@(!string.IsNullOrEmpty(Model.testSelectionData.TestDate.ToString()) ? Model.testSelectionData.TestDate : string.Empty)</td>
+                    <td>@(!string.IsNullOrEmpty(Model.testSelectionData.EstimatedTime.ToString()) ? Model.testSelectionData.EstimatedTime : string.Empty)</td>
+                    <td>@(!string.IsNullOrEmpty(Model.testSelectionData.TestAdministrator) ? Model.testSelectionData.TestAdministrator : string.Empty)</td>
+                </tr>
+            }
 
-            <tr>
+            @* <tr>
                 <td>Informal Reading Inventory - Oral & Silent (IRI)</td>
                 <td class="checkbox-label">
                     <div class="form-check form-check-inline ">
@@ -242,8 +245,9 @@
                 <td>10 - 20</td>
                 <td>Walter</td>
             </tr>
+ *@
         <td class="fw-bold">Total estimated hours to complete</td>
-        <td colspan="4">3 1/2 4</td>
+        <td colspan="4">@(!string.IsNullOrEmpty(Model.testSelectionData.EstimatedHours.ToString()) ? Model.testSelectionData.EstimatedHours : string.Empty)</td>
         <tr>
         </tr>
         </tbody>

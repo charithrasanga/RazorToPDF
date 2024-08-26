@@ -1,4 +1,5 @@
-﻿
+﻿@using RazorToPDF.ViewModels
+
 @model RazorToPDF.Views.Shared.IRI.IRIPartialModel
 @{
 }
@@ -9,21 +10,21 @@
         <input type="text"
                class="form-control"
                id="StudentName"
-               placeholder="Jane Doe" />
+               value="@(!string.IsNullOrEmpty(Model.iriData.Student) ? Model.iriData.Student : string.Empty)" />
     </div>
     <div class="col">
         <label for="studentDateDateAdministered" class="form-label">Date Date Administered</label>
         <input type="text"
                class="form-control"
                id="studentDateDateAdministered"
-               placeholder="5/11/2023" />
+               value="@(!string.IsNullOrEmpty(Model.iriData.DateAdministrated.ToString()) ? Model.iriData.DateAdministrated : string.Empty)" />
     </div>
     <div class="col">
         <label for="studentAdministeredBy" class="form-label">Administered by</label>
         <input type="text"
                class="form-control"
                id="studentAdministeredBy"
-               placeholder="Walter" />
+               value="@(!string.IsNullOrEmpty(Model.iriData.AdministratedBy) ? Model.iriData.AdministratedBy : string.Empty)" />
     </div>
 </div>
 
@@ -38,7 +39,7 @@
             <input type="number"
                    class="form-control"
                    id="actualDuration"
-                   placeholder="15" />
+                   value="@(!string.IsNullOrEmpty(Model.iriData.ActualDuration.ToString()) ? Model.iriData.ActualDuration : string.Empty)" />
         </div>
     </div>
 </div>
@@ -138,14 +139,15 @@
                             Did you administer any of these passages as listening?
                             <div>
                                 <div class="pt-1">
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="checkbox" id="Yes" checked value="Yes">
-                                        <label class="form-check-label" for="inlineCheckbox1">Yes</label>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="checkbox" id="No" value="No">
-                                        <label class="form-check-label" for="inlineCheckbox1">No</label>
-                                    </div>
+                                    @foreach (ExhibitFrustration exhibitFrustration in Enum.GetValues(typeof(ExhibitFrustration)))
+                                    {
+                                        var isChecked = Model.iriData.ExhibitFrustration.Equals(exhibitFrustration);
+                                        var randomInputId = RandomStringHelper.GenerateRandomUniqueString(2);
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" id="@randomInputId" @(isChecked ? "checked" : "") value="@exhibitFrustration.ToString()">
+                                            <label class="form-check-label" for="@randomInputId">@exhibitFrustration.ToString().ToProperCase()</label>
+                                        </div>
+                                    }
                                 </div>
                                 <div class="mb-2">
                                     <div class="col">
@@ -177,71 +179,50 @@
                 <div class="col-4 ps-3">
                     <p class="mb-1">1. Student's Effort was :</p>
                     <div class="d-flex flex-column ms-4 checkBox-label">
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="Very Poor">
-                            <label class="form-check-label" for="inlineCheckbox1">Very Poor</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" checked value="Poor">
-                            <label class="form-check-label" for="inlineCheckbox1">Poor</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="Average">
-                            <label class="form-check-label" for="inlineCheckbox1">Average</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="Good">
-                            <label class="form-check-label" for="inlineCheckbox1">Good</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="Very Good">
-                            <label class="form-check-label" for="inlineCheckbox1">Very Good</label>
-                        </div>
+                        @foreach (EffortRate effortRate in Enum.GetValues(typeof(EffortRate)))
+                        {
+                            var isChecked = Model.iriData.EffortRate.Equals(effortRate);
+                            var randomInputId = RandomStringHelper.GenerateRandomUniqueString(5);
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="@randomInputId" @(isChecked ? "checked" : "") value="@effortRate.ToString()">
+                                <label class="form-check-label" for="@randomInputId">@effortRate.ToString().ToProperCase()</label>
+                            </div>
+                        }
                     </div>
                 </div>
                 <div class="col px-0">
                     <p class="mb-1">2. Attention Span :</p>
                     <div class="d-flex flex-column ms-4 checkBox-label">
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="Very Poor">
-                            <label class="form-check-label" for="inlineCheckbox1">Very Poor</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" checked value="Poor">
-                            <label class="form-check-label" for="inlineCheckbox1">Poor</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="Average">
-                            <label class="form-check-label" for="inlineCheckbox1">Average</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="Good">
-                            <label class="form-check-label" for="inlineCheckbox1">Good</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="Very Good">
-                            <label class="form-check-label" for="inlineCheckbox1">Very Good</label>
-                        </div>
+                        @foreach (EffortRate effortRate in Enum.GetValues(typeof(EffortRate)))
+                        {
+                            var isChecked = Model.iriData.EffortRate.Equals(effortRate);
+                            var randomInputId = RandomStringHelper.GenerateRandomUniqueString(5);
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="@randomInputId" @(isChecked ? "checked" : "") value="@effortRate.ToString()">
+                                <label class="form-check-label" for="@randomInputId">@effortRate.ToString().ToProperCase()</label>
+                            </div>
+                        }
                     </div>
                 </div>
                 <div class="col-5 ps-3">
                     <p class="mb-1">3. Did student Exhibit frustration?</p>
                     <div class="ms-4 ">
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="Yes" value="Yes">
-                            <label class="form-check-label" for="inlineCheckbox1">Yes</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="No" checked value="No">
-                            <label class="form-check-label" for="inlineCheckbox1">No</label>
-                        </div>
+                        @foreach (ExhibitFrustration exhibitFrustration in Enum.GetValues(typeof(ExhibitFrustration)))
+                        {
+                            var isChecked = Model.iriData.ExhibitFrustration.Equals(exhibitFrustration);
+                            var randomInputId = RandomStringHelper.GenerateRandomUniqueString(2);
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="@randomInputId" @(isChecked ? "checked" : "") value="@exhibitFrustration.ToString()">
+                                <label class="form-check-label" for="@randomInputId">@exhibitFrustration.ToString().ToProperCase()</label>
+                            </div>
+                        }
                     </div>
                     <div class="mt-5">
                         <label for="studentLastName" class="fw-light">4. This test Administered by and responses recorded by :</label>
                         <input type="text"
                                class="form-control"
                                id="Walter"
-                               placeholder="Walter" />
+                               value="@(!string.IsNullOrEmpty(Model.iriData.ResponseBy) ? Model.iriData.ResponseBy : string.Empty)" />
                     </div>
                 </div>
             </div>
@@ -259,72 +240,63 @@
         <div class="py-2">
             <label class="form-label">1. How much time do you spend on home ork each weekday night?</label>
             <div class="col checkbox-label">
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="Yes">
-                    <label class="form-check-label" for="Yes">I don't get homework</label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="inlineCheckbox2" checked value="No">
-                    <label class="form-check-label" for="No">1 - 2 Hours</label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="Not Sure">
-                    <label class="form-check-label" for="Not Sure">2 - 3 Hours</label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="Not Sure">
-                    <label class="form-check-label" for="Not Sure">More than 3 hours</label>
-                </div>
+                @foreach (HomeWorkTime homeWorkTime in Enum.GetValues(typeof(HomeWorkTime)))
+                {
+                    var isChecked = Model.iriData.HomeWorkTime.Equals(homeWorkTime);
+                    var randomInputId = RandomStringHelper.GenerateRandomUniqueString(3);
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="@randomInputId" @(isChecked ? "checked" : "") value="@homeWorkTime.ToString()">
+                        <label class="form-check-label" for="@randomInputId">@homeWorkTime.ToString().ToProperCase()</label>
+                    </div>
+                }
             </div>
         </div>
 
         <div class="py-2">
             <label class="form-label">2. Is home ork easy or hard for you?</label>
             <div class="col checkbox-label">
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="Yes">
-                    <label class="form-check-label" for="Yes">Hard</label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="inlineCheckbox2" checked value="No">
-                    <label class="form-check-label" for="No">Some hard & some easy</label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="Not Sure">
-                    <label class="form-check-label" for="Not Sure">Easy</label>
-                </div>
+                @foreach (EasyOrHard easyOrHard in Enum.GetValues(typeof(EasyOrHard)))
+                {
+                    var isChecked = Model.iriData.EasyOrHard.Equals(easyOrHard);
+                    var randomInputId = RandomStringHelper.GenerateRandomUniqueString(3);
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="@randomInputId" @(isChecked ? "checked" : "") value="@easyOrHard.ToString()">
+                        <label class="form-check-label" for="@randomInputId">@easyOrHard.ToString().ToProperCase()</label>
+                    </div>
+                }
             </div>
         </div>
 
         <div class="py-2">
-            <span class="form-label">Why is home ork easy or hard for you? Student Comments</span>
+            <span class="form-label">Why is home work easy or hard for you? Student Comments</span>
             <div class="border border-black rounded-1 mt-2">
-                <p class="mx-3 my-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus animi adipisci ea quo quis nulla tempora deserunt repellat et eum obcaecati tenetur hic cupiditate quod, vitae minima officiis! Aut obcaecati perferendis hic nihil eius enim possimus eligendi, veritatis veniam quia nesciunt a, ipsum voluptatum itaque eveniet explicabo nostrum dolorum! Possimus assumenda neque reiciendis ipsam commodi voluptatum natus quia ducimus amet! Aliquam modi eligendi in beatae temporibus quis perferendis laboriosam odio? Sapiente, nemo ab nesciunt expedita laudantium excepturi fuga aliquid quo repudiandae omnis necessitatibus quae eaque distinctio laboriosam magnam? Ratione, id facilis maiores illum deleniti hic aspernatur laboriosam architecto molestiae fugiat libero dignissimos eum ullam natus necessitatibus maxime non ipsam voluptatum quisquam quam dolorum placeat. Facilis reiciendis atque cupiditate natus inventore.</p>
+                <p class="m-3">
+                    @(!string.IsNullOrEmpty(Model.iriData.Paragraph) ? Model.iriData.Paragraph : string.Empty)
+                </p>
             </div>
         </div>
 
         <div class="py-2">
-            <label class="form-label">3. Ho often do your parents have to tell you to do homework?</label>
+            <label class="form-label">3. How often do your parents have to tell you to do homework?</label>
             <div class="col checkbox-label">
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="Yes">
-                    <label class="form-check-label" for="Yes">Always</label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="inlineCheckbox2" checked value="No">
-                    <label class="form-check-label" for="No">Sometimes</label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="Not Sure">
-                    <label class="form-check-label" for="Not Sure">Never</label>
-                </div>
+                @foreach (HowOftenHomeWork howOftenHomeWork in Enum.GetValues(typeof(HowOftenHomeWork)))
+                {
+                    var isChecked = Model.iriData.HowOftenHomeWork.Equals(howOftenHomeWork);
+                    var randomInputId = RandomStringHelper.GenerateRandomUniqueString(3);
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="@randomInputId" @(isChecked ? "checked" : "") value="@howOftenHomeWork.ToString()">
+                        <label class="form-check-label" for="@randomInputId">@howOftenHomeWork.ToString().ToProperCase()</label>
+                    </div>
+                }
             </div>
         </div>
 
         <div class="py-2">
             <span class="form-label">Additional comments</span>
             <div class="border border-black rounded-1 mt-2">
-                <p class="mx-3 my-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus animi adipisci ea quo quis nulla tempora deserunt repellat et eum obcaecati tenetur hic cupiditate quod, vitae minima officiis! Aut obcaecati perferendis hic nihil eius enim possimus eligendi, veritatis veniam quia nesciunt a, ipsum voluptatum itaque eveniet explicabo nostrum dolorum! Possimus assumenda neque reiciendis ipsam commodi voluptatum natus quia ducimus amet! Aliquam modi eligendi in beatae temporibus quis perferendis laboriosam odio? Sapiente, nemo ab nesciunt expedita laudantium excepturi fuga aliquid quo repudiandae omnis necessitatibus quae eaque distinctio laboriosam magnam? Ratione, id facilis maiores illum deleniti hic aspernatur laboriosam architecto molestiae fugiat libero dignissimos eum ullam natus necessitatibus maxime non ipsam voluptatum quisquam quam dolorum placeat. Facilis reiciendis atque cupiditate natus inventore.</p>
+                <p class="m-3">
+                    @(!string.IsNullOrEmpty(Model.iriData.Paragraph) ? Model.iriData.Paragraph : string.Empty)
+                </p>
             </div>
         </div>
 
@@ -384,71 +356,50 @@
                 <div class="col-4 ps-3">
                     <p class="mb-1">1. Student's Effort was :</p>
                     <div class="d-flex flex-column ms-4 checkBox-label">
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="Very Poor">
-                            <label class="form-check-label" for="inlineCheckbox1">Very Poor</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" checked value="Poor">
-                            <label class="form-check-label" for="inlineCheckbox1">Poor</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="Average">
-                            <label class="form-check-label" for="inlineCheckbox1">Average</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="Good">
-                            <label class="form-check-label" for="inlineCheckbox1">Good</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="Very Good">
-                            <label class="form-check-label" for="inlineCheckbox1">Very Good</label>
-                        </div>
+                        @foreach (EffortRate effortRate in Enum.GetValues(typeof(EffortRate)))
+                        {
+                            var isChecked = Model.iriData.EffortRate.Equals(effortRate);
+                            var randomInputId = RandomStringHelper.GenerateRandomUniqueString(5);
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="@randomInputId" @(isChecked ? "checked" : "") value="@effortRate.ToString()">
+                                <label class="form-check-label" for="@randomInputId">@effortRate.ToString().ToProperCase()</label>
+                            </div>
+                        }
                     </div>
                 </div>
                 <div class="col px-0">
                     <p class="mb-1">2. Attention Span :</p>
                     <div class="d-flex flex-column ms-4 checkBox-label">
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="Very Poor">
-                            <label class="form-check-label" for="inlineCheckbox1">Very Poor</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" checked value="Poor">
-                            <label class="form-check-label" for="inlineCheckbox1">Poor</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="Average">
-                            <label class="form-check-label" for="inlineCheckbox1">Average</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="Good">
-                            <label class="form-check-label" for="inlineCheckbox1">Good</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="Very Good">
-                            <label class="form-check-label" for="inlineCheckbox1">Very Good</label>
-                        </div>
+                        @foreach (EffortRate effortRate in Enum.GetValues(typeof(EffortRate)))
+                        {
+                            var isChecked = Model.iriData.EffortRate.Equals(effortRate);
+                            var randomInputId = RandomStringHelper.GenerateRandomUniqueString(5);
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="@randomInputId" @(isChecked ? "checked" : "") value="@effortRate.ToString()">
+                                <label class="form-check-label" for="@randomInputId">@effortRate.ToString().ToProperCase()</label>
+                            </div>
+                        }
                     </div>
                 </div>
                 <div class="col-5 ps-3">
                     <p class="mb-1">3. Did student Exhibit frustration?</p>
                     <div class="ms-4 ">
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="Yes" value="Yes">
-                            <label class="form-check-label" for="inlineCheckbox1">Yes</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="No" checked value="No">
-                            <label class="form-check-label" for="inlineCheckbox1">No</label>
-                        </div>
+                        @foreach (ExhibitFrustration exhibitFrustration in Enum.GetValues(typeof(ExhibitFrustration)))
+                        {
+                            var isChecked = Model.iriData.ExhibitFrustration.Equals(exhibitFrustration);
+                            var randomInputId = RandomStringHelper.GenerateRandomUniqueString(2);
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="@randomInputId" @(isChecked ? "checked" : "") value="@exhibitFrustration.ToString()">
+                                <label class="form-check-label" for="@randomInputId">@exhibitFrustration.ToString().ToProperCase()</label>
+                            </div>
+                        }
                     </div>
                     <div class="mt-5">
                         <label for="studentLastName" class="fw-light">4. This test Administered by and responses recorded by :</label>
                         <input type="text"
                                class="form-control"
                                id="Walter"
-                               placeholder="Walter" />
+                               value="@(!string.IsNullOrEmpty(Model.iriData.ResponseBy) ? Model.iriData.ResponseBy : string.Empty)" />
                     </div>
                 </div>
             </div>
@@ -493,32 +444,33 @@
         <div class="py-2">
             <label class="form-label">2. How happy are you with these grades ?</label>
             <div class="col checkbox-label">
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="Yes">
-                    <label class="form-check-label" for="Yes">Happy</label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="inlineCheckbox2" checked value="No">
-                    <label class="form-check-label" for="No">I don't care</label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="Not Sure">
-                    <label class="form-check-label" for="Not Sure">Unhappy</label>
-                </div>
+                    @foreach (HowHappy howHappy in Enum.GetValues(typeof(HowHappy)))
+                    {
+                        var isChecked = Model.iriData.HowHappy.Equals(howHappy);
+                        var randomInputId = RandomStringHelper.GenerateRandomUniqueString(3);
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="@randomInputId" @(isChecked ? "checked" : "") value="@howHappy.ToString()">
+                        <label class="form-check-label" for="@randomInputId">@howHappy.ToString().ToProperCase()</label>
+                    </div>
+                    }
             </div>
         </div>
 
         <div class="py-2">
             <span class="form-label">Why do you feel this way ? Student Comments</span>
             <div class="border border-black rounded-1 mt-2">
-                <p class="mx-3 my-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus animi adipisci ea quo quis nulla tempora deserunt repellat et eum obcaecati tenetur hic cupiditate quod, vitae minima officiis! Aut obcaecati perferendis hic nihil eius enim possimus eligendi, veritatis veniam quia nesciunt a, ipsum voluptatum itaque eveniet explicabo nostrum dolorum! Possimus assumenda neque reiciendis ipsam commodi voluptatum natus quia ducimus amet! Aliquam modi eligendi in beatae temporibus quis perferendis laboriosam odio? Sapiente, nemo ab nesciunt expedita laudantium excepturi fuga aliquid quo repudiandae omnis necessitatibus quae eaque distinctio laboriosam magnam? Ratione, id facilis maiores illum deleniti hic aspernatur laboriosam architecto molestiae fugiat libero dignissimos eum ullam natus necessitatibus maxime non ipsam voluptatum quisquam quam dolorum placeat. Facilis reiciendis atque cupiditate natus inventore.</p>
+                <p class="m-3">
+                    @(!string.IsNullOrEmpty(Model.iriData.Paragraph) ? Model.iriData.Paragraph : string.Empty)
+                </p>
             </div>
         </div>
 
         <div class="py-2">
             <span class="form-label">Additional Comments</span>
             <div class="border border-black rounded-1 mt-2">
-                <p class="mx-3 my-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus animi adipisci ea quo quis nulla tempora deserunt repellat et eum obcaecati tenetur hic cupiditate quod, vitae minima officiis! Aut obcaecati perferendis hic nihil eius enim possimus eligendi, veritatis veniam quia nesciunt a, ipsum voluptatum itaque eveniet explicabo nostrum dolorum! Possimus assumenda neque reiciendis ipsam commodi voluptatum natus quia ducimus amet! Aliquam modi eligendi in beatae temporibus quis perferendis laboriosam odio? Sapiente, nemo ab nesciunt expedita laudantium excepturi fuga aliquid quo repudiandae omnis necessitatibus quae eaque distinctio laboriosam magnam? Ratione, id facilis maiores illum deleniti hic aspernatur laboriosam architecto molestiae fugiat libero dignissimos eum ullam natus necessitatibus maxime non ipsam voluptatum quisquam quam dolorum placeat. Facilis reiciendis atque cupiditate natus inventore.</p>
+                <p class="m-3">
+                    @(!string.IsNullOrEmpty(Model.iriData.Paragraph) ? Model.iriData.Paragraph : string.Empty)
+                </p>
             </div>
         </div>
 
